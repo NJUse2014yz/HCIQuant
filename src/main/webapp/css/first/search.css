@@ -1,0 +1,70 @@
+/*搜索框位置与大小*/
+.stock-search{
+	position:fixed;
+	width:200px;
+	left:300px;
+	top:3px;
+}
+
+
+div.search{
+	background-color: rgba(223, 231, 241, 0.8);
+    display: block;
+    height: 32px;
+    border-radius: 4px;
+    transition: .2s background-color;
+}
+
+div.search:hover{
+	background-color:white;
+}
+
+.search input{
+	float: left;
+    width: 176px;
+    color: black;
+    font-size: 12px;
+    overflow: hidden;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px;
+    border: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+/*placeholder*/
+*::-webkit-input-placeholder {
+    color: rgb(237, 239, 241);
+}
+ 
+*:-moz-placeholder {
+    color: rgb(237, 239, 241);
+}
+ 
+*:-ms-input-placeholder {
+    /* IE10+ */
+    color: rgb(237, 239, 241);
+}
+/*placeholder*/
+
+
+.search button{
+	display: block;
+    position: absolute;
+    right: 0;
+    width: 48px;
+    min-width: 0;
+    cursor: pointer;
+    height: 32px;
+    background: url(/HCIQuant/img/first/search.png) -653px -720px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px;
+    vertical-align: middle;
+   
+}

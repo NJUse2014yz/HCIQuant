@@ -11,7 +11,7 @@
     <link href="../css/login.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <!-- <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -23,7 +23,7 @@
                 <a class="navbar-brand" href="#"><img src="../img/common/logo.png"></a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
+            Collect the nav links, forms, and other content for toggling
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">股票 <span class="sr-only">(current)</span></a></li>
@@ -60,9 +60,12 @@
                         </ul>
                     </li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>/.navbar-collapse
         </div>
-    </nav>
+    </nav> -->
+    
+    <%@include file="first/navBar.jsp"%>
+    
     <div class="container-fluid main-content">
         <div class="row" id="logReg">
             <div class="row">
