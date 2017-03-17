@@ -19,3 +19,11 @@
     font-size: 1px;
     opacity:0.5
 }
+#save_flag2
+{
+    position:relative;
+    display:block;
+    border-color:#aaaaaa;
+    background-color: #5389d2;
+    margin-left:100px;
+}

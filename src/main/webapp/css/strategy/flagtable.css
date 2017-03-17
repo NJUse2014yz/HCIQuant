@@ -1,0 +1,8 @@
+#flagtable,#tradeflag
+{
+    width:800px;
+}
+#flagtable th,#tradeflag th
+{
+    width:100px;
+}
