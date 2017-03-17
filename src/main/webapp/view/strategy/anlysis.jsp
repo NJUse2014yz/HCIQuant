@@ -1,51 +1,55 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+         pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="metric_chooser.css">
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="echarts.min.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/strategy/metric_chooser.css">
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/echarts.min.js"></script>
 </head>
 <body>
-<body>
-<!--选择指标-->
-<div id="accordion" class="panel-group">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion"
-                   href="#collapseOne">
-                    选择指标
-                </a>
-            </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse">
-            <div class="panel-body">
+<%@include file="../first/navBar.jsp"%>
+<div style="margin:0;padding:0;margin-top:80px;margin-left:20%;">
+    <!--选择指标-->
+    <div id="accordion" class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseOne">
+                        选择指标
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <button id="BIAS_button" class="btn btn-default btn-sm metric_button">BIAS</button>
-                    <button id="OBV_button"class="btn btn-default btn-sm metric_button">OBV</button>
-                    <button id="VR_button" class="btn btn-default btn-sm metric_button">VR</button>
-                    <button id="MACD_button" class="btn btn-default btn-sm metric_button">MACD</button>
-                    <button id="BOLL_button" class="btn btn-default btn-sm metric_button">BOLL</button>
-                    <button id="ROC_button" class="btn btn-default btn-sm metric_button">ROC</button>
-                    <button id="DMI_button" class="btn btn-default btn-sm metric_button">DMI</button>
-                    <button id="RSI_button" class="btn btn-default btn-sm metric_button">RSI</button>
+                    <div class="panel-body">
+                        <button id="BIAS_button" class="btn btn-default btn-sm metric_button">BIAS</button>
+                        <button id="OBV_button"class="btn btn-default btn-sm metric_button">OBV</button>
+                        <button id="VR_button" class="btn btn-default btn-sm metric_button">VR</button>
+                        <button id="MACD_button" class="btn btn-default btn-sm metric_button">MACD</button>
+                        <button id="BOLL_button" class="btn btn-default btn-sm metric_button">BOLL</button>
+                        <button id="ROC_button" class="btn btn-default btn-sm metric_button">ROC</button>
+                        <button id="DMI_button" class="btn btn-default btn-sm metric_button">DMI</button>
+                        <button id="RSI_button" class="btn btn-default btn-sm metric_button">RSI</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--雷达图-->
-<div id="anlysisplot" style="position:relative;width: 500px;height:500px;"></div>
-<!--文字分析-->
-<div id="text_analysis">
-    <p>这是一个很长很长很长很长很长很长很长很长很长很长很长很长的分析过程</p>
-    <p>这是一个很长很长很长很长很长很长很长很长很长很长很长很长的分析过程</p>
-    <p>这是一个很长很长很长很长很长很长很长很长很长很长很长很长的分析过程</p>
-    <p>这是一个很长很长很长很长很长很长很长很长很长很长很长很长的分析过程</p>
+    <!--雷达图-->
+    <div id="anlysisplot" style="position:relative;width: 500px;height:500px;"></div>
+    <!--文字分析-->
+    <div id="text_analysis">
+        <p>这是一个很长很长很长很长很长很长很长很长很长很长很长很长的分析过程</p>
+        <p>这是一个很长很长很长很长很长很长很长很长很长很长很长很长的分析过程</p>
+        <p>这是一个很长很长很长很长很长很长很长很长很长很长很长很长的分析过程</p>
+        <p>这是一个很长很长很长很长很长很长很长很长很长很长很长很长的分析过程</p>
+    </div>
 </div>
 <!--选择指标-->
 <script type="text/javascript">

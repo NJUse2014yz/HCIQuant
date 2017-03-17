@@ -1,85 +1,90 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+         pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="chooser.css">
-    <link rel="stylesheet" href="backinfo.css">
-    <link rel="stylesheet" href="backplot.css">
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="echarts.min.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/strategy/chooser.css">
+    <link rel="stylesheet" href="../../css/strategy/backinfo.css">
+    <link rel="stylesheet" href="../../css/strategy/backplot.css">
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/echarts.min.js"></script>
 </head>
 <body>
-<div id="chooser" class="container" style="box-shadow:1px 1px 3px #777">
-    <div class="row">
-        <div class="col-xs-2" style="border-bottom: 1px solid #aaa;border-right: 2px solid #aaa;">
-            <label style="font-size:20px;font-family: 'Microsoft YaHei';text-align: center;">&nbsp&nbsp策&nbsp&nbsp&nbsp&nbsp略</label>
-        </div>
-        <!--选择股票-->
-        <div id="stock_choice_div" class="col-xs-10" >
-            <ul class="stock_choice_ul" id="stock_choice_ul"></ul>
-        </div>
-        <!--<div class="col-xs-1" style="padding:0">-->
-        <!--<button class="sale_type">股</button>-->
-        <!--<button class="sale_type">股%</button>-->
-        <!--<button class="sale_type">￥</button>-->
-        <!--<button class="sale_type">￥%</button>-->
-        <!--</div>-->
-    </div>
-    <div class="row">
-        <div id="metric_div" class="col-xs-2">
-            <!--指标-->
-            <div id="metric_choice_div">
-                <ul class="metric_choice_ul" id="metric_choice_ul"></ul>
+<%@include file="../first/navBar.jsp"%>
+<div style="margin:0;padding:0;margin-top:80px;margin-left:200px;">
+    <div id="chooser" class="container-fluid" style="box-shadow:1px 1px 3px #777">
+        <div class="row">
+            <div class="col-xs-2" style="border-bottom: 1px solid #aaa;border-right: 2px solid #aaa;">
+                <label style="font-size:20px;font-family: 'Microsoft YaHei';text-align: center;">&nbsp&nbsp策&nbsp&nbsp&nbsp&nbsp略</label>
             </div>
-        </div>
-        <div class="col-xs-10" style="height:480px;">
-            <!--三种情况放不同的内容-->
-            <div id="single_single" style="margin:0;padding:0;position:absolute;visibility: visible">
-                <div id="strategyplot" style="width:600px;height:460px;margin:10px;"></div>
+            <!--选择股票-->
+            <div id="stock_choice_div" class="col-xs-10" >
+                <ul class="stock_choice_ul" id="stock_choice_ul"></ul>
             </div>
-            <div id="single_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
+            <!--<div class="col-xs-1" style="padding:0">-->
+            <!--<button class="sale_type">股</button>-->
+            <!--<button class="sale_type">股%</button>-->
+            <!--<button class="sale_type">￥</button>-->
+            <!--<button class="sale_type">￥%</button>-->
+            <!--</div>-->
+        </div>
+        <div class="row">
+            <div id="metric_div" class="col-xs-2">
+                <!--指标-->
+                <div id="metric_choice_div">
+                    <ul class="metric_choice_ul" id="metric_choice_ul"></ul>
+                </div>
+            </div>
+            <div class="col-xs-10" style="height:480px;">
+                <!--三种情况放不同的内容-->
+                <div id="single_single" style="margin:0;padding:0;position:absolute;visibility: visible">
+                    <div id="strategyplot" style="width:600px;height:460px;margin:10px;"></div>
+                </div>
+                <div id="single_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
 
-            </div>
-            <div id="multiple_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
+                </div>
+                <div id="multiple_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
 
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div id="backplot"></div>
-<div id="backresult">
-    <table id="backtable" class="table table-bordered">
-        <caption></caption>
-        <thead>
-        <tr>
-            <th>年化收益率</th>
-            <th>Alpha</th>
-            <th>Beta</th>
-            <th>夏普比率</th>
-            <th>收益移动率</th>
-            <th>信息比率</th>
-            <th>最大回撤值</th>
-            <th>换手率</th>
-            <th>累计收益率</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>12.3%</td>
-            <td>5%</td>
-            <td>2.4</td>
-            <td>62%</td>
-            <td>53%</td>
-            <td>21%</td>
-            <td>24673</td>
-            <td>43%</td>
-            <td>10.3%</td>
-        </tr>
-        </tbody>
-    </table>
+    <div id="backplot"></div>
+    <div id="backresult">
+        <table id="backtable" class="table table-bordered">
+            <caption></caption>
+            <thead>
+            <tr>
+                <th>年化收益率</th>
+                <th>Alpha</th>
+                <th>Beta</th>
+                <th>夏普比率</th>
+                <th>收益移动率</th>
+                <th>信息比率</th>
+                <th>最大回撤值</th>
+                <th>换手率</th>
+                <th>累计收益率</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>12.3%</td>
+                <td>5%</td>
+                <td>2.4</td>
+                <td>62%</td>
+                <td>53%</td>
+                <td>21%</td>
+                <td>24673</td>
+                <td>43%</td>
+                <td>10.3%</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <!--策略-->
 <script type="text/javascript">

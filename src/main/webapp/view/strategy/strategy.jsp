@@ -1,181 +1,185 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+         pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="bootstrap-datetimepicker.css">
-    <link rel="stylesheet" href="chooser.css">
-    <link rel="stylesheet" href="backinfo.css">
-    <link rel="stylesheet" href="backplot.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="../../css/strategy/chooser.css">
+    <link rel="stylesheet" href="../../css/strategy/backinfo.css">
+    <link rel="stylesheet" href="../../css/strategy/backplot.css">
     <link rel="stylesheet" href="backtable.css">
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="bootstrap-datetimepicker.js"></script>
-    <script src="bootstrap-datetimepicker.zh-CN.js"></script>
-    <script src="echarts.min.js"></script>
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/bootstrap-datetimepicker.js"></script>
+    <script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../js/echarts.min.js"></script>
 </head>
 <body>
-<!--选择器-->
-<div id="chooser" class="container" style="box-shadow:1px 1px 3px #777">
-    <div class="row">
-        <div class="col-xs-2" style="border-bottom: 1px solid #aaa;border-right: 2px solid #aaa;">
-            <label style="font-size:20px;font-family: 'Microsoft YaHei';text-align: center;">&nbsp&nbsp选&nbsp&nbsp&nbsp&nbsp择</label>
-        </div>
-        <!--选择股票-->
-        <div id="stock_choice_div" class="col-xs-10" >
-            <ul class="stock_choice_ul" id="stock_choice_ul"></ul>
-        </div>
-        <!--<div class="col-xs-1" style="padding:0">-->
-        <!--<button class="sale_type">股</button>-->
-        <!--<button class="sale_type">股%</button>-->
-        <!--<button class="sale_type">￥</button>-->
-        <!--<button class="sale_type">￥%</button>-->
-        <!--</div>-->
-    </div>
-    <div class="row">
-        <div id="metric_div" class="col-xs-2">
-            <!--已选指标-->
-            <div id="metric_choice_div">
-                <ul class="metric_choice_ul" id="metric_choice_ul"></ul>
+<%@include file="../first/navBar.jsp"%>
+<div style="margin:0;padding:0;margin-top:80px;margin-left:20%;">
+    <!--选择器-->
+    <div id="chooser" class="container-fluid" style="box-shadow:1px 1px 3px #777">
+        <div class="row">
+            <div class="col-xs-2" style="border-bottom: 1px solid #aaa;border-right: 2px solid #aaa;">
+                <label style="font-size:20px;font-family: 'Microsoft YaHei';text-align: center;">&nbsp&nbsp选&nbsp&nbsp&nbsp&nbsp择</label>
             </div>
-            <!--未选指标-->
-            <div id="metric_choose_div">
-                <!--添加-->
-                <div id="metric_choose_tip" style="font-family: 'Microsoft YaHei';color:#555555;font-size:15px;">可选指标：</div>
-                <ul class="metric_choose_ul" id="metric_choose_ul">
-                    <!--<li class="metric_choose_li">-->
-                    <!--<label>OBV</label>-->
-                    <!--</li>-->
-                    <!--<li class="metric_choose_li">-->
-                    <!--<label>ROC</label>-->
-                    <!--</li>-->
-                    <!--<li class="metric_choose_li">-->
-                    <!--<label>VR</label>-->
-                    <!--</li>-->
-                </ul>
+            <!--选择股票-->
+            <div id="stock_choice_div" class="col-xs-10" >
+                <ul class="stock_choice_ul" id="stock_choice_ul"></ul>
             </div>
+            <!--<div class="col-xs-1" style="padding:0">-->
+            <!--<button class="sale_type">股</button>-->
+            <!--<button class="sale_type">股%</button>-->
+            <!--<button class="sale_type">￥</button>-->
+            <!--<button class="sale_type">￥%</button>-->
+            <!--</div>-->
         </div>
-        <div class="col-xs-10">
-            <!--三种情况放不同的内容-->
-            <div id="single_single" style="margin:0;padding:0;position:absolute;visibility: visible">
-                <div style="position:absolute;left:10px;top:10px;margin:0;padding:0;">
-                    <div id="canvas-container" style="position: absolute;padding: 0;margin: 0;width:600px;height:300px">
-                        <text style="position: absolute;top: 0px;left: 610px">100</text>
-                        <text style="position: absolute;top: 290px;left: 610px">0</text>
-                        <canvas id="innercanvas" style="background-color:transparent;border: 1px solid #e2e2e2; margin: 0; padding: 0;position:absolute;" width="600px" height="300px" right="0">
-                            线
-                        </canvas>
-                        <canvas id="canvas" style="background-color: transparent; margin: 0; padding: 0;position:absolute;" width="600px" height="300px">
-                            点
-                        </canvas>
-                    </div>
-                    <div style="position: absolute;top:310px;left:0px;width:200px;height:50px">
-                        <label id="from_text" style="visible:hidden;position: absolute;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
-                        <div class="input-group-sm" style="position:absolute;width:60px;" >
-                            <input class="form-control" type="number" min="-10000" id="from" name="from" style=";width:60px" />
+        <div class="row">
+            <div id="metric_div" class="col-xs-2">
+                <!--已选指标-->
+                <div id="metric_choice_div">
+                    <ul class="metric_choice_ul" id="metric_choice_ul"></ul>
+                </div>
+                <!--未选指标-->
+                <div id="metric_choose_div">
+                    <!--添加-->
+                    <div id="metric_choose_tip" style="font-family: 'Microsoft YaHei';color:#555555;font-size:15px;">可选指标：</div>
+                    <ul class="metric_choose_ul" id="metric_choose_ul">
+                        <!--<li class="metric_choose_li">-->
+                        <!--<label>OBV</label>-->
+                        <!--</li>-->
+                        <!--<li class="metric_choose_li">-->
+                        <!--<label>ROC</label>-->
+                        <!--</li>-->
+                        <!--<li class="metric_choose_li">-->
+                        <!--<label>VR</label>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-10">
+                <!--三种情况放不同的内容-->
+                <div id="single_single" style="margin:0;padding:0;position:absolute;visibility: visible">
+                    <div style="position:absolute;left:10px;top:10px;margin:0;padding:0;">
+                        <div id="canvas-container" style="position: absolute;padding: 0;margin: 0;width:600px;height:300px">
+                            <text style="position: absolute;top: 0px;left: 610px">100</text>
+                            <text style="position: absolute;top: 290px;left: 610px">0</text>
+                            <canvas id="innercanvas" style="background-color:transparent;border: 1px solid #e2e2e2; margin: 0; padding: 0;position:absolute;" width="600px" height="300px" right="0">
+                                线
+                            </canvas>
+                            <canvas id="canvas" style="background-color: transparent; margin: 0; padding: 0;position:absolute;" width="600px" height="300px">
+                                点
+                            </canvas>
                         </div>
-                        <label id="warning_from" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:65px;top:5px;visibility:hidden;">请输入起始值</label>
-                    </div>
-                    <div style="position: absolute;left:250px;top:310px;width:200px;height:50px">
-                        <label id="message" style="position: absolute;font-size: 18px;"></label>
-                    </div>
-                    <div style="position: absolute;left:460px;top:310px;width:200px;height:50px">
-                        <label id="to_text" style="visible:hidden;position: absolute;left:120px;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
-                        <div class="input-group-sm" style="position:absolute;left:80px;width:70px;" >
-                            <input class="form-control" type="number" max="10000" id="to" name="from" style=";width:60px" />
+                        <div style="position: absolute;top:310px;left:0px;width:200px;height:50px">
+                            <label id="from_text" style="visible:hidden;position: absolute;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
+                            <div class="input-group-sm" style="position:absolute;width:60px;" >
+                                <input class="form-control" type="number" min="-10000" id="from" name="from" style=";width:60px" />
+                            </div>
+                            <label id="warning_from" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:65px;top:5px;visibility:hidden;">请输入起始值</label>
                         </div>
-                        <label id="warning_to" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:0;top:5px;visibility:hidden;">请输入终止值</label>
-                    </div>
-                    <div id="control-part" style="position: absolute;top:350px">
-                        <button class="btn btn-default btn-sm" onclick="allclear()" style="position: absolute;left: 0;top:5px;">清空</button>
-                        <button class="btn btn-info btn-sm" onclick="restart()" style="position: absolute;left:70px;top:5px;border-color:#aaaaaa;background-color: #5389d2">开始</button>
-                        <div class="input-group" style="position:absolute;width:200px;top:5px;left: 400px;" >
-                            <span class="input-group-addon">买卖阈值：</span><input class="form-control" type="number" width="40px" max="100" min="0" id="score_flag" name="score_flag"></label>
+                        <div style="position: absolute;left:250px;top:310px;width:200px;height:50px">
+                            <label id="message" style="position: absolute;font-size: 18px;"></label>
+                        </div>
+                        <div style="position: absolute;left:460px;top:310px;width:200px;height:50px">
+                            <label id="to_text" style="visible:hidden;position: absolute;left:120px;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
+                            <div class="input-group-sm" style="position:absolute;left:80px;width:70px;" >
+                                <input class="form-control" type="number" max="10000" id="to" name="from" style=";width:60px" />
+                            </div>
+                            <label id="warning_to" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:0;top:5px;visibility:hidden;">请输入终止值</label>
+                        </div>
+                        <div id="control-part" style="position: absolute;top:350px">
+                            <button class="btn btn-default btn-sm" onclick="allclear()" style="position: absolute;left: 0;top:5px;">清空</button>
+                            <button class="btn btn-info btn-sm" onclick="restart()" style="position: absolute;left:70px;top:5px;border-color:#aaaaaa;background-color: #5389d2">开始</button>
+                            <div class="input-group" style="position:absolute;width:200px;top:5px;left: 400px;" >
+                                <span class="input-group-addon">买卖阈值：</span><input class="form-control" type="number" width="40px" max="100" min="0" id="score_flag" name="score_flag"></label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="single_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
+                <div id="single_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
 
-            </div>
-            <div id="multiple_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
+                </div>
+                <div id="multiple_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
 
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div id="flags">
+    <div id="flags">
 
-</div>
-<!--回测信息-->
-<div id="backinfo">
-    <div id="start_date" class="input-group">
-            <span id="start_text" class="input-group-addon">回测开始日期</span>
-            <input id="datetimepicker1" type="text">
     </div>
-    <div id="end_date" class="input-group">
-            <span id="end_text" class="input-group-addon">回测结束日期</span>
-            <input id="datetimepicker2" type="text">
+    <!--回测信息-->
+    <div id="backinfo">
+        <div id="start_date" class="input-group">
+                <span id="start_text" class="input-group-addon">回测开始日期</span>
+                <input id="datetimepicker1" type="text">
         </div>
-    <div id="cycle" class="input-group">
-        <span class="input-group-addon">
-            <span id="frequency">周期：<input id="frequency_input" type="text" name="frequency"></span>
-            <div id="radios">
-                <label class="radio_label">
-                    <input class="radio" type="radio" name="frequency-radios" id="day" value="day" checked>天
-                </label>
-                <label class="radio_label">
-                    <input class="radio" type="radio" name="frequency-radios" id="week" value="week">周
-                </label>
-                <label class="radio_label">
-                    <input class="radio" type="radio" name="frequency-radios" id="month" value="month">月
-                </label>
+        <div id="end_date" class="input-group">
+                <span id="end_text" class="input-group-addon">回测结束日期</span>
+                <input id="datetimepicker2" type="text">
             </div>
-        </span>
+        <div id="cycle" class="input-group">
+            <span class="input-group-addon">
+                <span id="frequency">周期：<input id="frequency_input" type="text" name="frequency"></span>
+                <div id="radios">
+                    <label class="radio_label">
+                        <input class="radio" type="radio" name="frequency-radios" id="day" value="day" checked>天
+                    </label>
+                    <label class="radio_label">
+                        <input class="radio" type="radio" name="frequency-radios" id="week" value="week">周
+                    </label>
+                    <label class="radio_label">
+                        <input class="radio" type="radio" name="frequency-radios" id="month" value="month">月
+                    </label>
+                </div>
+            </span>
+        </div>
+        <div id="asset" class="input-group">
+            <span id="asset_text" class="input-group-addon">
+                起始资金：<input id="asset_input" type="text" name="frequency">元
+            </span>
+        </div>
+        <button id="startback" class="btn btn-default btn-sm" onclick="">回测一下</button>
     </div>
-    <div id="asset" class="input-group">
-        <span id="asset_text" class="input-group-addon">
-            起始资金：<input id="asset_input" type="text" name="frequency">元
-        </span>
+    <div id="backplot">
     </div>
-    <button id="startback" class="btn btn-default btn-sm" onclick="">回测一下</button>
+    <div id="backresult">
+        <table id="backtable" class="table table-bordered">
+            <caption></caption>
+            <thead>
+            <tr>
+                <th>年化收益率</th>
+                <th>Alpha</th>
+                <th>Beta</th>
+                <th>夏普比率</th>
+                <th>收益移动率</th>
+                <th>信息比率</th>
+                <th>最大回撤值</th>
+                <th>换手率</th>
+                <th>累计收益率</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>12.3%</td>
+                <td>5%</td>
+                <td>2.4</td>
+                <td>62%</td>
+                <td>53%</td>
+                <td>21%</td>
+                <td>24673</td>
+                <td>43%</td>
+                <td>10.3%</td>
+            </tr>
+            </tbody>
+        </table>
+        <button id="saveback" class="btn btn-default btn-sm" onclick="">保存策略</button>
+    </div>
 </div>
-<div id="backplot">
-</div>
-<div id="backresult">
-    <table id="backtable" class="table table-bordered">
-        <caption></caption>
-        <thead>
-        <tr>
-            <th>年化收益率</th>
-            <th>Alpha</th>
-            <th>Beta</th>
-            <th>夏普比率</th>
-            <th>收益移动率</th>
-            <th>信息比率</th>
-            <th>最大回撤值</th>
-            <th>换手率</th>
-            <th>累计收益率</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>12.3%</td>
-            <td>5%</td>
-            <td>2.4</td>
-            <td>62%</td>
-            <td>53%</td>
-            <td>21%</td>
-            <td>24673</td>
-            <td>43%</td>
-            <td>10.3%</td>
-        </tr>
-        </tbody>
-    </table>
-    <button id="saveback" class="btn btn-default btn-sm" onclick="">保存策略</button>
-</div>
-
 </body>
 <!--指标和股票选择-->
 <script type="text/javascript">
@@ -230,18 +234,18 @@
             })(some_metric);
 
             var some_metric_choice_a_image=new Image();//document.createElement("image");不行
-            some_metric_choice_a_image.src="delete_inactive.png";
+            some_metric_choice_a_image.src="${pageContext.request.contextPath}/img/delete_inactive.png";
             some_metric_choice_a_image.setAttribute("class","delete_icon");
             some_metric_choice_a_image.setAttribute("id", metric_list[i]+"_image");
             (function(image)
             {
                 some_metric_choice_a_image.onmouseover=function()
                 {
-                    image.src="delete_active.png";
+                    image.src="${pageContext.request.contextPath}/img/delete_active.png";
                 };
                 some_metric_choice_a_image.onmouseout=function()
                 {
-                    image.src="delete_inactive.png";
+                    image.src="${pageContext.request.contextPath}/img/delete_inactive.png";
                 };
             })(some_metric_choice_a_image);
 
@@ -262,7 +266,7 @@
             var label=document.createElement("label");
             label.innerHTML=stocklist[i];
             var delete_icon=new Image();
-            delete_icon.src="delete_inactive.png";
+            delete_icon.src="${pageContext.request.contextPath}/img/delete_inactive.png";
             delete_icon.setAttribute("class","delete_icon");
             (function(stock)
             {
@@ -272,11 +276,11 @@
                 };
                 delete_icon.onmouseover=function()
                 {
-                    stock.lastElementChild.src="delete_active.png";
+                    stock.lastElementChild.src="${pageContext.request.contextPath}/img/delete_active.png";
                 };
                 delete_icon.onmouseout=function()
                 {
-                    stock.lastElementChild.src="delete_inactive.png";
+                    stock.lastElementChild.src="${pageContext.request.contextPath}/img/delete_inactive.png";
                 };
             })(stock_choice_li);
             stock_choice_li.appendChild(label);
@@ -286,18 +290,18 @@
         var stock_add_button=new Image();
         stock_add_button.setAttribute("id","stock_add_icon");
         stock_add_button.setAttribute("class","add_icon");
-        stock_add_button.src="add_inactive.png";
+        stock_add_button.src="${pageContext.request.contextPath}/img/add_inactive.png";
         stock_add_button.onclick=function()
         {
             //新增股票
         };
         stock_add_button.onmouseover=function()
         {
-            stock_add_button.src="add_active.png";
+            stock_add_button.src="${pageContext.request.contextPath}/img/add_active.png";
         };
         stock_add_button.onmouseout=function()
         {
-            stock_add_button.src="add_inactive.png";
+            stock_add_button.src="${pageContext.request.contextPath}/img/add_inactive.png";
         };
         stock_choice_ul.appendChild(stock_add_button);
     })(stocklist);
