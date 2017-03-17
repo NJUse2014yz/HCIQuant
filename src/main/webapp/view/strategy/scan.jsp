@@ -146,7 +146,7 @@
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['周一','周二','周三','周四','周五','周六','周日']/*待修改*/
+            data: ['','','','','','','']/*待修改*/
         },
         yAxis: {
             type: 'value'
@@ -156,7 +156,7 @@
                 name:'买入评分',
                 type:'line',
                 stack: '总量',
-                data:[120, 132, 101, 134, 90, 230, 210]
+                data:[20, 32, 1, 34, 90, 30, 10]
             }
         ]
     };
@@ -194,7 +194,7 @@
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['周一','周二','周三','周四','周五','周六','周日']/*待修改*/
+            data: ['','','','','','','']/*待修改*/
         },
         yAxis: {
             type: 'value'
