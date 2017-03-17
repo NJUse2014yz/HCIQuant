@@ -1,4 +1,4 @@
-/*ËÑË÷¿òÎ»ÖÃÓë´óÐ¡*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡*/
 .stock-search{
 	position:fixed;
 	width:200px;
@@ -34,15 +34,15 @@ div.search:hover{
 }
 
 /*placeholder*/
-*::-webkit-input-placeholder {
+.search input::-webkit-input-placeholder {
     color: rgb(237, 239, 241);
 }
  
-*:-moz-placeholder {
+.search input:-moz-placeholder {
     color: rgb(237, 239, 241);
 }
  
-*:-ms-input-placeholder {
+.search input:-ms-input-placeholder {
     /* IE10+ */
     color: rgb(237, 239, 241);
 }

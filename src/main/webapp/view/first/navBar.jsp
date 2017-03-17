@@ -29,7 +29,7 @@
 		
 		<div class="container">
 			<ul class="menu">
-				<li><a href="${pageContext.request.contextPath}${pageContext.request.contextPath}/first">首页</a></li>
+				<li><a href="/HCIQuant/first">首页</a></li>
 				<li><a href="#">股票数据</a>
 					<ul class="submenu">
 						<li><a href="/AnyQuant_web/stock.action">全部</a></li>
