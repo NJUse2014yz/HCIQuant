@@ -1,0 +1,99 @@
+#backinfo
+{
+    position: relative;
+    margin: 40px;
+    padding: 0;
+    width: 800px;
+    height:130px;
+}
+#backinfo div
+{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+#backinfo .input-group
+{
+    margin:0;
+    padding:0;
+}
+
+/*回测时间*/
+#start_date
+{
+    position: absolute;
+    left: 20px;
+    top:10px;
+}
+#end_date {
+    position: absolute;
+    left: 370px;
+    top: 10px;
+}
+
+/*回测周期*/
+#cycle
+{
+    position: absolute;
+    left:20px;
+    top:50px;
+    width:283px;
+    height:30px;
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+#frequency
+{
+    position: absolute;
+    left: 10px;
+    top:5px;
+    text-align: left;
+}
+#radios{
+    position:absolute;
+    display: inline;
+    top:5px;
+}
+.radio_label
+{
+    display: inline;
+    position: relative;
+    margin:5px;
+    top:2px;
+    left:5px;
+}
+.radio{
+    display: inline;
+}
+#frequency_input
+{
+    width:80px;
+}
+
+/*起始资金*/
+#asset
+{
+    padding:0;
+    position: absolute;
+    left:370px;
+    top:50px;
+    width:283px;
+    height:30px;
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+#asset_text
+{
+    padding:0;
+}
+#asset_input
+{
+    width:150px;
+}
+
+#startback
+{
+    position: absolute;
+    top:90px;
+    right:10px;
+}

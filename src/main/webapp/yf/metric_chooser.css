@@ -1,0 +1,14 @@
+#accordion
+{
+    max-width:600px;
+}
+#text_analysis
+{
+    margin-left:30px;
+    visibility: hidden;
+}
+#text_analysis p {
+    font-family: 'Microsoft YaHei';
+    color: #555;
+    font-size: 18px;
+}

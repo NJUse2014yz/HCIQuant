@@ -1,0 +1,139 @@
+#chooser
+{
+    position:relative;
+    margin:30px;
+    border:2px solid #777;
+    border-top-left-radius:10px;
+    width:800px;
+    height:530px;
+}
+#stock_choice_div
+{
+    padding:0;
+    margin:0;
+}
+.stock_choice_ul
+{
+    list-style: none;
+    padding:0;
+    margin:0;
+    display:block;
+    height:40px;
+    overflow-x:scroll;
+    white-space: nowrap;
+}
+
+/*股票页签*/
+.stock_choice_ul li{
+    list-style: none;
+    display:inline-block;
+    font-size: 20px;
+    margin:0;
+    padding:3px;
+}
+.stock_choice_li
+{
+    color:#aaaaaa;
+    border-right:1px solid #eeeeee;
+    border-left:1px solid #eeeeee;
+}
+.stock_choice_li:hover
+{
+    color:#555555;
+}
+.stock_choice_li .delete_icon
+{
+    position:relative;
+    top:-10px;
+    left:-3px;
+    margin-left: -5px;
+    margin-right:-5px;
+}
+#stock_choice_left
+{
+    position: absolute;
+    left:0;
+    padding:0;
+    visibility: hidden;
+}
+#stock_choice_right
+{
+    position: absolute;
+    right:0;
+    padding:0;
+    visibility: hidden;
+}
+/*指标页签*/
+#metric_div{
+    padding:0;
+    height:480px;
+}
+#metric_choice_div
+{
+    position: absolute;
+    padding:0;
+    top:0;
+    max-height:260px;
+    overflow: scroll;
+}
+#metric_choose_div
+{
+    position: absolute;
+    bottom: 0;
+    padding:0;
+    max-height:200px;
+    overflow: auto;
+}
+.metric_choice_ul,.metric_choose_ul
+{
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+.metric_choice_li,.metric_choose_li
+{
+    margin:0;
+    padding:3px;
+    padding-left: 10px;
+    color:#aaaaaa;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+}
+.metric_choice_li:hover,.metric_choose_li:hover
+{
+    color:#555555;
+}
+.metric_choice_li label,.metric_choose_li label
+{
+    width:90px;
+}
+
+/*.sale_type
+{
+    padding:0;
+    font-family: 'Microsoft YaHei';
+}*/
+
+/*滚动*/
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+    width: 0px;/*16*/
+    height: 3px;/*16*/
+    background-color: transparent;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 0px transparent;/*6px*/
+    border-radius: 0px;/*10*/
+    background-color: transparent;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: 0px;/*10*/
+    -webkit-box-shadow: inset 0 0 0px transparent;/*6px*/
+    background-color: #eee;
+}

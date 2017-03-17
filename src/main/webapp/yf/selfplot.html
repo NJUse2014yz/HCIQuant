@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+</head>
+<body>
+<div style="position:absolute;left:10px;top:10px;margin:0;padding:0;">
+    <div id="canvas-container" style="position: absolute;padding: 0;margin: 0;width:600px;height:300px">
+        <text style="position: absolute;top: 0px;left: 610px">100</text>
+        <text style="position: absolute;top: 290px;left: 610px">0</text>
+        <canvas id="innercanvas" style="background-color:transparent;border: 1px solid #e2e2e2; margin: 0; padding: 0;position:absolute;" width="600px" height="300px" right="0">
+            线
+        </canvas>
+        <canvas id="canvas" style="background-color: transparent; margin: 0; padding: 0;position:absolute;" width="600px" height="300px">
+            点
+        </canvas>
+    </div>
+    <div style="position: absolute;top:310px;left:0px;width:200px;height:50px">
+        <label id="from_text" style="visible:hidden;position: absolute;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
+        <div class="input-group-sm" style="position:absolute;width:60px;" >
+            <input class="form-control" type="number" min="-10000" id="from" name="from" style=";width:60px" />
+        </div>
+        <label id="warning_from" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:65px;top:5px;visibility:hidden;">请输入起始值</label>
+    </div>
+    <div style="position: absolute;left:250px;top:310px;width:200px;height:50px">
+        <label id="message" style="position: absolute;font-size: 18px;"></label>
+    </div>
+    <div style="position: absolute;left:460px;top:310px;width:200px;height:50px">
+        <label id="to_text" style="visible:hidden;position: absolute;left:120px;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
+        <div class="input-group-sm" style="position:absolute;left:80px;width:70px;" >
+            <input class="form-control" type="number" max="10000" id="to" name="from" style=";width:60px" />
+        </div>
+        <label id="warning_to" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:0;top:5px;visibility:hidden;">请输入终止值</label>
+    </div>
+    <div id="control-part" style="position: absolute;top:350px">
+        <button class="btn btn-default btn-sm" onclick="allclear()" style="position: absolute;left: 0;top:5px;">清空</button>
+        <button class="btn btn-info btn-sm" onclick="restart()" style="position: absolute;left:70px;top:5px;border-color:#aaaaaa;background-color: #5389d2">开始</button>
+        <div class="input-group" style="position:absolute;width:200px;top:5px;left: 400px;" >
+            <span class="input-group-addon">买卖阈值：</span><input class="form-control" type="number" width="40px" max="100" min="0" id="score_flag" name="score_flag"></label>
+        </div>
+    </div>
+</div>
+<!--以下为调试信息-->
+<div id="print-message" style="position: absolute;top:500px">
+    <div id="messagereal"></div>
+    <br/>
+    <div id="points"></div>
+</div>
+
+<script type="text/javascript">
+    function point($cx,$cy){
+        this.x=$cx;
+        this.y=$cy;
+    };
+
+    var points=[];
+    var t = 1;
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var innercanvas=document.getElementById("innercanvas");
+    var innerctx=innercanvas.getContext("2d");
+
+    function allclear()
+    {
+        var from=document.getElementById("from");
+        from.style.visibility="visible";
+        var from_text=document.getElementById("from_text");
+        from_text.style.visibility="hidden";
+
+        var to=document.getElementById("to");
+        to.style.visibility="visible";
+        var to_text=document.getElementById("to_text");
+        to_text.style.visibility="hidden";
+
+        points.splice(0,points.length);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        innerctx.clearRect(0,0,innercanvas.width,innercanvas.height);
+        document.getElementById("points").innerHTML=JSON.stringify(points);
+    }
+
+    //描点，记录
+    canvas.onmousemove = function(e) {
+        var bbox = canvas.getBoundingClientRect();
+        var height=canvas.getAttribute("height");
+        var x =  e.clientX - bbox.left * (canvas.width/bbox.width);
+        var y = e.clientY - bbox.top * (canvas.height/bbox.height);
+        document.getElementById("messagereal").innerHTML = "x="+x.toFixed(2)+", y="+y.toFixed(2);
+        var from=Number(document.getElementById("from").value);
+        var to=Number(document.getElementById("to").value);
+        var dis=to-from;
+        x=Number(x/600*dis+from);
+        y=Number((height-y)/300*100);
+        document.getElementById("message").innerHTML = "x="+x.toFixed(2)+", y="+y.toFixed(2);
+    }
+    canvas.onclick=function(e){
+        if(document.getElementById("from").value=="")
+        {
+            document.getElementById("warning_from").style.visibility="visible";
+            return;
+        }
+        else
+        {
+            document.getElementById("warning_from").style.visibility="hidden";
+        }
+        if(document.getElementById("to").value=="")
+        {
+            var warning_to=document.getElementById("warning_to");
+            warning_to.innerHTML="请输入终止值";
+            warning_to.style.visibility="visible";
+            return;
+        }
+        else
+        {
+            document.getElementById("warning_to").style.visibility="hidden";
+        }
+        if(Number(document.getElementById("from").value)>Number(document.getElementById("to").value))
+        {
+            var warning_to=document.getElementById("warning_to");
+            warning_to.innerHTML="应小于起始值";
+            warning_to.style.visibility="visible";
+            return;
+        }
+        var bbox = canvas.getBoundingClientRect();
+        var height=canvas.getAttribute("height");
+        var x =  e.clientX - bbox.left * (canvas.width/bbox.width);
+        var y = e.clientY - bbox.top * (canvas.height/bbox.height);
+
+        for(var i=0;i<points.length;i++)
+        {
+            if(x<points[i].x+5&&x>points[i].x-5&&y<points[i].y+5&&y>points[i].y-5)
+            {
+                innerctx.clearRect(0,0,innercanvas.width,innercanvas.height);
+                ctx.clearRect(x-5,y-5,10,10);
+                points.splice(i,1);
+                document.getElementById("points").innerHTML=JSON.stringify(points);
+                return;
+            }
+        }
+
+        ctx.beginPath();
+        ctx.arc(x,y,2,0,Math.PI*2,true);
+        ctx.closePath();
+        ctx.strokeStyle = "#000";
+        ctx.fillStyle="black";
+        ctx.fill();
+        innerctx.clearRect(0,0,innercanvas.width,innercanvas.height);
+        if(points.length==0)
+        {
+            points.push(new point(x,y));
+        }
+        else
+        {
+            for(var i=0;i<points.length;i++)
+            {
+                if(x>points[points.length-1].x)
+                {
+                    points.push(new point(x,y));
+                    break;
+                }
+                if(x>points[i].x) {
+                    continue;
+                }
+                else
+                {
+                    points.splice(i,0,new point(x,y));
+                    break;
+                }
+            }
+        }
+        document.getElementById("points").innerHTML=JSON.stringify(points);
+    }
+
+//响应式
+    var CanvasAutoResize =
+    {
+        draw: function()
+        {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            var canvasContainer = document.getElementById('canvas-container');
+            ctx.canvas.width  = canvasContainer.offsetWidth-2;
+            ctx.canvas.height = canvasContainer.offsetHeight-2;
+
+            t=1;
+            points.splice(0,points.length);
+            document.getElementById("points").innerHTML=JSON.stringify(points);
+        },
+        initialize: function()
+        {
+            var self = CanvasAutoResize;
+            self.draw();
+            $(window).on('resize', function(event)
+            {
+                self.draw();
+            });
+        }
+    }
+    $(function(argument)
+    {
+        CanvasAutoResize.initialize();
+    });
+
+//画线
+    function restart()
+    {
+        draw();
+        var from=document.getElementById("from");
+        var from_text=document.getElementById("from_text");
+        from.style.visibility="hidden";
+        from_text.innerHTML=from.value;
+        from_text.style.visibility="visible";
+
+        var to=document.getElementById("to");
+        var to_text=document.getElementById("to_text");
+        to.style.visibility="hidden";
+        to_text.innerHTML=to.value;
+        to_text.style.visibility="visible";
+    }
+
+    function draw() {
+        t=1;
+        innerctx.lineCap = "round";
+        innerctx.lineWidth = 2;
+        innerctx.strokeStyle = "#5389d2";
+        animate();
+    }
+
+    function animate() {
+        if (t < points.length - 1) {
+            requestAnimationFrame(animate);
+        }
+
+        innerctx.beginPath();
+        innerctx.moveTo(points[t - 1].x, points[t - 1].y);
+        innerctx.lineTo(points[t].x, points[t].y);
+        innerctx.stroke();
+        // increment "t" to get the next waypoint
+        t++;
+    }
+</script>
+</body>
+</html>
