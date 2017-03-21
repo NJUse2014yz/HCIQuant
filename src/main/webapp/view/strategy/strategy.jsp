@@ -11,11 +11,14 @@
     <link rel="stylesheet" href="../../css/strategy/backinfo.css">
     <link rel="stylesheet" href="../../css/strategy/backplot.css">
     <link rel="stylesheet" href="../../css/strategy/flagtable.css">
+    <link rel="stylesheet" href="../../css/strategy/multiple.css">
+    <link rel="stylesheet" href="../../css/bootstrap-select.min.css">
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/bootstrap-datetimepicker.js"></script>
     <script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
     <script src="../../js/echarts.min.js"></script>
+    <script src="../../js/bootstrap-select.min.js"></script>
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>
@@ -123,71 +126,23 @@
                 <table id="flagtable" class="table table-striped"><%--table-hover table-bordered--%>
                     <caption>交易标志</caption>
                     <thead></thead>
-                    <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>@#$%^^%#</td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td>^#$%&^%$#$^</td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td>$%%^&^%^</td>
-                    </tr>
-                    <tr>
-                        <th>4</th>
-                        <td>%&^#*&^#</td>
-                    </tr>
-                    <tr>
-                        <th>5</th>
-                        <td>$^&^%$#*&$</td>
-                    </tr>
-                    <tr>
-                        <th>6</th>
-                        <td>@#$%^^%#</td>
-                    </tr>
-                    <tr>
-                        <th>7</th>
-                        <td>^#$%&^%$#$^</td>
-                    </tr>
-                    <tr>
-                        <th>8</th>
-                        <td>$%%^&^%^</td>
-                    </tr>
-                    <tr>
-                        <th>9</th>
-                        <td>%&^#*&^#</td>
-                    </tr>
+                    <tbody id="flagtable_body">
+
                     </tbody>
                 </table>
                 <table id="tradeflag" class="table table-striped"><%--table-hover table-bordered--%>
                     <caption>标志组合</caption>
                     <thead></thead>
-                    <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>1 4 7</td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td>2 3</td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td>5 8</td>
-                    </tr>
-                    <tr>
-                        <th>4</th>
-                        <td>6</td>
-                    </tr>
-                    <tr>
-                        <th>5</th>
-                        <td>9</td>
-                    </tr>
+                    <tbody id="tradeflag_body">
+                        <tr id="group_1">
+                            <th>1</th>
+                            <td>
+                                <select id="select_1" class="selectpicker show-tick form-control" multiple data-live-search="false"></select>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
+                <image id="add_flag" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:block;" onclick="JavaScript:addGroup();"></image>
             </div>
             <!--回测信息-->
             <div id="backinfo">
@@ -200,26 +155,26 @@
                     <input id="datetimepicker2" type="text">
                 </div>
                 <div id="cycle" class="input-group">
-            <span class="input-group-addon">
-                <span id="frequency">周期：<input id="frequency_input" type="text" name="frequency"></span>
-                <div id="radios">
-                    <label class="radio_label">
-                        <input class="radio" type="radio" name="frequency-radios" id="day" value="day" checked>天
-                    </label>
-                    <label class="radio_label">
-                        <input class="radio" type="radio" name="frequency-radios" id="week" value="week">周
-                    </label>
-                    <label class="radio_label">
-                        <input class="radio" type="radio" name="frequency-radios" id="month" value="month">月
-                    </label>
+                    <span class="input-group-addon">
+                        <span id="frequency">周期：<input id="frequency_input" type="text" name="frequency"></span>
+                        <div id="radios">
+                            <label class="radio_label">
+                                <input class="radio" type="radio" name="frequency-radios" id="day" value="day" checked>天
+                            </label>
+                            <label class="radio_label">
+                                <input class="radio" type="radio" name="frequency-radios" id="week" value="week">周
+                            </label>
+                            <label class="radio_label">
+                                <input class="radio" type="radio" name="frequency-radios" id="month" value="month">月
+                            </label>
+                        </div>
+                    </span>
                 </div>
-            </span>
-                </div>
-                <div id="asset" class="input-group">
-            <span id="asset_text" class="input-group-addon">
-                起始资金：<input id="asset_input" type="text" name="frequency">元
-            </span>
-                </div>
+            <div id="asset" class="input-group">
+                <span id="asset_text" class="input-group-addon">
+                    起始资金：<input id="asset_input" type="text" name="frequency">元
+                </span>
+            </div>
                 <button id="startback" class="btn btn-default btn-sm" onclick="">回测一下</button>
             </div>
             <!--回测图-->
@@ -288,8 +243,12 @@
     var metric_add_button=document.getElementById("metric_add_button");
     var stock_add_button=document.getElementById("stock_add_button");
 
+    var flagtable=document.getElementById("flagtable_body");
+
     var metric_list=['BIAS','BOLL1','BOLL2','BOLL3','K','D','J','MACD','OBV','ROC','RSI','VR','PDI','MDI','ADX','ADXR'];
     var stocklist=[];
+    var metriclist=[];
+    var flaglist=[];
 
     //指标相关
     (function(){
@@ -315,6 +274,7 @@
                             //如果未定状态或多股多指标状态，将其添加到已选指标列表中
                             metric.lastChild.style.visibility = "visible";//删除图标可见
                             metric.setAttribute("class", "metric_choice_li");//设为已选类
+                            metriclist.push(metric.id);
                             metric_choose_ul.removeChild(metric);//待选列表中移除
                             if (metric_choose_ul.childElementCount == 0) {
                                 //待选列表中全部选择，提示不可见
@@ -698,12 +658,6 @@
         // increment "t" to get the next waypoint
         t++;
     }
-
-    function save_flag()
-    {
-        //TODO
-        clean();
-    }
 </script>
 <!--形态标志-->
 <script>
@@ -995,7 +949,7 @@
         log=[];
         multiple_plot.style.visibility="hidden";
         stocklist=[];
-
+        metriclist=[];
         {
             stock_choice_ul.innerHTML = "";
             stock_choice_init();
@@ -1009,6 +963,61 @@
 </script>
 <!--回测值-->
 <script type="text/javascript">
+    function addGroup()
+    {
+        var tradeflag=document.getElementById("tradeflag_body");
+        var tr=document.createElement("tr");
+        var th=document.createElement("th");
+        var td=document.createElement("td");
+        th.innerHTML=tradeflag.childElementCount+1;
+        var selector=document.createElement("select");
+        selector.className="selectpicker show-tick form-control";
+        selector.setAttribute("multiple","true");
+        selector.setAttribute("data-live-search","false");
+        selector.innerHTML=tradeflag.firstElementChild.innerHTML;
+
+        td.appendChild(selector);
+        tr.appendChild(th);
+        tr.appendChild(td);
+        tradeflag.appendChild(tr);
+        $(".selectpicker").selectpicker("refresh");
+    }
+    function save_flag()
+    {
+        var flag={stock:stocklist,metric:metriclist};
+        flaglist.push(flag);
+        var tr=document.createElement("tr");
+        tr.id="flag_"+flaglist.length;
+        var th=document.createElement("th");
+        var td=document.createElement("td");
+        th.innerHTML=flaglist.length;
+        var text="";
+        for(var i=0;i<stocklist.length;i++)
+        {
+            text+=stocklist[i]+"|";
+        }
+        text=text.substr(0,text.length-1);
+        text+=";";
+        for(var i=0;i<metriclist.length;i++)
+        {
+            text+=metriclist[i]+"|";
+        }
+        text=text.substr(0,text.length-1);
+        td.id="flag_"+flaglist.childElementCount;
+        td.innerHTML=text;
+        tr.appendChild(th);
+        tr.appendChild(td);
+        flagtable.appendChild(tr)
+
+        var selector=document.getElementsByTagName("select");
+        for(var i=0;i<selector.length;i++)
+        {
+            var option=new Option((flaglist.length+"")+" "+text,flaglist.length);
+            selector[i].options.add(option);
+        }
+        $('.selectpicker').selectpicker('refresh');
+        clean();
+    }
     $('#datetimepicker1').datetimepicker(
             {
                 language: 'zh-CN',
