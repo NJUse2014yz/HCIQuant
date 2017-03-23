@@ -1,3 +1,13 @@
+#select_strategy_div
+{
+    position:absolute;
+    top:-37px;
+    left:20px;
+    margin:0;
+    padding:0;
+    width:780px;
+}
+
 #backinfo
 {
     position: relative;
@@ -28,7 +38,7 @@
 }
 #end_date {
     position: absolute;
-    left: 370px;
+    left: 400px;
     top: 10px;
 }
 
@@ -76,7 +86,7 @@
 {
     padding:0;
     position: absolute;
-    left:370px;
+    left:400px;
     top:50px;
     width:283px;
     height:30px;
@@ -97,4 +107,25 @@
     position: absolute;
     top:90px;
     right:10px;
+}
+
+#frequency_warning
+{
+    position: absolute;
+    top:50px;
+    left:310px;
+    font-family: "Microsoft YaHei";
+    font-size:10px;
+    color:#5389d2;
+    width:80px;
+}
+#asset_warning
+{
+    position: absolute;
+    top:50px;
+    left:690px;
+    font-family: "Microsoft YaHei";
+    font-size:10px;
+    color:#5389d2;
+    width:100px;
 }

@@ -14,42 +14,30 @@
     <script src="../../js/echarts.min.js"></script>
 </head>
 <body>
-<%@include file="../first/navBar.jsp"%>
+<%--<%@include file="../first/navBar.jsp"%>--%>
 <div style="margin:0;padding:0;margin-top:80px;margin-left:200px;">
     <div id="chooser" class="container-fluid" style="box-shadow:1px 1px 3px #777">
         <div class="row">
             <div class="col-xs-2" style="border-bottom: 1px solid #aaa;border-right: 2px solid #aaa;">
                 <label style="font-size:20px;font-family: 'Microsoft YaHei';text-align: center;">&nbsp&nbsp策&nbsp&nbsp&nbsp&nbsp略</label>
             </div>
-            <!--选择股票-->
             <div id="stock_choice_div" class="col-xs-10" >
-                <ul class="stock_choice_ul" id="stock_choice_ul"></ul>
+                <ul class="stock_choice_ul" id="flag_ul"></ul>
             </div>
-            <!--<div class="col-xs-1" style="padding:0">-->
-            <!--<button class="sale_type">股</button>-->
-            <!--<button class="sale_type">股%</button>-->
-            <!--<button class="sale_type">￥</button>-->
-            <!--<button class="sale_type">￥%</button>-->
-            <!--</div>-->
         </div>
         <div class="row">
             <div id="metric_div" class="col-xs-2">
-                <!--指标-->
-                <div id="metric_choice_div">
-                    <ul class="metric_choice_ul" id="metric_choice_ul"></ul>
+                <!--已选指标-->
+                <div id="metric_choice_div" style="max-height:500px;">
+                    <ul class="metric_choice_ul" id="flaggroup_ul"></ul>
                 </div>
             </div>
             <div class="col-xs-10" style="height:480px;">
                 <!--三种情况放不同的内容-->
-                <div id="single_single" style="margin:0;padding:0;position:absolute;visibility: visible">
+                <div id="single_plot" style="margin:0;padding:0;position:absolute;visibility: visible">
                     <div id="strategyplot" style="width:600px;height:460px;margin:10px;"></div>
                 </div>
-                <div id="single_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
 
-                </div>
-                <div id="multiple_multiple" style="margin:0;padding:0;position:absolute;visibility: hidden">
-
-                </div>
             </div>
         </div>
     </div>
@@ -88,36 +76,58 @@
 </div>
 <!--策略-->
 <script type="text/javascript">
-    var stock_choice_ul=document.getElementById("stock_choice_ul");
-    var metric_choice_ul=document.getElementById("metric_choice_ul");
-    var metric_list=['BIAS','BOLL1','BOLL2','BOLL3','K','D','J','MACD','OBV','ROC','RSI','VR','PDI','MDI','ADX','ADXR'];
-    var stocklist=['sh600002','sh600400','sh600600','sh600002','sh600400','sh600600','sh600002','sh600400','sh600600','sh600002','sh600400','sh600600','sh600002','sh600400','sh600600'];
+    var flag_ul=document.getElementById("flag_ul");
+    var flaggroup_ul=document.getElementById("flaggroup_ul");
+    var flaggroup_list=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];//标志组合
+    var flag_list=[1,4,7];//每个组合中的标志
+    var flaggroup_selected=0;
+    var flag_selected=0;
+
 
     (function(){
-        for(var i=0;i<metric_list.length;i++)
+        for(var i=0;i<flaggroup_list.length;i++)
         {
-            var some_metric=document.createElement("li");
-            some_metric.setAttribute("class","metric_choice_li");
-            some_metric.setAttribute("id",metric_list[i]);
+            var flaggroup=document.createElement("li");
+            flaggroup.setAttribute("class","metric_choice_li");
+            flaggroup.setAttribute("id",flaggroup_list[i]);
 
-            var some_metric_label=document.createElement("label");
-            some_metric_label.innerHTML=metric_list[i];
-            some_metric_label.setAttribute("id",metric_list[i]+"_label");
+            var flaggroup_label=document.createElement("label");
+            flaggroup_label.innerHTML=flaggroup_list[i];
+            flaggroup_label.setAttribute("id",flaggroup_list[i]+"_label");
 
-            some_metric.appendChild(some_metric_label);
-            metric_choice_ul.appendChild(some_metric);
+            flaggroup.appendChild(flaggroup_label);
+
+            (function(flag_group)
+            {
+                flaggroup.onclick=function()
+                {
+                    flaggroup_selected=flag_group;
+                    //TODO change flag
+                };
+            })(flaggroup_list[i]);
+            flaggroup_ul.appendChild(flaggroup);
         }
-        for(var i=0;i<stocklist.length;i++) {
-            var stock_choice_li = document.createElement("li");
-            stock_choice_li.setAttribute("class", "stock_choice_li");
+        for(var i=0;i<flag_list.length;i++) {
+            var flag_li = document.createElement("li");
+            flag_li.setAttribute("class", "stock_choice_li");
             var label = document.createElement("label");
-            label.innerHTML = stocklist[i];
-            stock_choice_li.appendChild(label);
-            stock_choice_ul.appendChild(stock_choice_li);
+            label.innerHTML = flag_list[i];
+            flag_li.appendChild(label);
+            (function(flag)
+            {
+                flag_li.onclick=function()
+                {
+                    flag_selected=flag;
+                    //TODO change plot
+                };
+            })(flag_list[i]);
+            flag_ul.appendChild(flag_li);
         }
     })();
 </script>
 <script type="text/javascript">
+    var data=[90,80,70,60,55,42,30,29,25,70,90];
+    var xdata=[-50,-40,-30,-20,-10,0,10,20,30,40,50];
     // 基于准备好的dom，初始化echarts实例
     var strategyplot = echarts.init(document.getElementById('strategyplot'));
 
@@ -130,7 +140,7 @@
             trigger: 'axis'
         },
         legend: {
-            data:['买入评分']
+            data:['sh600000']
         },
         grid: {
             left: '3%',
@@ -146,17 +156,17 @@
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['','','','','','','']/*待修改*/
+            data: xdata
         },
         yAxis: {
             type: 'value'
         },
         series: [
             {
-                name:'买入评分',
+                name:'评分',
                 type:'line',
                 stack: '总量',
-                data:[20, 32, 1, 34, 90, 30, 10]
+                data:data
             }
         ]
     };
@@ -166,8 +176,43 @@
 </script>
 <!--回测图-->
 <script type="text/javascript">
+    Date.prototype.format=function (){
+        var s='';
+        s+=this.getFullYear()+'-';          // 获取年份。
+        s+=(this.getMonth()+1)+"-";         // 获取月份。
+        s+= this.getDate();                 // 获取日。
+        return(s);                          // 返回日期。
+    };
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('backplot'));
+
+    var strategy_data=[];
+    var indice_data=[];
+    var date_list=[];
+
+    var start="2016-11-01";
+    var end="2017-03-01";
+    var ab = start.split("-");
+    var ae = end.split("-");
+    var db = new Date();
+    db.setUTCFullYear(ab[0], ab[1] - 1, ab[2]);
+    var de = new Date();
+    de.setUTCFullYear(ae[0], ae[1] - 1, ae[2]);
+    var unixDb = db.getTime();
+    var unixDe = de.getTime();
+    for (var k = unixDb; k <= unixDe;) {
+        date_list.push(new Date(parseInt(k)).format());
+        k = k + 24 * 60 * 60 * 1000;
+    }
+    var days=date_list.length;
+    for(var i=0;i<days;i++)
+    {
+        strategy_data.push((Math.random()*100-50+1/8*i*i).toFixed(2));
+        indice_data.push((Math.random()*100-50+1/8*i*i).toFixed(2));
+    }
+//    option.series[0].data=strategy_data;
+//    option.series[1].data=indice_data;
+//    option.xAxis.data=date_list;
 
     // 指定图表的配置项和数据
     var option = {
@@ -194,7 +239,7 @@
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['','','','','','','']/*待修改*/
+            data:date_list                   /*待修改*/
         },
         yAxis: {
             type: 'value'
@@ -203,14 +248,14 @@
             {
                 name:'策略',
                 type:'line',
-                stack: '总量',
-                data:[120, 132, 101, 134, 90, 230, 210]
+                stack: '总量1',
+                data:strategy_data
             },
             {
                 name:'大盘',
                 type:'line',
-                stack: '总量',
-                data:[220, 182, 191, 234, 290, 330, 310]
+                stack: '总量2',
+                data:indice_data
             }
         ]
     };
