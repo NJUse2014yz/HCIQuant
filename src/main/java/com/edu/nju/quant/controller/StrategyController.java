@@ -30,4 +30,9 @@ public class StrategyController {
 	public String compare(){
 		return "strategy/strategy_compare";
 	}
+
+	@RequestMapping("/choose")
+	public String choose(){
+		return "first/stock_chooser";
+	}
 }

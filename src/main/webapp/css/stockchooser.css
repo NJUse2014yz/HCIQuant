@@ -1,0 +1,30 @@
+#searcher
+{
+    width:200px;
+    height:30px;
+    padding:0;
+    margin:0;
+    margin-bottom:10px;
+}
+#searcher_input
+{
+    height:30px;
+    padding:5px;
+    margin:0;
+}
+#searcher_span
+{
+    height:30px;
+    padding:5px;
+    margin:0;
+}
+.stockchooser_tip
+{
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    font-weight: lighter;
+}
+.stockchooser_tip:hover
+{
+    color:#5389d2;
+}

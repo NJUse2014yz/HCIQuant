@@ -14,7 +14,7 @@
     <script src="../../js/echarts.min.js"></script>
 </head>
 <body>
-<%--<%@include file="../first/navBar.jsp"%>--%>
+<%@include file="../first/navBar.jsp"%>
 <div style="margin:0;padding:0;margin-top:80px;margin-left:200px;">
     <div id="chooser" class="container-fluid" style="box-shadow:1px 1px 3px #777">
         <div class="row">
@@ -40,6 +40,40 @@
 
             </div>
         </div>
+    </div>
+    <div id="backinfo">
+        <div id="start_date" class="input-group">
+            <span id="start_text" class="input-group-addon">回测开始日期</span>
+            <input id="datetimepicker1" type="text" value="2016-11-01">
+        </div>
+        <div id="end_date" class="input-group">
+            <span id="end_text" class="input-group-addon">回测结束日期</span>
+            <input id="datetimepicker2" type="text" value="2017-03-01">
+        </div>
+        <div id="cycle" class="input-group">
+                    <span class="input-group-addon">
+                        <span id="frequency">周期：<input id="frequency_input" type="number" name="frequency" value="1"></span>
+                        <div id="radios">
+                            <label class="radio_label">
+                                <input class="radio" type="radio" name="frequency-radios" id="day" value="day" checked onclick="JavaScript:frequency_day();">天
+                            </label>
+                            <label class="radio_label">
+                                <input class="radio" type="radio" name="frequency-radios" id="week" value="week" onclick="JavaScript:frequency_week();">周
+                            </label>
+                            <label class="radio_label">
+                                <input class="radio" type="radio" name="frequency-radios" id="month" value="month" onclick="JavaScript:frequency_month();">月
+                            </label>
+                        </div>
+                    </span>
+        </div>
+        <text id="frequency_warning">请输入1~100之间的整数值</text>
+        <div id="asset" class="input-group">
+                <span id="asset_text" class="input-group-addon">
+                    起始资金：<input id="asset_input" type="number" min="10000" name="frequency" value="100000">元
+                </span>
+        </div>
+        <text id="asset_warning">请输入10000~ 1000000之间的值</text>
+        <button id="startback" class="btn btn-default btn-sm" onclick="JavaScript:backtest();">回测一下</button>
     </div>
     <div id="backplot"></div>
     <div id="backresult">
@@ -125,6 +159,7 @@
         }
     })();
 </script>
+
 <script type="text/javascript">
     var data=[90,80,70,60,55,42,30,29,25,70,90];
     var xdata=[-50,-40,-30,-20,-10,0,10,20,30,40,50];
@@ -213,6 +248,158 @@
 //    option.series[0].data=strategy_data;
 //    option.series[1].data=indice_data;
 //    option.xAxis.data=date_list;
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '回测结果'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['策略','大盘']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data:date_list                   /*待修改*/
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name:'策略',
+                type:'line',
+                stack: '总量1',
+                data:strategy_data
+            },
+            {
+                name:'大盘',
+                type:'line',
+                stack: '总量2',
+                data:indice_data
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+
+<script type="text/javascript">
+    $('#datetimepicker1').datetimepicker(
+        {
+            language: 'zh-CN',
+            minView: "month",
+            format: 'yyyy-mm-dd'
+        }
+    );
+    $('#datetimepicker2').datetimepicker(
+        {
+            language: 'zh-CN',
+            minView: "month",
+            format: 'yyyy-mm-dd'
+        }
+    );
+    var frequency_unit="day";
+    function frequency_day()
+    {
+        frequency_unit="day";
+    }
+    function frequency_week()
+    {
+        frequency_unit="week";
+    }
+    function frequency_month()
+    {
+        frequency_unit="month";
+    }
+    Date.prototype.format=function (){
+        var s='';
+        s+=this.getFullYear()+'-';          // 获取年份。
+        s+=(this.getMonth()+1)+"-";         // 获取月份。
+        s+= this.getDate();                 // 获取日。
+        return(s);                          // 返回日期。
+    };
+    function backtest()
+    {
+        strategy_data=[];
+        indice_data=[];
+        date_list=[];
+        var start=$("#datetimepicker1").val();
+        var end=$("#datetimepicker2").val();
+        var frequency_number=document.getElementById("frequency_input");
+        var asset=document.getElementById("asset_input");
+
+        var ab = start.split("-");
+        var ae = end.split("-");
+        var db = new Date();
+        db.setUTCFullYear(ab[0], ab[1] - 1, ab[2]);
+        var de = new Date();
+        de.setUTCFullYear(ae[0], ae[1] - 1, ae[2]);
+        var unixDb = db.getTime();
+        var unixDe = de.getTime();
+        for (var k = unixDb; k <= unixDe;) {
+            date_list.push(new Date(parseInt(k)).format());
+            k = k + 24 * 60 * 60 * 1000;
+        }
+
+        var days=date_list.length;
+        for(var i=0;i<days;i++)
+        {
+            strategy_data.push((Math.random()*100-50+1/8*i*i).toFixed(2));
+            indice_data.push((Math.random()*100-50+1/8*i*i).toFixed(2));
+        }
+        option.series[0].data=strategy_data;
+        option.series[1].data=indice_data;
+        option.xAxis.data=date_list;
+        myChart.setOption(option);
+    }
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('backplot'));
+
+    var strategy_data=[];
+    var indice_data=[];
+    var date_list=[];
+
+    var start="2016-11-01";
+    var end="2017-03-01";
+    var ab = start.split("-");
+    var ae = end.split("-");
+    var db = new Date();
+    db.setUTCFullYear(ab[0], ab[1] - 1, ab[2]);
+    var de = new Date();
+    de.setUTCFullYear(ae[0], ae[1] - 1, ae[2]);
+    var unixDb = db.getTime();
+    var unixDe = de.getTime();
+    for (var k = unixDb; k <= unixDe;) {
+        date_list.push(new Date(parseInt(k)).format());
+        k = k + 24 * 60 * 60 * 1000;
+    }
+    var days=date_list.length;
+    for(var i=0;i<days;i++)
+    {
+        strategy_data.push((Math.random()*100-50+1/8*i*i).toFixed(2));
+        indice_data.push((Math.random()*100-50+1/8*i*i).toFixed(2));
+    }
+    //    option.series[0].data=strategy_data;
+    //    option.series[1].data=indice_data;
+    //    option.xAxis.data=date_list;
 
     // 指定图表的配置项和数据
     var option = {

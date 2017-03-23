@@ -13,21 +13,24 @@
     <link rel="stylesheet" href="../../css/strategy/flagtable.css">
     <link rel="stylesheet" href="../../css/strategy/multiple.css">
     <link rel="stylesheet" href="../../css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../css/stockchooser.css">
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/bootstrap-datetimepicker.js"></script>
     <script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
     <script src="../../js/echarts.min.js"></script>
     <script src="../../js/bootstrap-select.min.js"></script>
+    <script src="../../js/bootstrap-paginator.min.js"></script>
 </head>
 <body>
-<%@include file="../first/navBar.jsp"%>
+<%--<%@include file="../first/navBar.jsp"%>--%>
+<%@include file="../first/stock_chooser.jsp"%>
 <div class="container-fluid" style="margin:0;padding:0;margin-top:80px;margin-left:15%;">
     <%--<div class="row">--%>
         <%--<div class="col-md-10">--%>
             <!--股票选择器-->
-            <input type="text" id="stock">
-            <button id="confirm">confirm</button>
+            <%--<input type="text" id="stock">--%>
+            <%--<button id="confirm">confirm</button>--%>
             <!--策略制作器-->
             <div id="chooser" class="container-fluid" style="box-shadow:-1px -1px 2px #777">
                 <div class="row">
@@ -223,16 +226,16 @@
 </div>
 </body>
 <!--股票选择器-->
-<script type="text/javascript">
-    var confirm=document.getElementById("confirm");
-    var stock=document.getElementById("stock");
-    confirm.onclick=function()
-    {
-        stocklist.push(stock.value);
-        console.log(JSON.stringify(stocklist));
-        changeStock();
-    };
-</script>
+<%--<script type="text/javascript">--%>
+    <%--var confirm=document.getElementById("confirm");--%>
+    <%--var stock=document.getElementById("stock");--%>
+    <%--confirm.onclick=function()--%>
+    <%--{--%>
+        <%--stocklist.push(stock.value);--%>
+        <%--console.log(JSON.stringify(stocklist));--%>
+        <%--changeStock();--%>
+    <%--};--%>
+<%--</script>--%>
 <!--指标和股票选择-->
 <script type="text/javascript">
     var single_plot=document.getElementById("single_plot");
@@ -251,6 +254,33 @@
     var stocklist=[];
     var metriclist=[];
     var flaglist=[];
+
+    var stock_add_button=new Image();
+    stock_add_button.setAttribute("id","stock_add_icon");
+    stock_add_button.setAttribute("class","add_icon");
+    stock_add_button.src="${pageContext.request.contextPath}/img/add_inactive.png";
+    stock_add_button.setAttribute("data-toggle","modal");
+    stock_add_button.setAttribute("data-target","#stockModal");
+    stock_add_button.onclick=function()
+    {
+        //新增股票
+        select_stock_list=[];
+    };
+    stock_add_button.onmouseover=function()
+    {
+        stock_add_button.src="${pageContext.request.contextPath}/img/add_active.png";
+    };
+    stock_add_button.onmouseout=function()
+    {
+        stock_add_button.src="${pageContext.request.contextPath}/img/add_inactive.png";
+    };
+    stock_choice_ul.appendChild(stock_add_button);
+
+    function final_add()
+    {
+        stocklist=select_stock_list;
+        stock_choice_init();
+    }
 
     //指标相关
     (function(){
@@ -475,10 +505,13 @@
         stock_add_button.setAttribute("id","stock_add_icon");
         stock_add_button.setAttribute("class","add_icon");
         stock_add_button.src="${pageContext.request.contextPath}/img/add_inactive.png";
+        stock_add_button.setAttribute(" data-toggle","modal");
+        stock_add_button.setAttribute("data-target","#stockModal");
         stock_add_button.onclick=function()
         {
             //新增股票
-
+            select_stock_list=[];
+            //TODO
         };
         stock_add_button.onmouseover=function()
         {
