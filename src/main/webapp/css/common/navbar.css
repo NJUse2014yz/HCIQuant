@@ -17,6 +17,6 @@
 .footer-fixed-bottom{
     position: absolute;
     width:100%;
-    bottom: 0px;
+    bottom: 0;
     text-align: center;
 }

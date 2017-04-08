@@ -8,65 +8,114 @@
     <title>个人空间</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/common/navbar.css" rel="stylesheet">
+    <link href="../css/common/common.css" rel="stylesheet">
+    <link href="../css/info.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img src="../img/common/logo.png"></a>
-        </div>
+    <%@include file="first/navBar.jsp"%>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">股票 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">策略</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">板块 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+    <div class="container-fluid main-content">
+        <div class="row content-row">
+            <div class="row list-row input-row"> 
+                <div class="title">
+                    <span>基础资料</span>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div>
-</nav>
+                <div class="row info-row">
+                    <div class="row short-row">
+                        <img src="../img/common/user.jpg" alt="" class="imgObj">
+                        <p>修改头像</p>
+                        <input class="uploadImg">
+                    </div>
+                    <div class="row long-row">
+                        <div class="item">
+                            <span class="n">昵称：</span>
+                            <input type="text" class="reg-input info-input" id="info-name" name="name" value="${info.name}昵称" disabled="disabled">
+                        </div>
+                        <div class="item">
+                            <span class="n">签名：</span>
+                            <input type="text" class="reg-input info-input" id="info-des" name="des" value="个人介绍写点啥行不行? " disabled="disabled">
+                        </div>
+                        <div class="item">
+                            <span class="n">年龄：</span>
+                            <input type="text" class="reg-input info-input" id="info-age" name="age" value="${info.age}20" disabled="disabled">
+                        </div>
+                        <div class="item">
+                            <span class="n">地址：</span>
+                            <input type="text" class="reg-input info-input" id="info-address" name="address" value="${info.address}江苏省南京市" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row operate-info">
+                        <div class="errorMsg nicknameError" id="error-dynamic-info">
+                        </div>
+                        <span class="border-btn btn-first" onclick="modifyInfo()">修改资料</span>
+                        <span class="border-btn btn-second" onclick="modifyInfoSave()">确认修改</span>
+                        <span class="border-btn btn-second" onclick="modifyCancel()">取消修改</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row list-row safe-row">
+                <div class="title">
+                    <span>账号安全</span>
+                </div>
+                <div class="bd account-security">
+                    <div class="item">
+                        <div class="email-wrapper">
+                            <i class="uqer-ic lock reg-m"></i>
+                            <div class="mid">
+                                <div>
+                                    <span class="t">登录密码</span><span class="curPwd">******</span>
+                                </div>
+                                <p>用于保护帐号信息和登录安全</p>
+                            </div>
+                            <span class="border-btn resetPwd">修改</span>
+                        </div>
+                    </div>
 
-    <p>这是一句关于个人空间的介绍</p>
-    <%@include file="stockSelect.jsp" %>
+                    <div class="item">
+                        <div class="tel-wrapper">
+                            <i class="uqer-ic mobile reg-m"></i>
+                            <div class="mid">
+                                <div>
+                                    <span class="t">手机号码</span>
+                                </div>
+                                <p>尚未绑定手机</p>
+                            </div>
+                            <span class="border-btn bind">绑定</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="tel-wrapper">
+                            <i class="uqer-ic email reg-m"></i>
+                            <div class="mid">
+                                <div>
+                                    <span class="t">邮箱</span>
+                                </div>
+                                <p>尚未绑定邮箱</p>
+                            </div>
+                            <span class="border-btn bind">绑定</span>
+                        </div>
+                    </div>
+
+                    <div class="item" style="border-bottom: none;">
+                        <div class="tel-wrapper">
+                            <i class="uqer-ic wechat reg-m"></i>
+                            <div class="mid">
+                                <div>
+                                    <span class="t">微信</span>
+                                </div>
+                                <p>尚未绑定微信</p>
+                            </div>
+                            <span class="border-btn bind">绑定</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script src="../js/stockSelect.js"></script>
+    <script src="../js/info.js"></script>
 </body>
 </html>
