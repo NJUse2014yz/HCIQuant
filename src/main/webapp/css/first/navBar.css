@@ -256,13 +256,11 @@ img .round{
     text-decoration: none;
     text-transform: uppercase;
 }
-/* .header-signin a:hover {
-  	color: #fff;
-  	font-size:17px;
-  	background-color: #ec1500;
+.header-signin a:hover {
+  	color: white;
+  	
 }
 .header-signup a:hover {
-  	color: #fff;
-  	font-size:17px;
-  	background-color: #363c41;
-} */
+  	color: white;
+  	
+}

@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/first/search.css" />
 	
 	
-	<script src="/HCIQuant/js/cookie.js"></script>
+	<script src="${pageContext.request.contextPath}/js/cookie.js"></script>
 	</head>
 	
 	<body>
@@ -29,18 +29,18 @@
 		
 		<div class="container">
 			<ul class="menu">
-				<li><a href="/HCIQuant/first">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/first">首页</a></li>
 				<li><a href="#">股票数据</a>
 					<ul class="submenu">
 						<li><a href="/AnyQuant_web/stock.action">全部</a></li>
 						<li><a href="/AnyQuant_web/stockInfo.action?id=sh000001">上证指数</a></li>
 						<li><a href="/AnyQuant_web/stockInfo.action?id=sz399001">深证成指</a></li>
-						<li><a href="/AnyQuant_web/compare.action">股票对比</a></li>
+						<li><a href="${pageContext.request.contextPath}/compare.action">股票对比</a></li>
 					</ul>
 				</li>
 				<li class="active"><a href="#s2">指标策略</a>
 					<ul class="submenu">
-						<li><a href="/AnyQuant_web/analysis.action?id=sh600000">指标分析</a></li>
+						<li><a href="${pageContext.request.contextPath}/analysis.action">指标分析</a></li>
 						<li><a href="/AnyQuant_web/strategy.action?id=sh600000">单股策略</a></li>
 						<li><a href="#">多股策略</a></li>
 					</ul>

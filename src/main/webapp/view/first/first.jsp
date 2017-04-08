@@ -15,7 +15,7 @@
 	<%@include file="navBar.jsp"%>
 	
 	<div class="slogan">
-		<div class="title">优矿，您的私人量化平台</div>
+		<div class="title">AnyQuant，您的私人量化平台</div>
 		<p>打破金融量化的壁垒，为量化研究者提供媲美华尔街专业机构的研究装备</p>
 	</div>
 	
@@ -29,22 +29,22 @@
 			<div class="body">
 				<div class="item">
 					<span>2017-3-11</span>
-					<p>专业版新增事件研究功能、自定义因子的信号分析功能，详见专业版客户端。</p>
+					<p>首部境外投资条例有望年内出台</p>
 				</div>
 				
 				<div class="item">
 					<span>2017-3-11</span>
-					<p>专业版新增事件研究功能</p>
+					<p>北京新规：不动产权证将对通道记载</p>
 				</div>
 				
 				<div class="item">
 					<span>2017-3-11</span>
-					<p>专业版新增事件研究功能、自定义因子的信号分析功能。</p>
+					<p>沪指涨0.33%两连阳 国金:春季行情延续</p>
 				</div>
 				
 				<div class="item">
 					<span>2017-3-11</span>
-					<p>专业版新增事件研究功能、自定义因子的信号分析功能。</p>
+					<p>市场钱紧再现！逾两万亿缺口待补 银行融资已受限</p>
 				</div>
 			</div>
 		</div>
@@ -58,22 +58,22 @@
 			<div class="body">
 				<div class="item">
 					<span>腾讯控股</span>
-					<p>专业版新增事件研究功能、自定义因子的信号分析功能，详见专业版客户端。</p>
+					<p>缩量攻第二日，新高区需防范急回杀</p>
 				</div>
 				
 				<div class="item">
-					<span>顺丰快递</span>
-					<p>专业版新增事件研究功能</p>
+					<span>顺丰控股</span>
+					<p>业绩超承诺利润,紧控成本提升盈利能力</p>
 				</div>
 				
 				<div class="item">
-					<span>中国石油</span>
-					<p>专业版新增事件研究功能、自定义因子的信号分析功能。</p>
+					<span>百度</span>
+					<p>人工智能是一个巨大机遇，为互联网和传统行业带来革命性的变化</p>
 				</div>
 				
 				<div class="item">
-					<span>中国石油</span>
-					<p>专业版新增事件研究功能、自定义因子的信号分析功能。</p>
+					<span>中国联通</span>
+					<p>移动数据业务增长的基础坚固潜力巨大,大数据和物联网已在快速发展且未来发展的空间巨大</p>
 				</div>
 			</div>
 		</div>
