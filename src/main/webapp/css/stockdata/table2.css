@@ -1,0 +1,86 @@
+.body {
+    /*font-family: "Open Sans", sans-serif;*/
+    line-height: 1.1;
+    font-size: 16px;
+}
+.table2 {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+.table2 caption {
+    font-size: 1.5em;
+    color: #101010;
+    margin: 0;
+    text-align: center;
+    border-top: 1px solid #909090;
+    /*border-collapse: collapse;*/
+}
+.table2 tr {
+    background: #f4f4f4;
+    /*background: #ffffff;*/
+    border: 1px solid #909090;
+    padding: .35em;
+    font-size: 16px;
+}
+.table2 th,
+.table2 td {
+    padding: .35em;
+    text-align: center;
+    color: #101010;
+    font-size: 16px;
+}
+.table2 th {
+    background: #ffffff;
+
+    /*font-size: 1em;*/
+    /*letter-spacing: .1em;*/
+    text-transform: uppercase;
+    color: #101010;
+}
+
+@media screen and (max-width: 600px) {
+    .table2 {
+        border: 0;
+    }
+    .table2 caption {
+        font-size: 1.3em;
+    }
+    .table2 thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    .table2 tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+    .table2 td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+    .table2 td:before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .table2 td:last-child {
+        border-bottom: 0;
+    }
+}
