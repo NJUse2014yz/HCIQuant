@@ -1,0 +1,114 @@
+.main-content{
+    z-index:1;
+}
+.hp-school-placard {
+    text-align: center;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.hp-school-placard .title {
+    position: absolute;
+    top: 115px;
+    z-index: 100;
+    width: 502px;
+    left: 50%;
+    margin-left: -251px;
+    color: #496489;
+}
+
+.hp-school-placard .title h2 {
+    font-size: 28px;
+    margin: 0;
+    font-weight: normal;
+    display: inline-block;
+    position: relative;
+}
+
+.hp-school-placard .title p {
+    margin: 5px 0 0 0;
+    font-size: 20px;
+}
+
+.hp-school-placard .title h2:before {
+    left: -36px;
+}
+.hp-school-placard .title h2:after {
+    right: -36px;
+}
+
+.hp-school-placard .title h2:before, .hp-school-placard .title h2:after {
+    content: '';
+    height: 2px;
+    background: #496489;
+    width: 27px;
+    position: absolute;
+    top: 14px;
+}
+
+.hp-school-step {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 980px;
+    margin: 75px auto 0 auto;
+}
+
+.hp-school-step .hp-school-block {
+    width: 46%;
+    cursor: pointer;
+    border: 1px solid #4f92e1;
+    padding-left: 188px;
+    position: relative;
+    height: 224px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 15px;
+    transition: background .3s;
+}
+
+.hp-school-step .hp-school-block img {
+    position: absolute;
+    left: 15px;
+}
+
+.hp-school-step .hp-school-block h3 {
+    color: #5389d2;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 0 20px 0;
+}
+
+.hp-school-step .hp-school-block p {
+    color: #88a5cd;
+    font-size: 14px;
+    margin: 0;
+    line-height: 25px;
+}
+
+.hp-school-step .hp-school-block:hover {
+    background: #ecf5fe;
+}
+
+.hp-school-block.comingsoon {
+    border-color: #666;
+    pointer-events: none;
+}
+
+.hp-school-step .hp-school-block.comingsoon img {
+    filter: grayscale(100%);
+    filter: gray;
+}
+
+.hp-school-step .hp-school-block.comingsoon h3 {
+    color: #666;
+}
+
+.hp-school-step .hp-school-block.comingsoon p {
+    color: #666;
+}

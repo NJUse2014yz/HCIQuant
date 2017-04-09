@@ -7,17 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by zs on 2017/3/15.
+ * Created by zs on 2017/3/19.
  */
 @Controller
-public class InfoController {
-    @RequestMapping(value = "person_zone")
+public class BlockController {
+    @RequestMapping(value = "all_block")
     public String personZone(HttpServletRequest request, HttpServletResponse response){
-        return "personZone";
-    }
-
-    @RequestMapping(value = "learn")
-    public String learn(HttpServletRequest request, HttpServletResponse response){
-        return "block/learn";
+        return "block/all_block";
     }
 }
