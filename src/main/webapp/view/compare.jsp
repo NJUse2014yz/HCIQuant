@@ -33,12 +33,29 @@
 					<div  class="compare" >对比</div>
 					
 				</div>
-                <div class="row mt">
-	                <div class="title">
-	                    <span>基本消息对比</span>
-	                </div>
+                
+                <div class="title mt">
+                    <span>今日数据对比</span>
                 </div>
                 
+                
+                
+                
+                
+                
+                <div class="title mt">
+                    <span>七日数据对比</span>
+                </div>
+                
+                <div class="chart mt">
+                	<div id="price" class="box"></div>
+                	<div id="exchange" class="box"></div>    
+                </div>
+                
+                
+                <div class="title mt">
+                    <span>指标对比</span>
+                </div>
                 
             </div>
             
@@ -51,6 +68,19 @@
 
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script src="../js/bootstrap.js"></script>
-    
+    <script src="/HCIQuant/js/echarts.min.js"></script>
+    <script src="/HCIQuant/js/compare/price.js"></script>
+    <script src="/HCIQuant/js/compare/exchange.js"></script>
+    <script>
+		$(function(){
+			price();
+			exchange();
+		})
+	
+		
+	</script>
 </body>
+
+
+	
 </html>

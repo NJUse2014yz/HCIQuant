@@ -21,6 +21,10 @@ input.stock{
     padding-left: 15px;
 }
 
+input.stock:focus{
+	border: 1px solid #5389d2;
+}
+
 .left{
 	margin-top: 20px;
 	margin-left:10px;
@@ -54,4 +58,19 @@ input.stock{
     font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.chart{
+	height:200px;
+	width:100%;
+	float:left;
+	position:relative;
+}
+
+.box{
+	position:relative;
+	width:200px;
+	height:200px;
+	float:left;
+	margin-left:10px;
 }

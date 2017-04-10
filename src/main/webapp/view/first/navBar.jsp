@@ -8,7 +8,7 @@
 	<link href="${pageContext.request.contextPath}/css/first/navBar.css" type="text/css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/first/search.css" />
 	
-	
+	<script src="../js/jquery-3.1.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/cookie.js"></script>
 	</head>
 	
@@ -62,14 +62,7 @@
 		
 		<div id="login-area">
 			<!--未登陆的界面 -->
-			<div class="unlogin">
-				<div class="header-signup">
-                    <a href="${pageContext.request.contextPath}/askForRegister.action">注册</a>
-                </div>	
-				<div class="header-signin">
-                    <a class="login" href="${pageContext.request.contextPath}${pageContext.request.contextPath}/login">登录</a>
-                </div>			
-			</div>
+			
 			
 			<!-- 已登录的界面 -->
 			<!-- <ul class="logined">
@@ -91,12 +84,15 @@
 			//判断是否已经登录
 			function showUserInfo(){
 				var userName=getCookie("userName");
-
+				
 				if(userName!='""'){
 					//显示头像
+					
+					$("#login-area").append("<img class='user' src='/HCIQuant/img/first/user.jpg' />");
 				}
 				else{
 					//显示登录注册
+					$("#login-area").append("<div class='unlogin'><div class='header-signup'><a href='${pageContext.request.contextPath}/askForRegister.action'>注册</a></div>	<div class='header-signin'><a class='login' href='${pageContext.request.contextPath}${pageContext.request.contextPath}/login'>登录</a></div>			</div>");
 				}
 					
 			}
