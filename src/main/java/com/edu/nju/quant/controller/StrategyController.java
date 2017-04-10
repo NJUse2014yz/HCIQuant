@@ -31,6 +31,26 @@ public class StrategyController {
 		return "strategy/strategy_compare";
 	}
 
+	@RequestMapping("/scan_first")
+	public String scan_first(){
+		return "strategy/scan_first";
+	}
+
+	@RequestMapping("/anlysis_first")
+	public String anlysis_first(){
+		return "strategy/anlysis_first";
+	}
+
+	@RequestMapping("/make_first")
+	public String make_first(){
+		return "strategy/strategy_first";
+	}
+
+	@RequestMapping("/compare_first")
+	public String compare_first(){
+		return "strategy/strategy_compare_first";
+	}
+
 	@RequestMapping("/choose")
 	public String choose(){
 		return "first/stock_chooser";
