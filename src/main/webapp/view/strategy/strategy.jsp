@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../css/strategy/multiple.css">
     <link rel="stylesheet" href="../../css/bootstrap-select.min.css">
     <link rel="stylesheet" href="../../css/stockchooser.css">
+    <link href="../../css/common/common.css" rel="stylesheet">
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/bootstrap-datetimepicker.js"></script>
@@ -23,219 +24,232 @@
     <script src="../../js/bootstrap-paginator.min.js"></script>
 </head>
 <body>
-<%--<%@include file="../first/navBar.jsp"%>--%>
+<%@include file="../first/navBar.jsp"%>
 <%@include file="../first/stock_chooser.jsp"%>
-<div class="container-fluid" style="margin:0;padding:0;margin-top:80px;margin-left:15%;">
-    <%--<div class="row">--%>
-        <%--<div class="col-md-10">--%>
-            <!--股票选择器-->
-            <%--<input type="text" id="stock">--%>
-            <%--<button id="confirm">confirm</button>--%>
-            <!--策略制作器-->
-            <div id="chooser" class="container-fluid" style="box-shadow:-1px -1px 2px #777">
-                <div class="row">
-                    <div class="col-xs-2" style="border-bottom: 1px solid #aaa;border-right: 2px solid #aaa;">
-                        <label style="font-size:20px;font-family: 'Microsoft YaHei';text-align: center;">选择-</label>
-                        <label style="font-size:20px;font-family: 'Microsoft YaHei';text-align: center;"><a onclick="JavaScript:clean();">清空</a></label>
-                    </div>
-                    <!--选择股票-->
-                    <div id="stock_choice_div" class="col-xs-10" >
-                        <ul class="stock_choice_ul" id="stock_choice_ul"></ul>
-                    </div>
+<div class="container-fluid main-content">
+    <div id="chooser" class="row list-row" style="margin:20px;width:1000px;height:600px;">
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>选择-</span>
+                <span><a onclick="JavaScript:clean();">清空</a></span>
+            </div>
+            <!--选择股票-->
+            <div id="stock_choice_div" class="col-xs-10" >
+                <ul class="stock_choice_ul" id="stock_choice_ul"></ul>
+            </div>
+        </div>
+        <div class="row">
+            <div id="metric_div" class="col-xs-2">
+                <!--已选指标-->
+                <div id="metric_choice_div">
+                    <ul class="metric_choice_ul" id="metric_choice_ul"></ul>
                 </div>
-                <div class="row">
-                    <div id="metric_div" class="col-xs-2">
-                        <!--已选指标-->
-                        <div id="metric_choice_div">
-                            <ul class="metric_choice_ul" id="metric_choice_ul"></ul>
+                <!--未选指标-->
+                <div id="metric_choose_div">
+                    <!--添加-->
+                    <div id="metric_choose_tip" style="font-family: 'Microsoft YaHei';color:#555555;font-size:15px;">可选指标：</div>
+                    <ul class="metric_choose_ul" id="metric_choose_ul"></ul>
+                </div>
+            </div>
+            <div class="col-xs-10">
+                <div id="single_plot" style="margin:0;padding:0;position:absolute;visibility: hidden">
+                    <div style="position:absolute;left:10px;top:10px;margin:0;padding:0;">
+                        <div id="canvas-container" style="position: absolute;padding: 0;margin: 0;width:600px;height:300px">
+                            <text style="position: absolute;top: 0px;left: 610px">100</text>
+                            <text style="position: absolute;top: 290px;left: 610px">0</text>
+                            <canvas id="innercanvas" style="background-color:transparent;border: 1px solid #e2e2e2; margin: 0; padding: 0;position:absolute;" width="600px" height="300px" right="0">
+                                线
+                            </canvas>
+                            <canvas id="canvas" style="background-color: transparent; margin: 0; padding: 0;position:absolute;" width="600px" height="300px">
+                                点
+                            </canvas>
                         </div>
-                        <!--未选指标-->
-                        <div id="metric_choose_div">
-                            <!--添加-->
-                            <div id="metric_choose_tip" style="font-family: 'Microsoft YaHei';color:#555555;font-size:15px;">可选指标：</div>
-                            <ul class="metric_choose_ul" id="metric_choose_ul">
-                                <!--<li class="metric_choose_li">-->
-                                <!--<label>OBV</label>-->
-                                <!--</li>-->
-                                <!--<li class="metric_choose_li">-->
-                                <!--<label>ROC</label>-->
-                                <!--</li>-->
-                                <!--<li class="metric_choose_li">-->
-                                <!--<label>VR</label>-->
-                                <!--</li>-->
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xs-10">
-                        <div id="single_plot" style="margin:0;padding:0;position:absolute;visibility: hidden">
-                            <div style="position:absolute;left:10px;top:10px;margin:0;padding:0;">
-                                <div id="canvas-container" style="position: absolute;padding: 0;margin: 0;width:600px;height:300px">
-                                    <text style="position: absolute;top: 0px;left: 610px">100</text>
-                                    <text style="position: absolute;top: 290px;left: 610px">0</text>
-                                    <canvas id="innercanvas" style="background-color:transparent;border: 1px solid #e2e2e2; margin: 0; padding: 0;position:absolute;" width="600px" height="300px" right="0">
-                                        线
-                                    </canvas>
-                                    <canvas id="canvas" style="background-color: transparent; margin: 0; padding: 0;position:absolute;" width="600px" height="300px">
-                                        点
-                                    </canvas>
-                                </div>
-                                <div style="position: absolute;top:310px;left:0px;width:200px;height:50px">
-                                    <label id="from_text" style="visible:hidden;position: absolute;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
-                                    <div class="input-group-sm" style="position:absolute;width:60px;" >
-                                        <input class="form-control" type="number" min="-10000" id="from" name="from" style=";width:60px" />
-                                    </div>
-                                    <label id="warning_from" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:65px;top:5px;visibility:hidden;">请输入起始值</label>
-                                </div>
-                                <div style="position: absolute;left:250px;top:310px;width:200px;height:50px">
-                                    <label id="message" style="position: absolute;font-size: 18px;"></label>
-                                </div>
-                                <div style="position: absolute;left:460px;top:310px;width:200px;height:50px">
-                                    <label id="to_text" style="visible:hidden;position: absolute;left:120px;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
-                                    <div class="input-group-sm" style="position:absolute;left:80px;width:70px;" >
-                                        <input class="from-control" type="number" max="10000" id="to" name="to" style=";width:60px" />
-                                    </div>
-                                    <label id="warning_to" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:0;top:5px;visibility:hidden;">请输入终止值</label>
-                                </div>
-                                <div id="control-part" style="position: absolute;top:350px">
-                                    <button class="btn btn-default btn-sm" onclick="allclear()" style="position: absolute;left: 0;top:5px;">清空</button>
-                                    <button class="btn btn-info btn-sm" onclick="restart()" style="position: absolute;left:70px;top:5px;border-color:#aaaaaa;background-color: #5389d2">开始</button>
-                                    <div class="input-group" style="position:absolute;width:200px;top:5px;left: 400px;" >
-                                        <span class="input-group-addon">买卖阈值：</span><input class="form-control" type="number" width="40px" max="100" min="0" id="score_flag" name="score_flag"></label>
-                                    </div>
-                                    <button id="save_flag" class="btn btn-info btn-sm" style="position:absolute;top:40px;border-color:#aaaaaa;background-color: #5389d2" onclick="JavaScript:save_flag()">保存标志</button>
-                                </div>
+                        <div style="position: absolute;top:310px;left:0px;width:200px;height:50px">
+                            <label id="from_text" style="visible:hidden;position: absolute;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
+                            <div class="input-group-sm" style="position:absolute;width:60px;" >
+                                <input class="form-control" type="number" min="-10000" id="from" name="from" style=";width:60px" />
                             </div>
+                            <label id="warning_from" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:65px;top:5px;visibility:hidden;">请输入起始值</label>
                         </div>
-                        <div id="multiple_plot" style="margin:0;padding:0;position:absolute;visibility: hidden">
-                            <div id="morphology_button_group">
-                                <image id="add_row" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:block;"></image>
-                                <div id="5" class="morphology_button_row"><button id="0-5" class="morphology_button">&nbsp</button><button id="1-5" class="morphology_button">&nbsp</button><button id="2-5" class="morphology_button">&nbsp</button><button id="3-5" class="morphology_button">&nbsp</button></button><button id="4-5" class="morphology_button">&nbsp</button><button id="5-5" class="morphology_button">&nbsp</button></div>
-                                <div id="4" class="morphology_button_row"><button id="0-4" class="morphology_button">&nbsp</button><button id="1-4" class="morphology_button">&nbsp</button><button id="2-4" class="morphology_button">&nbsp</button><button id="3-4" class="morphology_button">&nbsp</button></button><button id="4-4" class="morphology_button">&nbsp</button><button id="5-4" class="morphology_button">&nbsp</button></div>
-                                <div id="3" class="morphology_button_row"><button id="0-3" class="morphology_button">&nbsp</button><button id="1-3" class="morphology_button">&nbsp</button><button id="2-3" class="morphology_button">&nbsp</button><button id="3-3" class="morphology_button">&nbsp</button></button><button id="4-3" class="morphology_button">&nbsp</button><button id="5-3" class="morphology_button">&nbsp</button></div>
-                                <div id="2" class="morphology_button_row"><button id="0-2" class="morphology_button">&nbsp</button><button id="1-2" class="morphology_button">&nbsp</button><button id="2-2" class="morphology_button">&nbsp</button><button id="3-2" class="morphology_button">&nbsp</button></button><button id="4-2" class="morphology_button">&nbsp</button><button id="5-2" class="morphology_button">&nbsp</button></div>
-                                <div id="1" class="morphology_button_row"><button id="0-1" class="morphology_button">&nbsp</button><button id="1-1" class="morphology_button">&nbsp</button><button id="2-1" class="morphology_button">&nbsp</button><button id="3-1" class="morphology_button">&nbsp</button></button><button id="4-1" class="morphology_button">&nbsp</button><button id="5-1" class="morphology_button">&nbsp</button></div>
-                                <div style="margin:0;padding:0;">
-                                    <div id="0" class="morphology_button_row" style="display:inline;"><button id="0-0" class="morphology_button">&nbsp</button><button id="1-0" class="morphology_button">&nbsp</button><button id="2-0" class="morphology_button">&nbsp</button><button id="3-0" class="morphology_button">&nbsp</button></button><button id="4-0" class="morphology_button">&nbsp</button><button id="5-0" class="morphology_button">&nbsp</button></div>
-                                    <image id="add_column" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:inline;"></image>
-                                </div>
+                        <div style="position: absolute;left:250px;top:310px;width:200px;height:50px">
+                            <label id="message" style="position: absolute;font-size: 18px;"></label>
+                        </div>
+                        <div style="position: absolute;left:460px;top:310px;width:200px;height:50px">
+                            <label id="to_text" style="visible:hidden;position: absolute;left:120px;font-family: 'Mircosoft YaHei';color:#5893e0" width="40px"></label>
+                            <div class="input-group-sm" style="position:absolute;left:80px;width:70px;" >
+                                <input class="from-control" type="number" max="10000" id="to" name="to" style=";width:60px" />
                             </div>
-                            <button id="save_flag2" class="btn btn-info btn-sm" onclick="JavaScript:save_flag()">保存标志</button>
+                            <label id="warning_to" style="font-size:10px;font-family:'Microsoft YaHei';color:#5893e0;position:absolute;left:0;top:5px;visibility:hidden;">请输入终止值</label>
+                        </div>
+                        <div id="control-part" style="position: absolute;top:350px">
+                            <button class="btn btn-default btn-sm" onclick="allclear()" style="position: absolute;left: 0;top:5px;">清空</button>
+                            <button class="btn btn-info btn-sm" onclick="restart()" style="position: absolute;left:70px;top:5px;border-color:#aaaaaa;background-color: #5389d2">开始</button>
+                            <div class="input-group" style="position:absolute;width:200px;top:5px;left: 400px;" >
+                                <span class="input-group-addon">买卖阈值：</span><input class="form-control" type="number" width="40px" max="100" min="0" id="score_flag" name="score_flag"></label>
+                            </div>
+                            <button id="save_flag" class="btn btn-info btn-sm" style="position:absolute;top:40px;border-color:#aaaaaa;background-color: #5389d2" onclick="JavaScript:save_flag()">保存标志</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--标志显示板-->
-            <div id="flags">
-                <table id="flagtable" class="table table-striped"><%--table-hover table-bordered--%>
-                    <caption>交易标志</caption>
-                    <thead></thead>
-                    <tbody id="flagtable_body">
-
-                    </tbody>
-                </table>
-                <table id="tradeflag" class="table table-striped"><%--table-hover table-bordered--%>
-                    <caption>标志组合</caption>
-                    <thead></thead>
-                    <tbody id="tradeflag_body">
-                        <tr id="group_1">
-                            <th>1</th>
-                            <td>
-                                <select id="select_1" class="selectpicker show-tick form-control" multiple data-live-search="false"></select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <image id="add_flag" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:block;" onclick="JavaScript:addGroup();"></image>
-            </div>
-            <!--回测信息-->
-            <div id="backinfo">
-                <div id="start_date" class="input-group">
-                    <span id="start_text" class="input-group-addon">回测开始日期</span>
-                    <input id="datetimepicker1" type="text">
-                </div>
-                <div id="end_date" class="input-group">
-                    <span id="end_text" class="input-group-addon">回测结束日期</span>
-                    <input id="datetimepicker2" type="text">
-                </div>
-                <div id="cycle" class="input-group">
-                    <span class="input-group-addon">
-                        <span id="frequency">周期：<input id="frequency_input" type="number" name="frequency"></span>
-                        <div id="radios">
-                            <label class="radio_label">
-                                <input class="radio" type="radio" name="frequency-radios" id="day" value="day" checked onclick="JavaScript:frequency_day();">天
-                            </label>
-                            <label class="radio_label">
-                                <input class="radio" type="radio" name="frequency-radios" id="week" value="week" onclick="JavaScript:frequency_week();">周
-                            </label>
-                            <label class="radio_label">
-                                <input class="radio" type="radio" name="frequency-radios" id="month" value="month" onclick="JavaScript:frequency_month();">月
-                            </label>
+                <div id="multiple_plot" style="margin:0;padding:0;position:absolute;visibility: hidden">
+                    <div id="morphology_button_group">
+                        <image id="add_row" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:block;"></image>
+                        <div id="5" class="morphology_button_row"><button id="0-5" class="morphology_button">&nbsp</button><button id="1-5" class="morphology_button">&nbsp</button><button id="2-5" class="morphology_button">&nbsp</button><button id="3-5" class="morphology_button">&nbsp</button></button><button id="4-5" class="morphology_button">&nbsp</button><button id="5-5" class="morphology_button">&nbsp</button></div>
+                        <div id="4" class="morphology_button_row"><button id="0-4" class="morphology_button">&nbsp</button><button id="1-4" class="morphology_button">&nbsp</button><button id="2-4" class="morphology_button">&nbsp</button><button id="3-4" class="morphology_button">&nbsp</button></button><button id="4-4" class="morphology_button">&nbsp</button><button id="5-4" class="morphology_button">&nbsp</button></div>
+                        <div id="3" class="morphology_button_row"><button id="0-3" class="morphology_button">&nbsp</button><button id="1-3" class="morphology_button">&nbsp</button><button id="2-3" class="morphology_button">&nbsp</button><button id="3-3" class="morphology_button">&nbsp</button></button><button id="4-3" class="morphology_button">&nbsp</button><button id="5-3" class="morphology_button">&nbsp</button></div>
+                        <div id="2" class="morphology_button_row"><button id="0-2" class="morphology_button">&nbsp</button><button id="1-2" class="morphology_button">&nbsp</button><button id="2-2" class="morphology_button">&nbsp</button><button id="3-2" class="morphology_button">&nbsp</button></button><button id="4-2" class="morphology_button">&nbsp</button><button id="5-2" class="morphology_button">&nbsp</button></div>
+                        <div id="1" class="morphology_button_row"><button id="0-1" class="morphology_button">&nbsp</button><button id="1-1" class="morphology_button">&nbsp</button><button id="2-1" class="morphology_button">&nbsp</button><button id="3-1" class="morphology_button">&nbsp</button></button><button id="4-1" class="morphology_button">&nbsp</button><button id="5-1" class="morphology_button">&nbsp</button></div>
+                        <div style="margin:0;padding:0;">
+                            <div id="0" class="morphology_button_row" style="display:inline;"><button id="0-0" class="morphology_button">&nbsp</button><button id="1-0" class="morphology_button">&nbsp</button><button id="2-0" class="morphology_button">&nbsp</button><button id="3-0" class="morphology_button">&nbsp</button></button><button id="4-0" class="morphology_button">&nbsp</button><button id="5-0" class="morphology_button">&nbsp</button></div>
+                            <image id="add_column" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:inline;"></image>
                         </div>
-                    </span>
+                    </div>
+                    <button id="save_flag2" class="btn btn-info btn-sm" onclick="JavaScript:save_flag()">保存标志</button>
                 </div>
-                <text id="frequency_warning">请输入1~100之间的整数值</text>
-            <div id="asset" class="input-group">
-                <span id="asset_text" class="input-group-addon">
-                    起始资金：<input id="asset_input" type="number" min="10000" name="frequency">元
-                </span>
             </div>
-                <text id="asset_warning">请输入10000~ 1000000之间的值</text>
-                <button id="startback" class="btn btn-default btn-sm" onclick="JavaScript:backtest();">回测一下</button>
-            </div>
-            <!--回测图-->
-            <div id="backplot">
-            </div>
-            <!--回测结果-->
-            <div id="backresult">
-                <table id="backtable" class="table table-bordered">
-                    <caption></caption>
-                    <thead>
-                    <tr>
-                        <th>年化收益率</th>
-                        <th>Alpha</th>
-                        <th>Beta</th>
-                        <th>夏普比率</th>
-                        <th>收益移动率</th>
-                        <th>信息比率</th>
-                        <th>最大回撤值</th>
-                        <th>换手率</th>
-                        <th>累计收益率</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>12.3%</td>
-                        <td>5%</td>
-                        <td>2.4</td>
-                        <td>62%</td>
-                        <td>53%</td>
-                        <td>21%</td>
-                        <td>24673</td>
-                        <td>43%</td>
-                        <td>10.3%</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <button id="saveback" class="btn btn-default btn-sm" onclick="">保存策略</button>
-            </div>
-        <%--<div class="col-md-2">--%>
-            <%--指导教程--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
+        </div>
+    </div>
 </div>
+<div class="container-fluid main-content">
+    <div id="flags" class="row list-row" style="margin:20px;width:1000px;">
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>交易标志</span>
+            </div>
+        </div>
+        <div class="row">
+            <table id="flagtable" class="table table-striped"><%--table-hover table-bordered--%>
+                <thead></thead>
+                <tbody id="flagtable_body"></tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>标志组合</span>
+            </div>
+        </div>
+        <div class="row">
+            <table id="tradeflag" class="table table-striped"><%--table-hover table-bordered--%>
+                <thead></thead>
+                <tbody id="tradeflag_body">
+                <tr id="group_1">
+                    <th>1</th>
+                    <td>
+                        <select id="select_1" class="selectpicker show-tick form-control" multiple data-live-search="false"></select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <image id="add_flag" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:block;" onclick="JavaScript:addGroup();"></image>
+        </div>
+    </div>
+</div>
+<div class="container-fluid main-content">
+    <!--回测信息-->
+    <div id="backinfo" class="row list-row" style=" position:relative;margin:20px;width:1000px;height:200px;">
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>回测信息</span>
+            </div>
+        </div>
+        <div class="row" style="position:relative">
+            <div id="start_date" class="input-group">
+                <span id="start_text" class="input-group-addon">回测开始日期</span>
+                <input id="datetimepicker1" type="text">
+            </div>
+            <div id="end_date" class="input-group">
+                <span id="end_text" class="input-group-addon">回测结束日期</span>
+                <input id="datetimepicker2" type="text">
+            </div>
+            <div id="cycle" class="input-group">
+            <span class="input-group-addon">
+                <span id="frequency">周期：<input id="frequency_input" type="number" name="frequency"></span>
+                <div id="radios">
+                    <label class="radio_label">
+                        <input class="radio" type="radio" name="frequency-radios" id="day" value="day" checked onclick="JavaScript:frequency_day();">天
+                    </label>
+                    <label class="radio_label">
+                        <input class="radio" type="radio" name="frequency-radios" id="week" value="week" onclick="JavaScript:frequency_week();">周
+                    </label>
+                    <label class="radio_label">
+                        <input class="radio" type="radio" name="frequency-radios" id="month" value="month" onclick="JavaScript:frequency_month();">月
+                    </label>
+                </div>
+            </span>
+            </div>
+            <text id="frequency_warning">请输入1~100之间的整数值</text>
+            <div id="asset" class="input-group">
+            <span id="asset_text" class="input-group-addon">
+                起始资金：<input id="asset_input" type="number" min="10000" name="frequency">元
+            </span>
+            </div>
+            <text id="asset_warning">请输入10000~ 1000000之间的值</text>
+            <button id="startback" class="btn btn-default btn-sm" onclick="JavaScript:backtest();">回测一下</button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid main-content">
+    <!--回测图-->
+    <div class="row list-row" style="margin:20px;width:1000px;">
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>回测图</span>
+            </div>
+        </div>
+        <div class="row">
+            <div id="backplot">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid main-content">
+    <!--回测结果-->
+    <div class="row list-row" style="margin:20px;width:1000px;height:250px;">
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>回测结果</span>
+            </div>
+        </div>
+        <div class="row">
+            <table id="backtable" class="table table-bordered">
+                <caption></caption>
+                <thead>
+                <tr>
+                    <th>年化收益率</th>
+                    <th>Alpha</th>
+                    <th>Beta</th>
+                    <th>夏普比率</th>
+                    <th>收益移动率</th>
+                    <th>信息比率</th>
+                    <th>最大回撤值</th>
+                    <th>换手率</th>
+                    <th>累计收益率</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>12.3%</td>
+                    <td>5%</td>
+                    <td>2.4</td>
+                    <td>62%</td>
+                    <td>53%</td>
+                    <td>21%</td>
+                    <td>24673</td>
+                    <td>43%</td>
+                    <td>10.3%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <button id="saveback" class="btn btn-default btn-sm" onclick="">保存策略</button>
+        </div>
+    </div>
+
+</div>
+
 </body>
-<!--股票选择器-->
-<%--<script type="text/javascript">--%>
-    <%--var confirm=document.getElementById("confirm");--%>
-    <%--var stock=document.getElementById("stock");--%>
-    <%--confirm.onclick=function()--%>
-    <%--{--%>
-        <%--stocklist.push(stock.value);--%>
-        <%--console.log(JSON.stringify(stocklist));--%>
-        <%--changeStock();--%>
-    <%--};--%>
-<%--</script>--%>
 <!--指标和股票选择-->
 <script type="text/javascript">
     var single_plot=document.getElementById("single_plot");
@@ -767,7 +781,7 @@
                     }
                     var color = getRandomColor();
                     log.push(new log_stock(stock_selected, color));
-                    message1.innerHTML = JSON.stringify(log);
+                    //message1.innerHTML = JSON.stringify(log);
                     addPoint(log.length - 1, metric_selected, pointxy);//处理添加的点
 
                     new_stock = false;
@@ -1051,6 +1065,7 @@
             selector[i].options.add(option);
         }
         $('.selectpicker').selectpicker('refresh');
+        clean();
     }
     $('#datetimepicker1').datetimepicker(
         {
@@ -1133,7 +1148,7 @@
     // 指定图表的配置项和数据
     var option = {
         title: {
-            text: '回测结果'
+            text: ''
         },
         tooltip: {
             trigger: 'axis'
