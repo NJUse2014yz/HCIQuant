@@ -7,6 +7,17 @@ html,body {
     margin:40px auto;
 }
 
+li{
+    display: block;
+}
+
+a{
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: none;
+}
+
 .row{
     margin-right: 0;
     margin-left: 0;
@@ -84,4 +95,13 @@ span.n {
 .border-btn:hover {
     color: #5288d7;
     border-color: #5288d7;
+}
+
+.more{
+    width:100px;
+    float:right;
+    color:#5389d2;
+    margin-top: 25px;
+    cursor: pointer;
+    margin-right: -30px;
 }

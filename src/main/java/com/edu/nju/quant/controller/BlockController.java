@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class BlockController {
     @RequestMapping(value = "all_block")
-    public String personZone(HttpServletRequest request, HttpServletResponse response){
+    public String all_block(HttpServletRequest request, HttpServletResponse response){
         return "block/all_block";
+    }
+    @RequestMapping(value = "block")
+    public String block(HttpServletRequest request, HttpServletResponse response){
+        return "block/block";
     }
 }

@@ -1,0 +1,19 @@
+.new-ul{
+    display: block;
+    clear: both;
+}
+.new-ul li{
+    font-size: 17px;
+    margin-top: 8px;
+}
+
+.new-ul .left{
+    padding-left: 20px;
+    float: left;
+    cursor: pointer;
+}
+
+.new-ul .right{
+    padding-right: 30px;
+    float: right;
+}

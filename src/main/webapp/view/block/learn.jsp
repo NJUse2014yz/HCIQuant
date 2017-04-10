@@ -18,7 +18,7 @@
     <div class="study-home"><div class="hp-school-placard">
         <img src="../../img/study_board.png" alt="">
         <div class="title">
-            <h2>优矿量化学堂</h2>
+            <h2>股票量化学堂</h2>
             <p>帮你从量化小白进阶为高手</p>
         </div>
     </div>
