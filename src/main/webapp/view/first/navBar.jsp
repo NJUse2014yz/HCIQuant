@@ -36,6 +36,7 @@
 						<li><a href="/AnyQuant_web/stockInfo.action?id=sh000001">上证指数</a></li>
 						<li><a href="/AnyQuant_web/stockInfo.action?id=sz399001">深证成指</a></li>
 						<li><a href="${pageContext.request.contextPath}/compare.action">股票对比</a></li>
+						<li><a href="learn">股票学堂</a></li>
 					</ul>
 				</li>
 				<li class="active"><a href="#s2">指标策略</a>
@@ -47,14 +48,14 @@
 				</li>
 				<li><a href="#">板块统计</a>
 					<ul class="submenu">
-						<li><a href="/AnyQuant_web/industry.action">板块分析</a></li>
+						<li><a href="all_block">板块统计</a></li>
 					</ul>
 				</li>
 				<li><a href="#">个人空间</a>
 					<ul class="submenu">
 						<li><a href="/AnyQuant_web/personalStock.action">我的股票</a></li>
 						<li><a href="#">我的策略</a></li>
-						<li><a href="#">我的信息</a></li>
+						<li><a href="person_zone">我的信息</a></li>
 					</ul>
 				</li>
 			</ul>	

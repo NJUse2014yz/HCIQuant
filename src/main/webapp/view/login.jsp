@@ -119,7 +119,7 @@
                                     <input type="password" name="passwordTel" id="password-register" placeholder="密码（6-20位，建议字母数字和符号的组合）">
                                 </div>
                                 <div class="input-wrapper">
-                                    <input type="text" name="passwordAgain" id="password-register-a" placeholder="请再次输入密码">
+                                    <input type="password" name="passwordAgain" id="password-register-a" placeholder="请再次输入密码">
                                 </div>
                                 <input type="button" class="button btn-block submit-register" value="注册" onclick="register()">
                                 <div class="clearfix-wrapper">

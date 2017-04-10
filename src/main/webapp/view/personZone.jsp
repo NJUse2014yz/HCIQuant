@@ -53,6 +53,34 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row list-row choose-row modify-psw-row">
+                <div class="title">
+                    <span>修改密码</span>
+                </div>
+                <br>
+                <div class="row dynamic-info">
+                    <div class="item">
+                        <span class="n long-n">请输入原密码：</span>
+                        <input type="password" class="reg-input long" id="modify-psw-password" name="nickname">
+                    </div>
+                    <div class="item">
+                        <span class="n long-n">请输入新密码：</span>
+                        <input type="password" class="reg-input long" id="modify-psw-password-new" name="nickname">
+                    </div>
+                    <div class="item">
+                        <span class="n long-n">请再次输入新密码：</span>
+                        <input type="password" class="reg-input long" id="modify-psw-password-new-again" name="nickname">
+                    </div>
+                    <div class="row operate-info">
+                        <div class="errorMsg nicknameError" id="error-modify-psw">
+                        </div>
+                        <span class="border-btn" onclick="modifyPswSave()">修改密码</span>
+                        <span class="border-btn" onclick="modifyCancel()">取消修改</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="row list-row safe-row">
                 <div class="title">
                     <span>账号安全</span>
@@ -67,7 +95,7 @@
                                 </div>
                                 <p>用于保护帐号信息和登录安全</p>
                             </div>
-                            <span class="border-btn resetPwd">修改</span>
+                            <span class="border-btn resetPwd" onclick="modifyPsw()">修改</span>
                         </div>
                     </div>
 

@@ -34,25 +34,7 @@ function login(){
         setTimeout("$('#error-login').text('');",1000);
         return false;
     }
-    // $.ajax({
-    //     type: "post",
-    //     async: true,
-    //     url: "/HotelWorld/ask_login",
-    //     data: {
-    //         "username": username,
-    //         "password": password,
-    //     },
-    //     success: function (result) {
-    //         if (result == "success") {
-    //             alert('提交成功');
-    //         } else {
-    //             alert(result);
-    //         }
-    //     },
-    //     error: function () {
-    //          $("#error-login").text("出故障了请稍候再试");
-    //     }
-    // })
+    window.location.href="first";
 
     return true;
 
@@ -80,7 +62,7 @@ function register() {
         setTimeout("$('#error-register').text('');",1000);
         return false;
     }
-
+    window.location.href="first";
     return true;
 }
 

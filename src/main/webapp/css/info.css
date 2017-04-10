@@ -118,3 +118,39 @@
     top: 50%;
     margin-top: -16px;
 }
+
+span.n {
+    font-size: 16px;
+    color: #555555;
+    display: inline-block;
+    text-align: right;
+    width: 110px;
+}
+span.n.long-n{
+    width: 170px;
+}
+
+.reg-input {
+    border: 1px solid #d3d3d3;
+    height: 28px;
+    border-radius: 4px;
+    text-indent: 12px;
+    width: 78%;
+    font-size: 14px;
+    background: none;
+    margin-left: 5px;
+}
+
+
+.errorMsg {
+    float: left;
+    height: 28px;
+    margin:10px 30px 1px 77px;
+    color: #ff6767;
+    /*display: none;*/
+}
+
+.modify-psw-row{
+    padding-top: 20px;
+    padding-bottom: 15px;
+}

@@ -14,9 +14,10 @@ function modifyInfo() {
 }
 
 function modifyInfoSave() {
-    var name = $("#dynamic-info-name").val();
-    var age = $("#dynamic-info-age").val();
-    var address = $("#dynamic-info-address").val();
+    var name = $("#info-name").val();
+    var age = $("#info-age").val();
+    var address = $("#info-address").val();
+    var des = $("#info-des").val();
     var vId = $("#vId").val();
 
     var reg = /^[0-9]*$/;
@@ -29,32 +30,48 @@ function modifyInfoSave() {
         setTimeout("$('#error-dynamic-info').text('');",1000);
         return false;
     }
-
-    $.ajax({
-        type: "post",
-        async: true,
-        url: "/HotelWorld/modify_info",
-        data: {
-            "name": name,
-            "age":age,
-            "address":address,
-            "vid":vId
-        },
-        success: function (result) {
-            $('#error-dynamic-info').text(result);
-            setTimeout("$('#error-dynamic-info').text('');",500);
-            setTimeout(refresh,1200);
-            return true;
-        },
-        error: function () {
-            $('#error-dynamic-info').text('出故障了请稍候再试');
-            setTimeout("$('#error-dynamic-info').text('');",1000);
-        }
-    });
-
+    $("#info-name").val(name);
+    $("#info-age").val(age);
+    $("#info-address").val(address);
+    $("#info-des").val(des);
+    $(".btn-second").css("display","none");
+    $(".btn-first").css("display","block");
+    $(".choose-row").css("display","none");
 }
 
 function modifyCancel() {
     refresh();
 }
 
+function modifyPsw() {
+    clear();
+    $(".modify-psw-row").css("display","block");
+}
+
+function modifyPswSave() {
+    var password = $("#modify-psw-password").val();
+    var passwordN = $("#modify-psw-password-new").val();
+    var passwordNA = $("#modify-psw-password-new-again").val();
+    var vId = $("#vId").val();
+    if(password==""){
+        $("#error-modify-psw").text("原密码不能为空！");
+        setTimeout("$('#error-modify-psw').text('');",1000);
+        return false;
+    }else if(passwordN=="" || passwordNA==""){
+        $("#error-modify-psw").text("新密码不能为空！");
+        setTimeout("$('#error-modify-psw').text('');",1000);
+        return false;
+    }else if(passwordNA!=passwordN){
+        $("#error-modify-psw").text("前后密码不一致！");
+        setTimeout("$('#error-modify-psw').text('');",1000);
+        return false;
+    }
+
+    $('#error-modify-psw').text("修改成功");
+    setTimeout("$('#error-modify-psw').text('');",500);
+    setTimeout(refresh,1200);
+}
+
+function clear(){
+    $('.choose-row .reg-input').val("");
+}
