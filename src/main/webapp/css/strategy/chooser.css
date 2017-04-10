@@ -41,7 +41,7 @@ label
 }
 .stock_choice_li
 {
-    color:#aaaaaa;
+    color:#777777;
     border-right:1px solid #eeeeee;
     border-left:1px solid #eeeeee;
 }
@@ -103,7 +103,7 @@ label
     margin:0;
     padding:3px;
     padding-left: 10px;
-    color:#aaaaaa;
+    color:#777777;
     border-top: 1px solid #eeeeee;
     border-bottom: 1px solid #eeeeee;
 }

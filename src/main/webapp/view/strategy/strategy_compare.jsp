@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../css/strategy/backplot.css">
     <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css">
     <link rel="stylesheet" href="../../css/bootstrap-select.min.css">
+    <link href="../../css/common/common.css" rel="stylesheet">
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/echarts.min.js"></script>
@@ -20,9 +21,15 @@
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>
-<div style="margin:0;padding:0;margin-top:80px;margin-left:200px;">
-    <div id="backinfo">
-        <div id="select_strategy_div">
+<div class="container-fluid main-content">
+    <div id="select_strategy_div" class="row list-row" style="margin:20px;width:1000px;height:150px;">
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>选择策略</span>
+            </div>
+        </div>
+        <br>
+        <div class="row">
             <select id="select_strategy" class="selectpicker show-tick form-control" multiple data-live-search="false" >
                 <option value="strategy1">strategy 1</option>
                 <option value="strategy2">strategy 2</option>
@@ -30,96 +37,131 @@
                 <option value="strategy4">strategy 4</option>
             </select>
         </div>
-        <div id="start_date" class="input-group">
-            <span id="start_text" class="input-group-addon">回测开始日期</span>
-            <input id="datetimepicker1" type="text">
-        </div>
-        <div id="end_date" class="input-group">
-            <span id="end_text" class="input-group-addon">回测结束日期</span>
-            <input id="datetimepicker2" type="text">
-        </div>
-        <div id="cycle" class="input-group">
-                    <span class="input-group-addon">
-                        <span id="frequency">周期：<input id="frequency_input" type="number" name="frequency"></span>
-                        <div id="radios">
-                            <label class="radio_label">
-                                <input class="radio" type="radio" name="frequency-radios" id="day" value="day" checked onclick="JavaScript:frequency_day();">天
-                            </label>
-                            <label class="radio_label">
-                                <input class="radio" type="radio" name="frequency-radios" id="week" value="week" onclick="JavaScript:frequency_week();">周
-                            </label>
-                            <label class="radio_label">
-                                <input class="radio" type="radio" name="frequency-radios" id="month" value="month" onclick="JavaScript:frequency_month();">月
-                            </label>
-                        </div>
-                    </span>
-        </div>
-        <text id="frequency_warning">请输入1~100之间的整数值</text>
-        <div id="asset" class="input-group">
-                <span id="asset_text" class="input-group-addon">
-                    起始资金：<input id="asset_input" type="number" min="10000" name="frequency">元
-                </span>
-        </div>
-        <text id="asset_warning">请输入10000~ 1000000之间的值</text>
-        <button id="startback" class="btn btn-default btn-sm" onclick="JavaScript:backtest();">回测一下</button>
     </div>
-    <div id="backplot"></div>
-    <div id="backresult">
-        <table id="backtable" class="table table-bordered">
-            <caption></caption>
-            <thead>
-            <tr>
-                <th>编号</th>
-                <th>年化收益率</th>
-                <th>Alpha</th>
-                <th>Beta</th>
-                <th>夏普比率</th>
-                <th>收益移动率</th>
-                <th>信息比率</th>
-                <th>最大回撤值</th>
-                <th>换手率</th>
-                <th>累计收益率</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>strategy1</td>
-                <td>12.3%</td>
-                <td>5%</td>
-                <td>2.4</td>
-                <td>62%</td>
-                <td>53%</td>
-                <td>21%</td>
-                <td>24673</td>
-                <td>43%</td>
-                <td>10.3%</td>
-            </tr>
-            <tr>
-                <td>strategy2</td>
-                <td>12.3%</td>
-                <td>5%</td>
-                <td>2.4</td>
-                <td>62%</td>
-                <td>53%</td>
-                <td>21%</td>
-                <td>24673</td>
-                <td>43%</td>
-                <td>10.3%</td>
-            </tr>
-            <tr>
-                <td>strategy3</td>
-                <td>12.3%</td>
-                <td>5%</td>
-                <td>2.4</td>
-                <td>62%</td>
-                <td>53%</td>
-                <td>21%</td>
-                <td>24673</td>
-                <td>43%</td>
-                <td>10.3%</td>
-            </tr>
-            </tbody>
-        </table>
+</div>
+<div class="container-fluid main-content">
+    <div id="backinfo" class="row list-row" style="margin:20px;width:1000px;height:200px;">
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>回测信息</span>
+            </div>
+        </div>
+        <div class="row" style="position:relative;">
+            <div id="start_date" class="input-group">
+                <span id="start_text" class="input-group-addon">回测开始日期</span>
+                <input id="datetimepicker1" type="text">
+            </div>
+            <div id="end_date" class="input-group">
+                <span id="end_text" class="input-group-addon">回测结束日期</span>
+                <input id="datetimepicker2" type="text">
+            </div>
+            <div id="cycle" class="input-group">
+                <span class="input-group-addon">
+                    <span id="frequency">周期：<input id="frequency_input" type="number" name="frequency"></span>
+                    <div id="radios">
+                        <label class="radio_label">
+                            <input class="radio" type="radio" name="frequency-radios" id="day" value="day" checked onclick="JavaScript:frequency_day();">天
+                        </label>
+                        <label class="radio_label">
+                            <input class="radio" type="radio" name="frequency-radios" id="week" value="week" onclick="JavaScript:frequency_week();">周
+                        </label>
+                        <label class="radio_label">
+                            <input class="radio" type="radio" name="frequency-radios" id="month" value="month" onclick="JavaScript:frequency_month();">月
+                        </label>
+                    </div>
+                </span>
+            </div>
+            <text id="frequency_warning">请输入1~100之间的整数值</text>
+            <div id="asset" class="input-group">
+                    <span id="asset_text" class="input-group-addon">
+                        起始资金：<input id="asset_input" type="number" min="10000" name="frequency">元
+                    </span>
+            </div>
+            <text id="asset_warning">请输入10000~ 1000000之间的值</text>
+            <button id="startback" class="btn btn-default btn-sm" onclick="JavaScript:backtest();">回测一下</button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid main-content">
+    <!--回测图-->
+    <div class="row list-row" style="margin:20px;width:1000px;">
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>回测图</span>
+            </div>
+        </div>
+        <div class="row">
+            <div id="backplot">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid main-content">
+    <!--回测结果-->
+    <div class="row list-row" style="margin:20px;width:1000px;">
+        <div class="row">
+            <div class="title" style="margin-top:20px;">
+                <span>回测结果</span>
+            </div>
+        </div>
+        <div class="row">
+            <table id="backtable" class="table table-bordered">
+                <caption></caption>
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>年化收益率</th>
+                    <th>Alpha</th>
+                    <th>Beta</th>
+                    <th>夏普比率</th>
+                    <th>收益移动率</th>
+                    <th>信息比率</th>
+                    <th>最大回撤值</th>
+                    <th>换手率</th>
+                    <th>累计收益率</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>strategy1</td>
+                    <td>12.3%</td>
+                    <td>5%</td>
+                    <td>2.4</td>
+                    <td>62%</td>
+                    <td>53%</td>
+                    <td>21%</td>
+                    <td>24673</td>
+                    <td>43%</td>
+                    <td>10.3%</td>
+                </tr>
+                <tr>
+                    <td>strategy2</td>
+                    <td>12.3%</td>
+                    <td>5%</td>
+                    <td>2.4</td>
+                    <td>62%</td>
+                    <td>53%</td>
+                    <td>21%</td>
+                    <td>24673</td>
+                    <td>43%</td>
+                    <td>10.3%</td>
+                </tr>
+                <tr>
+                    <td>strategy3</td>
+                    <td>12.3%</td>
+                    <td>5%</td>
+                    <td>2.4</td>
+                    <td>62%</td>
+                    <td>53%</td>
+                    <td>21%</td>
+                    <td>24673</td>
+                    <td>43%</td>
+                    <td>10.3%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script type="text/javascript">
