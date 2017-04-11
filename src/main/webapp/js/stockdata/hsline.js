@@ -15,10 +15,10 @@ function painths(id){
     myChart.setOption(option = {
         //backgroundColor:'#f9f9f9',
         title: {
-            text: '         沪深300（000300）',
+            text: '        沪深300（SH000300）',
             textStyle:{
                 fontWeight:'lighter',
-                fontSize:16,
+                fontSize:18,
                 //color:'#777'
                 color:'#d48265',
             },
@@ -64,8 +64,8 @@ function painths(id){
         yAxis : [
             {
                 type : 'value',
-                splitnumber:6,
-                min:2700,
+                splitnumber:5,
+                min:2800,
                 // axisTick:{
                 //   show:false,
                 // },

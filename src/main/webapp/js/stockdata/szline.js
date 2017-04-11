@@ -10,10 +10,10 @@ function paintsz(id){
     //color:'#91c7ae',
     myChart.setOption(option = {
         title: {
-            text: '         上证指数（000001）',
+            text: '        上证指数（SH000001）',
             textStyle:{
                 fontWeight:'lighter',
-                fontSize:16,
+                fontSize:18,
                 //color:'#777'
                 color:line_color,
             },
@@ -59,15 +59,8 @@ function paintsz(id){
         yAxis : [
             {
                 type : 'value',
-                splitnumber:6,
-                min:2700,
-                // axisTick:{
-                //   show:false,
-                // },
-                // show:false
-                // gridIndex:{
-                //     show:false,
-                // }
+                splitnumber:5,
+                min:2800,
                 axisLine:{
                     lineStyle:{
                         color:'#eee'
