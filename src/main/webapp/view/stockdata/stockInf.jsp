@@ -233,23 +233,23 @@
 
 
 
-    //tab函数
-    function chooseTab(tabid) {
-
-        $(".tab").attr('background-color','#85aeca');
-        $("#tab_"+tabid).attr('background-color','#5b8fb2');
-        alert("#tab_"+tabid+"AAAAAAAAAAAAAAAAAAAA");
-
-
-        paintTab("tab_"+tabid,tabid);
-
-
-//        switch(tabid){
-//            case 'BIAS':
-//                paintBIAS();
+//    //tab函数
+//    function chooseTab(tabid) {
 //
-//        }
-    }
+//        $(".tab").attr('background-color','#85aeca');
+//        $("#tab_"+tabid).attr('background-color','#5b8fb2');
+//        alert("#tab_"+tabid+"AAAAAAAAAAAAAAAAAAAA");
+//
+//
+//        paintTab("tab_"+tabid,tabid);
+//
+//
+////        switch(tabid){
+////            case 'BIAS':
+////                paintBIAS();
+////
+////        }
+//    }
 
     //预测统计图
     <%--function paintForecast(){--%>
@@ -342,12 +342,13 @@
             <%--}--%>
         <%--});--%>
 //    }
+    }
 
 
     $(function () {
         $("[data-toggle='popover']").popover();
-//        alert("SSSSSSSSSSSSSS");
-        paintTab('tab_chart',"BIAS");
+        alert("SSSSSSSSSSSSSS");
+//        paintTab('tab_chart',"BIAS");
         paintKLine('chart',${sid});
 //        alert("TTTTTTTTTTTTTTTT");
 //        chooseTab('BIAS');

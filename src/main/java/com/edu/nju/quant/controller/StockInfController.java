@@ -117,6 +117,8 @@ public class StockInfController {
             info.date=info.date.replace("/", "");
         }
 
+        System.out.println("siaze="+list.size());
+
         return list;
     }
 

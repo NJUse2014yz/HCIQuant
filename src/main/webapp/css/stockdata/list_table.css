@@ -176,22 +176,22 @@ a {
     text-align: center;
 }
 
-#showcase, .active {
-    text-shadow: 1px 1px #549332;
-}
+/*#showcase, .active {*/
+    /*text-shadow: 1px 1px #549332;*/
+/*}*/
 
 .cycle {
     color: #138697;
 }
 
-.active {
-    background-color: #138697;
-    color: #fff;
-    border: 5px solid #fff;
-    z-index: 2;
-    padding: 15px 0;
-// @include shadow(0, 7px, 10px, -5px, #aaa);
-}
+/*.active {*/
+    /*background-color: #138697;*/
+    /*color: #fff;*/
+    /*border: 5px solid #fff;*/
+    /*z-index: 2;*/
+    /*padding: 15px 0;*/
+/*// @include shadow(0, 7px, 10px, -5px, #aaa);*/
+/*}*/
 
 #showcase {
     font-size: 15px;

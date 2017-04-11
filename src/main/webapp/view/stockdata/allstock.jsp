@@ -543,7 +543,7 @@
 //                    var tableAttrs=['stockId', 'name','date', 'close','open', 'incrPer',
 //                        'low', 'high', 'volume', 'turnover'];
                     htm="<div class=\"column\" >";
-                    htm+=("<a href=\"${pageContext.request.contextPath}/HCIQuant/stockInfo?id="+vo['stockId']+"\"><p class=\"plan_name\">"+vo['stockId']+"</p></a>");
+                    htm+=("<a href=\"${pageContext.request.contextPath}/HCIQuant/stockInfo?id="+vo['stockId']+"\"><p class=\"plan_name\">sh"+vo['stockId']+"</p></a>");
                     htm+=("<p class=\"feature\">"+vo['name']+"</p>");
                     htm+=("<p class=\"feature\">"+vo['date']+"</p>");
                     htm+=("<p class=\"feature\">开盘"+vo['open']+"</p>");
