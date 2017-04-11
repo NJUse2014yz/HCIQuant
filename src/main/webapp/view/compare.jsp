@@ -10,6 +10,7 @@
     <link href="../css/common/navbar.css" rel="stylesheet">
     <link href="../css/common/common.css" rel="stylesheet">
     <link href="../css/first/compare.css" rel="stylesheet">
+    <link href="../css/block/all_block.css" rel="stylesheet">
 </head>
 <body>
     <%@include file="first/navBar.jsp"%>
@@ -34,35 +35,75 @@
 					
 				</div>
                 
-                <div class="title mt">
-                    <span>今日数据对比</span>
-                </div>
                 
-                
-                
-                
-                
-                
-                <div class="title mt">
-                    <span>七日数据对比</span>
-                </div>
-                
-                <div class="chart mt">
-                	<div id="price" class="box"></div>
-                	<div id="exchange" class="box"></div>    
-                </div>
-                
-                
-                <div class="title mt">
-                    <span>指标对比</span>
-                </div>
                 
             </div>
             
+            <div class="row list-row">
+            	<div class="title mt">
+                    <span>今日数据对比</span>
+                </div>
+            	<div class="col-md-12" style="padding-left:0">
+            		<div class="industry-table">
+                    <ul>
+                        <li>
+                            <ul class="head-ul">
+                                <li class="name" style="border-left: 1px solid #e9e9e9;border-top-left-radius: 5px;">股票代码</li>
+                                <li class="num">名称</li>
+                                <li class="status" >开盘价</li>
+                                <li class="name" >收盘价</li>
+                                <li class="num">涨幅</li>
+                                
+                                <li class="num"  style="border-right: 1px solid #e9e9e9;border-top-right-radius: 5px;">市盈率</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="list-ul">
+                                <li style="border-left: 1px solid #e9e9e9;">sh600043</li>
+                                <li><a>腾讯控股</a></li>
+                                <li>10</li>
+                                <li>8.9</li>
+                                <li class="increase">+10.07%</li>
+                                
+                               
+                                <li style="border-right: 1px solid #e9e9e9;">312%</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="list-ul">
+                                <li style="border-left: 1px solid #e9e9e9;">sh602378</li>
+                                <li><a>百度</a></li>
+                                <li>7</li>
+                                <li>6.4</li>
+                                <li class="reduce">-7.4%</li>
+                                
+                               
+                                <li style="border-right: 1px solid #e9e9e9;">125%</li>
+                            </ul>
+                        </li>
+                       </ul>
+                </div>
+            </div>
+            	</div>
+            </div>
             
-                
-                
-           
+            <div class="row list-row">    
+                <div class="title mt">
+                    <span>七日数据对比</span>
+                </div>
+            	<div class="chart mt">
+                	<div id="price" class="box"></div>
+                	<div id="exchange" class="box"></div>    
+                </div>
+            </div>   
+            <div class="row list-row">    
+                <div class="title mt">
+                    <span>指标对比</span>
+                </div>
+            
+            </div> 
+              
+             
     	</div>
     </div>
 
