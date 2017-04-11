@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../css/strategy/multiple.css">
     <link rel="stylesheet" href="../../css/bootstrap-select.min.css">
     <link rel="stylesheet" href="../../css/stockchooser.css">
+    <link rel="stylesheet" href="../../css/jquery.pagewalkthrough.css">
     <link href="../../css/common/common.css" rel="stylesheet">
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
@@ -22,6 +23,8 @@
     <script src="../../js/echarts.min.js"></script>
     <script src="../../js/bootstrap-select.min.js"></script>
     <script src="../../js/bootstrap-paginator.min.js"></script>
+    <script src="../../js/html5.js"></script>
+    <script src="../../js/jquery.pagewalkthrough.min.js"></script>
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>
@@ -109,8 +112,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <div id="flags" class="row list-row" style="margin:20px;width:1000px;">
         <div class="row">
             <div class="title" style="margin-top:20px;">
@@ -143,8 +144,6 @@
             <image id="add_flag" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:block;" onclick="JavaScript:addGroup();"></image>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <!--回测信息-->
     <div id="backinfo" class="row list-row" style=" position:relative;margin:20px;width:1000px;height:200px;">
         <div class="row">
@@ -187,8 +186,6 @@
             <button id="startback" class="btn btn-default btn-sm" onclick="JavaScript:backtest();">回测一下</button>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <!--回测图-->
     <div class="row list-row" style="margin:20px;width:1000px;">
         <div class="row">
@@ -202,8 +199,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <!--回测结果-->
     <div class="row list-row" style="margin:20px;width:1000px;height:250px;">
         <div class="row">
@@ -246,9 +241,7 @@
             <button id="saveback" class="btn btn-default btn-sm" onclick="">保存策略</button>
         </div>
     </div>
-
 </div>
-
 </body>
 <!--指标和股票选择-->
 <script type="text/javascript">
@@ -272,8 +265,8 @@
     var stock_add_button=new Image();
     stock_add_button.setAttribute("id","stock_add_icon");
     stock_add_button.setAttribute("class","add_icon");
-    stock_add_button.setAttribute("src","../../img/add_inactive.png");
-    stock_add_button.setAttribute('data-toggle',"modal");
+    stock_add_button.src="${pageContext.request.contextPath}/img/add_inactive.png";
+    stock_add_button.setAttribute("data-toggle","modal");
     stock_add_button.setAttribute("data-target","#stockModal");
     stock_add_button.onclick=function()
     {
@@ -1198,5 +1191,150 @@
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 </script>
-<!--回测结果-->
+<div id="walkthrough-content" style="display: none;">
+    <div id="walkthrough-1">
+        <h3>这是策略制定页面</h3>
+
+        <p>在这里你可以自定义交易标志，并自己指定回测数据查看策略效果</p>
+        <p>点击下一步了解更多...</p>
+    </div>
+
+    <div id="walkthrough-2">
+        点击选择股票
+    </div>
+
+    <div id="walkthrough-3">
+        在这里选择指标进入备选列表
+    </div>
+
+    <div id="walkthrough-4">
+        这里可以清除所有内容
+    </div>
+
+    <div id="walkthrough-5">
+        每次从股票列表和指标列表中选择一个股票和一个指标
+        只选择一个股票一个指标则使用绘制”指标-得分“折线，如果你的备选指标多于一个或股票多于一个就采用形态标志
+    </div>
+
+    <div id="walkthrough-6">
+        保存的交易标志在这里
+    </div>
+
+    <div id="walkthrough-7">
+        这里可以选择多个标志作为一组，一个组内表示同时发生才能触发交易，不同的组只要有一个发生即可触发
+    </div>
+
+    <div id="walkthrough-8">
+        这里可以添加组
+    </div>
+
+    <div id="walkthrough-9">
+        这里填写回测数据
+    </div>
+
+    <div id="walkthrough-10">
+        这里是回测图像
+    </div>
+
+    <div id="walkthrough-11">
+        这里可以看到回测数据结果
+    </div>
+
+    <div id="walkthrough-12">
+        点击按钮保存策略
+    </div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $('body').pagewalkthrough({
+            name: 'introduction',
+            steps: [{
+                popup: {
+                    content: '#walkthrough-1',
+                    type: 'modal'
+                }
+            },{
+                wrapper: '#stock_add_icon',
+                popup: {
+                    content: '#walkthrough-2',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#metric_choose_li',
+                popup: {
+                    content: '#walkthrough-3',
+                    type: 'tooltip',
+                    position: 'right'
+                }
+            }, {
+                wrapper: '#chooser span a',
+                popup: {
+                    content: '#walkthrough-4',
+                    type: 'tooltip',
+                    position: 'left'
+                }
+            },{
+                wrapper: '.col-xs-10',
+                popup: {
+                    content: '#walkthrough-5',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            },{
+                wrapper: '#flagtable',
+                popup: {
+                    content: '#walkthrough-6',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#tradetable',
+                popup: {
+                    content: '#walkthrough-7',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#add_flag',
+                popup: {
+                    content: '#walkthrough-8',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#backinfo',
+                popup: {
+                    content: '#walkthrough-9',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#backplot',
+                popup: {
+                    content: '#walkthrough-10',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#backtable',
+                popup: {
+                    content: '#walkthrough-11',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#saveback',
+                popup: {
+                    content: '#walkthrough-12',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }]
+        });
+
+// Show the tour
+        $('body').pagewalkthrough('show');
+    });
+</script>
 </html>

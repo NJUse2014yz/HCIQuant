@@ -8,7 +8,7 @@
 	<link href="${pageContext.request.contextPath}/css/first/navBar.css" type="text/css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/first/search.css" />
 	
-	<script src="../js/jquery-3.1.1.min.js"></script>
+	<%--<script src="../js/jquery-3.1.1.min.js"></script>--%>
 	<script src="${pageContext.request.contextPath}/js/cookie.js"></script>
 	</head>
 	
