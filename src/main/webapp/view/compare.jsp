@@ -11,6 +11,14 @@
     <link href="../css/common/common.css" rel="stylesheet">
     <link href="../css/first/compare.css" rel="stylesheet">
     <link href="../css/block/all_block.css" rel="stylesheet">
+    
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="/HCIQuant/js/echarts.min.js"></script>
+    <script src="/HCIQuant/js/compare/price.js"></script>
+    <script src="/HCIQuant/js/compare/exchange.js"></script>
+    <script src="/HCIQuant/js/compare/rsi.js"></script>
+    <script src="/HCIQuant/js/compare/bias.js"></script>
 </head>
 <body>
     <%@include file="first/navBar.jsp"%>
@@ -23,10 +31,10 @@
                 </div> 
 	           <div class="input-stock">
 	                <div class="left">
-	                  	<input class="stock" placeholder="股票代码或名称"/>
+	                  	<input class="stock" placeholder="${stock1 }"/>
 	                </div>
 					<div class="right">
-						<input class="stock" placeholder="股票代码或名称" />
+						<input class="stock" placeholder="${stock2 }" />
 
 					</div>
 					
@@ -60,9 +68,9 @@
                         <li>
                             <ul class="list-ul">
                                 <li style="border-left: 1px solid #e9e9e9;">sh600043</li>
-                                <li><a>腾讯控股</a></li>
-                                <li>10</li>
-                                <li>8.9</li>
+                                <li><a>${stock1 }</a></li>
+                                <li>10.3</li>
+                                <li>11.9</li>
                                 <li class="increase">+10.07%</li>
                                 
                                
@@ -72,7 +80,7 @@
                         <li>
                             <ul class="list-ul">
                                 <li style="border-left: 1px solid #e9e9e9;">sh602378</li>
-                                <li><a>百度</a></li>
+                                <li><a>${stock2}</a></li>
                                 <li>7</li>
                                 <li>6.4</li>
                                 <li class="reduce">-7.4%</li>
@@ -100,22 +108,24 @@
                 <div class="title mt">
                     <span>指标对比</span>
                 </div>
-            
+                <div class="chart mt">
+            	<div id="rsi" class="box"></div>
+                <div id="bias" class="box"></div>
+                
+                </div>
             </div> 
               
              
     	</div>
     </div>
 
-    <script src="../js/jquery-3.1.1.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="/HCIQuant/js/echarts.min.js"></script>
-    <script src="/HCIQuant/js/compare/price.js"></script>
-    <script src="/HCIQuant/js/compare/exchange.js"></script>
+    
     <script>
 		$(function(){
 			price();
 			exchange();
+			rsi();
+			bias("${stock1}","${stock2}");
 		})
 	
 		

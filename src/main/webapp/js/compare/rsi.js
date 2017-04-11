@@ -1,9 +1,9 @@
-function exchange() {
-	var myChart = echarts.init(document.getElementById('exchange'));
+function rsi() {
+	var myChart = echarts.init(document.getElementById('rsi'));
 	
 	option = {
 		    title: {
-		        text: '换手率'
+		        text: 'rsi'
 		    },
 		    tooltip: {
 		        trigger: 'axis'
@@ -20,32 +20,22 @@ function exchange() {
 		    yAxis: {
 		        type: 'value',
 		        axisLabel: {
-		            formatter: '{value} %'
+		            formatter: '{value}%'
 		        }
 		    },
 		    series: [
 		        {
 		            name:'腾讯控股',
 		            type:'line',
-		            data:[3, 5, 7, 4, 3, 2, 4],
-		            markPoint: {
-		                data: [
-		                    {type: 'max', name: '最大值'},
-		                    {type: 'min', name: '最小值'}
-		                ]
-		            },
+		            data:[65, 75, 77, 74, 68, 62, 74],
+		            
 		            
 		        },
 		        {
 		            name:'百度',
 		            type:'line',
-		            data:[4, 6,3, 5, 5, 4, 2],
-		            markPoint: {
-		                data: [
-		                    {type: 'max', name: '最大值'},
-		                    {type: 'min', name: '最小值'}
-		                ]
-		            },
+		            data:[44, 46,53, 45, 45, 44, 52],
+		            
 		            
 		        }
 		    ]
