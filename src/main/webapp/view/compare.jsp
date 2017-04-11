@@ -122,9 +122,9 @@
     
     <script>
 		$(function(){
-			price();
-			exchange();
-			rsi();
+			price("${stock1}","${stock2}");
+			exchange("${stock1}","${stock2}");
+			rsi("${stock1}","${stock2}");
 			bias("${stock1}","${stock2}");
 		})
 	

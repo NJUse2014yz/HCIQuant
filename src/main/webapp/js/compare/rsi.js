@@ -1,4 +1,4 @@
-function rsi() {
+function rsi(stock1,stock2) {
 	var myChart = echarts.init(document.getElementById('rsi'));
 	
 	option = {
@@ -9,7 +9,7 @@ function rsi() {
 		        trigger: 'axis'
 		    },
 		    legend: {
-		        data:['腾讯控股','百度']
+		        data:[stock1,stock2]
 		    },
 		    
 		    xAxis:  {
@@ -25,14 +25,14 @@ function rsi() {
 		    },
 		    series: [
 		        {
-		            name:'腾讯控股',
+		            name:stock1,
 		            type:'line',
 		            data:[65, 75, 77, 74, 68, 62, 74],
 		            
 		            
 		        },
 		        {
-		            name:'百度',
+		            name:stock2,
 		            type:'line',
 		            data:[44, 46,53, 45, 45, 44, 52],
 		            

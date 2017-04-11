@@ -1,4 +1,4 @@
-function price() {
+function price(stock1,stock2) {
 	var myChart = echarts.init(document.getElementById('price'));
 	option = {
 		title : {
@@ -9,7 +9,7 @@ function price() {
 			trigger : 'axis'
 		},
 		legend : {
-			data : [ '腾讯控股', '百度' ]
+			data : [ stock1, stock2 ]
 		},
 		
 		calculable : true,
@@ -25,7 +25,7 @@ function price() {
 			}
 		} ],
 		series : [ {
-			name : '腾讯控股',
+			name : stock1,
 			type : 'line',
 			data : [ 11, 11, 15, 13, 10, 12, 13 ],
 			markPoint : {
@@ -44,7 +44,7 @@ function price() {
 				} ]
 			}
 		}, {
-			name : '百度',
+			name : stock2,
 			type : 'line',
 			data : [ 6, 3, 5, 7, 6, 8, 7 ],
 			markPoint : {

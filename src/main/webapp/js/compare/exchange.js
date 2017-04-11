@@ -1,4 +1,4 @@
-function exchange() {
+function exchange(stock1,stock2) {
 	var myChart = echarts.init(document.getElementById('exchange'));
 	
 	option = {
@@ -9,7 +9,7 @@ function exchange() {
 		        trigger: 'axis'
 		    },
 		    legend: {
-		        data:['腾讯控股','百度']
+		        data:[stock1,stock2]
 		    },
 		    
 		    xAxis:  {
@@ -25,7 +25,7 @@ function exchange() {
 		    },
 		    series: [
 		        {
-		            name:'腾讯控股',
+		            name:stock1,
 		            type:'line',
 		            data:[3, 5, 7, 4, 3, 2, 4],
 		            markPoint: {
@@ -37,7 +37,7 @@ function exchange() {
 		            
 		        },
 		        {
-		            name:'百度',
+		            name:stock2,
 		            type:'line',
 		            data:[4, 6,3, 5, 5, 4, 2],
 		            markPoint: {

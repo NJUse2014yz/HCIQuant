@@ -30,14 +30,14 @@ input.stock:focus{
 	margin-left:10px;
 	float:left;
 	
-	width:320px;
+	width:360px;
 	position: relative;
 }
 
 .right{
 	margin-top: 20px;
 	margin-left:10px;
-	width:320px;
+	width:360px;
 	position: relative;
 }
 
@@ -69,8 +69,8 @@ input.stock:focus{
 
 .box{
 	position:relative;
-	width:360px;
-	height:360px;
+	width:400px;
+	height:400px;
 	float:left;
 	margin-left:10px;
 }
