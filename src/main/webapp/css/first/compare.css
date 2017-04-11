@@ -61,7 +61,7 @@ input.stock:focus{
 }
 
 .chart{
-	height:200px;
+	
 	width:100%;
 	float:left;
 	position:relative;
@@ -69,8 +69,8 @@ input.stock:focus{
 
 .box{
 	position:relative;
-	width:200px;
-	height:200px;
+	width:360px;
+	height:360px;
 	float:left;
 	margin-left:10px;
 }

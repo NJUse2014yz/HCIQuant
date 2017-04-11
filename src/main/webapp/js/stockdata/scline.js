@@ -12,10 +12,10 @@ function paintsc(id){
     var line_color='#24936e';
     myChart.setOption(option = {
         title: {
-            text: '         深证成指（399001）',
+            text: '        深证成指（SH399001）',
             textStyle:{
                 fontWeight:'lighter',
-                fontSize:16,
+                fontSize:18,
                 //color:'#777'
                 color:line_color,
             },
@@ -61,8 +61,8 @@ function paintsc(id){
         yAxis : [
             {
                 type : 'value',
-                splitnumber:6,
-                min:12900,
+                splitnumber:5,
+                min:13200,
                 //show:false,
                 axisLine:{
                     lineStyle:{

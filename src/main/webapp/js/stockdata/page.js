@@ -8,8 +8,8 @@
     //id : '#paging',//id
     leng: 9,//总页数
     activeClass: 'page-active' ,//active类
-    firstPage: '«',//
-    lastPage: '»',
+    firstPage: '<<',//
+    lastPage: '>>',
     prv: '<',//<a href=# disabled><i class="icon ion-chevron-left"></i></a>
     next: '>',//<a href=#2><i class="icon ion-chevron-right"></i></a>
   };

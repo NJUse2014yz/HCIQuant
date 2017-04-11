@@ -62,7 +62,7 @@ function register() {
         setTimeout("$('#error-register').text('');",1000);
         return false;
     }
-    window.location.href="first";
+    window.location.href="level-first-1";
     return true;
 }
 

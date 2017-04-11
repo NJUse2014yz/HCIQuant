@@ -11,28 +11,7 @@ function price() {
 		legend : {
 			data : [ '腾讯控股', '百度' ]
 		},
-		toolbox : {
-			show : true,
-			feature : {
-				mark : {
-					show : true
-				},
-				dataView : {
-					show : true,
-					readOnly : false
-				},
-				magicType : {
-					show : true,
-					type : [ 'line', 'bar' ]
-				},
-				restore : {
-					show : true
-				},
-				saveAsImage : {
-					show : true
-				}
-			}
-		},
+		
 		calculable : true,
 		xAxis : [ {
 			type : 'category',
@@ -48,7 +27,7 @@ function price() {
 		series : [ {
 			name : '腾讯控股',
 			type : 'line',
-			data : [ 11, 11, 15, 13, 12, 13, 10 ],
+			data : [ 11, 11, 15, 13, 10, 12, 13 ],
 			markPoint : {
 				data : [ {
 					type : 'max',
@@ -70,10 +49,11 @@ function price() {
 			data : [ 6, 3, 5, 7, 6, 8, 7 ],
 			markPoint : {
 				data : [ {
-					name : '周最低',
-					value : 3,
-					xAxis : 1,
-					yAxis : 3
+					type : 'max',
+					name : '最大值'
+				}, {
+					type : 'min',
+					name : '最小值'
 				} ]
 			},
 			markLine : {

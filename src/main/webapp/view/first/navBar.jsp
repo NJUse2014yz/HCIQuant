@@ -41,8 +41,8 @@
 				</li>
 				<li class="active"><a href="#s2">指标策略</a>
 					<ul class="submenu">
-						<li><a href="strategy/anlysis">指标分析</a></li>
-						<li><a href="strategy/make">策略分析</a></li>
+						<li><a href="anlysis">指标分析</a></li>
+						<li><a href="make">策略分析</a></li>
 					</ul>
 				</li>
 				<li><a href="#">板块统计</a>
