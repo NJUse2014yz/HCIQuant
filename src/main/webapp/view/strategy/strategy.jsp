@@ -292,7 +292,7 @@
 
     function final_add()
     {
-        stocklist=select_stock_list;
+        stocklist=stocklist.concat(select_stock_list);
         stock_choice_init();
     }
 
@@ -344,6 +344,7 @@
                         //给出画板
                         if (stock_selected != "" && (stock_choice_ul.childElementCount > 2 || metric_choice_ul.childElementCount > 1)) {
                             //多模式
+                            alert("multi");
                             var color = getRandomColor();
                             log.push(new log_stock(stock_selected, color));
                             state = "multiple";
@@ -354,6 +355,7 @@
                         }
                         else if (stock_selected != "" && stock_choice_ul.childElementCount == 2 && metric_choice_ul.childElementCount == 1) {
                             //单模式
+                            alert("single");
                             state = "single";
                             single_plot.style.visibility = "visible";
                             document.getElementById("from").style.visibility="visible";
@@ -442,6 +444,7 @@
     //股票初始化
     function stock_choice_init()
     {
+        stock_choice_ul.innerHTML="";
         for(var i=0;i<stocklist.length;i++)
         {
             var stock_choice_li=document.createElement("li");
@@ -469,6 +472,7 @@
                     //给出画板
                     if (metric_selected != "" && (stock_choice_ul.childElementCount > 2 || metric_choice_ul.childElementCount > 1)) {
                         //多模式
+                        alert("multi");
                         var color = getRandomColor();
                         log.push(new log_stock(stock_selected, color));
                         state = "multiple";
@@ -479,6 +483,7 @@
                     }
                     else if (metric_selected != "" && stock_choice_ul.childElementCount == 2 && metric_choice_ul.childElementCount == 1) {
                         //单模式
+                        alert("single");
                         state = "single";
                         single_plot.style.visibility = "visible";
                         document.getElementById("from").style.visibility="visible";
@@ -933,7 +938,7 @@
                 {
                     console.log("have to be connected,you can delete");//提示
                 }
-                message1.innerHTML=JSON.stringify(log);
+//                message1.innerHTML=JSON.stringify(log);
                 return;
             }
         }
@@ -998,6 +1003,7 @@
         log=[];
         multiple_plot.style.visibility="hidden";
         stocklist=[];
+        select_stock_list=[];
         metriclist=[];
         {
             stock_choice_ul.innerHTML = "";

@@ -34,7 +34,7 @@
         <div class="row">
             <div class="title" style="margin-top:20px;">
                 <span>选择-</span>
-                <span><a onclick="JavaScript:clean();">清空</a></span>
+                <span id="clear"><a onclick="JavaScript:clean();">清空</a></span>
             </div>
             <!--选择股票-->
             <div id="stock_choice_div" class="col-xs-10" >
@@ -1244,6 +1244,7 @@
         点击按钮保存策略
     </div>
 </div>
+
 <script type="text/javascript">
     $(function() {
         $('body').pagewalkthrough({
@@ -1268,7 +1269,7 @@
                     position: 'right'
                 }
             }, {
-                wrapper: '#chooser span a',
+                wrapper: '#clear',
                 popup: {
                     content: '#walkthrough-4',
                     type: 'tooltip',
@@ -1300,7 +1301,8 @@
                 popup: {
                     content: '#walkthrough-8',
                     type: 'tooltip',
-                    position: 'bottom'
+                    position: 'bottom',
+
                 }
             }, {
                 wrapper: '#backinfo',
