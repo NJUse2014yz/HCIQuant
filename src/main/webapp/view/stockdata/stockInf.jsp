@@ -15,14 +15,14 @@
     <%--<link rel="stylesheet" href="../../css/stockdata/table1.css">--%>
     <%--<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css">--%>
 
-    <%--<script src="../../js/jquery-3.1.1.min.js"></script>--%>
-    <%--<script src="../../js/bootstrap.js"></script>--%>
-    <%--<script src="../../js/echarts.min.js"></script>--%>
-    <%--<script src="../../js/stockdata/echarts.js"></script>--%>
-    <%--&lt;%&ndash;<script src="../../js/stockdata/highstock.js"></script>&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<script src="../../js/stockdata/KLine.js"></script>&ndash;%&gt;--%>
-    <%--<script src="../../js/stockdata/echart_kline.js"></script>--%>
-    <%--<script src="../../js/stockdata/paintTab.js"></script>--%>
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/echarts.min.js"></script>
+    <script src="../../js/stockdata/echarts.js"></script>
+    <%--<script src="../../js/stockdata/highstock.js"></script>--%>
+    <%--<script src="../../js/stockdata/KLine.js"></script>--%>
+    <script src="../../js/stockdata/echart_kline.js"></script>
+    <script src="../../js/stockdata/paintTab.js"></script>
 
     <style type="text/css">
 
@@ -196,12 +196,7 @@
 </body>
 
 
-<script>
-
-
-    var jq=$.noConflict();
-    alert(jq);
-
+<script type="text/javascript">
     var islike=0;
     function likeStock() {
         islike++;
@@ -257,107 +252,9 @@
 ////        }
 //    }
 
-    //预测统计图
-    <%--function paintForecast(){--%>
-        <%--$(".futureVolume").hide();--%>
-        <%--$(".futurePrice").hide();--%>
-        <%--$(".futureTrade").hide();--%>
-        <%--var barChart=bar('futureVolume');--%>
-        <%--$.ajax({--%>
-            <%--type:'post',--%>
-            <%--url:'${pageContext.request.contextPath}/getForecast.action',--%>
-            <%--data:'id=${latestInfo.stockId}',--%>
-            <%--success:function(data){--%>
-                <%--if(data.length==0){--%>
-                    <%--return;--%>
-                <%--}--%>
-                <%--$(".futureVolume").show();--%>
-                <%--$(".futurePrice").show();--%>
-                <%--$(".futureTrade").show();--%>
-                <%--setBarData(barChart,data);--%>
-                <%--lineChart2(data, "futurePrice", ["open","close"], ['开盘价','收盘价'], "未来七天股价预测");--%>
-                <%--lineChart2(data, "futureTrade", ["turnover"], ["换手率"], "未来七天换手率预测");--%>
-            <%--}--%>
-        <%--});--%>
-
-    <%--}--%>
-
-    //折线图
-    <%--function paintLineChart(){--%>
-        <%--var dateName="date";--%>
-
-        <%--var rsi=["rsi5","rsi10","rsi20"];--%>
-        <%--var rsiName=["五日相对强弱指标","十日相对强弱指标","二十日相对强弱指标"];--%>
-
-        <%--var boll=["boll1","boll2","boll3"];--%>
-        <%--var bollName=["布林线1","布林线2","布林线3"];--%>
-
-        <%--var bias=["bias5","bias10","bias20"];--%>
-        <%--var biasName=["五日乖离率","十日乖离率","二十日乖离率"];--%>
-
-        <%--var vr=["vr"];--%>
-        <%--var vrName=["成交量变异率"];--%>
-
-        <%--var rsv=["rsv"];--%>
-        <%--var rsvName=["未成熟随机值"];--%>
-
-        <%--var kdj=["k","d","j"];--%>
-
-        <%--var macd=["macd","diff","dea"];--%>
-
-        <%--var obv=["obv"];--%>
-        <%--var obvName=["能量潮"];--%>
-
-        <%--var roc=["roc12","roc25"];--%>
-        <%--var rocName=["12日roc","25日roc"];--%>
-
-        <%--$.ajax({--%>
-            <%--type:'post',--%>
-            <%--url:'${pageContext.request.contextPath}/getLineData.action',--%>
-            <%--data:'id=${latestInfo.stockId}',--%>
-            <%--success:function(data){--%>
-
-                <%--$("h2#rsih2").text(data[data.length-1]["rsi"]);--%>
-
-                <%--var rsiSeries=createDataSeries(data, dateName, rsi, rsiName,"");--%>
-                <%--lineChart("rsi",rsiSeries,"相对强弱指标");--%>
-
-                <%--var bollSeries=createDataSeries(data, dateName, boll, bollName,"true");--%>
-                <%--lineChart("boll",bollSeries,"布林线");--%>
-
-                <%--var biasSeries=createDataSeries(data, dateName, bias, biasName);--%>
-                <%--lineChart("bias",biasSeries,"乖离率");--%>
-
-                <%--var vrSeries=createDataSeries(data, dateName,vr, vrName);--%>
-                <%--lineChart("vr", vrSeries, "成交量变异率");--%>
-
-                <%--var rsvSeries=createDataSeries(data, dateName, rsv,rsvName);--%>
-                <%--lineChart("rsv", rsvSeries, "未成熟随机值");--%>
-
-                <%--var kdjSeries=createDataSeries(data, dateName, kdj, kdj);--%>
-                <%--lineChart("kdj", kdjSeries, "随机指标");--%>
-
-                <%--var macdSeries=createDataSeries(data, dateName, macd, macd);--%>
-                <%--lineChart("macd", macdSeries, "指数平滑曲线");--%>
-
-                <%--var obvSeries=createDataSeries(data, dateName, obv, obvName);--%>
-                <%--lineChart("obv", obvSeries, "能量潮");--%>
-
-                <%--var rocSeries=createDataSeries(data, dateName, roc, rocName);--%>
-                <%--lineChart("roc", rocSeries, "变动速率指标");--%>
-            <%--}--%>
-        <%--});--%>
-//    }
-    }
-
-
-
-
-//    $(function () {
-    jQuery(document).ready(function(){
+    $(function () {
         $("[data-toggle='popover']").popover();
-        alert("SSSSSSSSSSSSSS");
-//        paintTab('tab_chart',"BIAS");
+        paintTab('tab_chart',"BIAS");
         paintKLine('chart',${sid});
 //        alert("TTTTTTTTTTTTTTTT");
 //        chooseTab('BIAS');
@@ -372,14 +269,13 @@
 
 
 <%--<script src="../../js/stockdata/jquery-3.2.0.js"></script>--%>
-<script src="../../js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="../../js/stockdata/echarts.js"></script>
-<script src="../../js/bootstrap.js"></script>
-<script src="../../js/echarts.min.js"></script>
-<script src="../../js/stockdata/jquery-3.2.0.js"></script>
-<%--<script src="../../js/stockdata/highstock.js"></script>--%>
-<%--<script src="../../js/stockdata/KLine.js"></script>--%>
-<script type="text/javascript" src="../../js/stockdata/echart_kline.js"></script>
-<script type="text/javascript" src="../../js/stockdata/paintTab.js"></script>
+<%--<script src="../../js/jquery-3.1.1.min.js"></script>--%>
+<%--<script type="text/javascript" src="../../js/stockdata/echarts.js"></script>--%>
+<%--<script src="../../js/bootstrap.js"></script>--%>
+<%--&lt;%&ndash;<script src="../../js/echarts.min.js"></script>&ndash;%&gt;--%>
+<%--&lt;%&ndash;<script src="../../js/stockdata/highstock.js"></script>&ndash;%&gt;--%>
+<%--&lt;%&ndash;<script src="../../js/stockdata/KLine.js"></script>&ndash;%&gt;--%>
+<%--<script type="text/javascript" src="../../js/stockdata/echart_kline.js"></script>--%>
+<%--<script type="text/javascript" src="../../js/stockdata/paintTab.js"></script>--%>
 
 </html>
