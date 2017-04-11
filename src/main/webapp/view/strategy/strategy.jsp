@@ -109,8 +109,7 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
+
     <div id="flags" class="row list-row" style="margin:20px;width:1000px;">
         <div class="row">
             <div class="title" style="margin-top:20px;">
@@ -143,8 +142,6 @@
             <image id="add_flag" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:block;" onclick="JavaScript:addGroup();"></image>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <!--回测信息-->
     <div id="backinfo" class="row list-row" style=" position:relative;margin:20px;width:1000px;height:200px;">
         <div class="row">
@@ -187,8 +184,6 @@
             <button id="startback" class="btn btn-default btn-sm" onclick="JavaScript:backtest();">回测一下</button>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <!--回测图-->
     <div class="row list-row" style="margin:20px;width:1000px;">
         <div class="row">
@@ -202,8 +197,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <!--回测结果-->
     <div class="row list-row" style="margin:20px;width:1000px;height:250px;">
         <div class="row">
