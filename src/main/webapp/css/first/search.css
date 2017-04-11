@@ -61,7 +61,7 @@ div.search:hover{
     min-width: 0;
     cursor: pointer;
     height: 32px;
-    background: url(/HCIQuant/img/first/search.png) -653px -720px;
+    background: url(../../img/first/search.png) -653px -720px;
     margin: 0;
     padding: 0;
     border: 0;

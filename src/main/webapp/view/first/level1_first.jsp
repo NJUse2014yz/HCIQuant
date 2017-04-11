@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/first/first.css" />
+<link rel="stylesheet" href="../../css/jquery.pagewalkthrough.css">
 <title>首页</title>
 </head>
 <body>
@@ -105,6 +104,35 @@
 			<p>一键实盘模拟 ，云端托管，更有机会赢取实盘资金管理收益</p>
 		</div>
 	</div>
-	
 </body>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/bootstrap.js"></script>
+	<script src="../../js/echarts.min.js"></script>
+	<script src="../../js/html5.js"></script>
+	<script src="../../js/jquery.pagewalkthrough.min.js"></script>
+	<div id="walkthrough-content" style="display: none;">
+		<div id="walkthrough-1">
+			<h3>升级提示</h3>
+
+			<p>恭喜您成为level1用户,解锁股票库</p>
+			<p>赶快点击导航栏第一列查看吧！</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+        $(function() {
+            $('body').pagewalkthrough({
+                name: 'introduction',
+                steps: [{
+                    popup: {
+                        content: '#walkthrough-1',
+                        type: 'modal'
+                    }
+                }]
+            });
+
+// Show the tour
+            $('body').pagewalkthrough('show');
+        });
+	</script>
+
 </html>

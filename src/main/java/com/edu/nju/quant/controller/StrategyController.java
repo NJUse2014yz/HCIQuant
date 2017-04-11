@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-@RequestMapping("/strategy")
 public class StrategyController {
 
 	@RequestMapping("/scan")

@@ -17,7 +17,7 @@
 		<div class="top">
 		
 		<div class="logo">
-			<img alt="" src="${pageContext.request.contextPath}/img/common/logo.png">
+			<img alt="" src="../../img/common/logo.png">
 		</div>	
 	
 		<div class="stock-search">
@@ -29,21 +29,20 @@
 		
 		<div class="container">
 			<ul class="menu">
-				<li><a href="${pageContext.request.contextPath}/first">首页</a></li>
+				<li><a href="first">首页</a></li>
 				<li><a href="#">股票数据</a>
 					<ul class="submenu">
-						<li><a href="/AnyQuant_web/stock.action">全部</a></li>
-						<li><a href="/AnyQuant_web/stockInfo.action?id=sh000001">上证指数</a></li>
-						<li><a href="/AnyQuant_web/stockInfo.action?id=sz399001">深证成指</a></li>
-						<li><a href="${pageContext.request.contextPath}/compare.action">股票对比</a></li>
+						<li><a href="allstock">全部</a></li>
+						<li><a href="allstock?id=sh000001">上证指数</a></li>
+						<li><a href="allstock?id=sz399001">深证成指</a></li>
+						<li><a href="compare">股票对比</a></li>
 						<li><a href="learn">股票学堂</a></li>
 					</ul>
 				</li>
 				<li class="active"><a href="#s2">指标策略</a>
 					<ul class="submenu">
-						<li><a href="${pageContext.request.contextPath}/analysis.action">指标分析</a></li>
-						<li><a href="/AnyQuant_web/strategy.action?id=sh600000">单股策略</a></li>
-						<li><a href="#">多股策略</a></li>
+						<li><a href="strategy/anlysis">指标分析</a></li>
+						<li><a href="strategy/make">策略分析</a></li>
 					</ul>
 				</li>
 				<li><a href="#">板块统计</a>
@@ -89,7 +88,7 @@
 				if(userName!='""'){
 					//显示头像
 					
-					$("#login-area").append("<img class='user' src='/HCIQuant/img/first/user.jpg' />");
+					$("#login-area").append("<img class='user' src='../img/first/user.jpg' />");
 				}
 				else{
 					//显示登录注册

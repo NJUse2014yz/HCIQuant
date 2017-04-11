@@ -19,4 +19,9 @@ public class FirstController {
 	public String first(){
 		return "first/first";
 	}
+
+	@RequestMapping("/level-first-1")
+	public String lfirst1(){
+		return "first/level1_first";
+	}
 }
