@@ -19,7 +19,7 @@ public class AllStockService {
     public List<StockListInf> showListStock(int n)throws Exception{
         // TODO Auto-generated method stub
         ArrayList<StockListInf> list = new ArrayList<StockListInf>();
-        int numperpage = 10;// 假设一页有10条
+        int numperpage = 5;// 假设一页有10条
         String result = "";
 
         try {

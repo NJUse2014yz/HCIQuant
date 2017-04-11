@@ -15,7 +15,7 @@ function paintKLine(id, stockId) {
         //var myChart = echarts.init(document.getElementById(id));
         //alert(myChart.toString);
         myChart.setOption(option = {
-            backgroundColor: '#eee',
+            //backgroundColor: '#eee',
             animation: false,
             title:{
                 show:true,

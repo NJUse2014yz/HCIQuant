@@ -16,14 +16,15 @@
     <style type="text/css">
         .pageTest {
             position:relative;
-            width: 600px;
-            height: 50px;
-            left:230px;
-            top:5px;
+            /*width: 600px;*/
+            width:100%;
+            height: 30px;
+            /*left:230px;*/
+            /*top:5px;*/
         }
 
         .activP {
-            background-color: #367fa9 !important;
+            background-color: #85aeca !important;
             color: #fff !important;
         }
     </style>
@@ -165,58 +166,59 @@
             <div class="title">
                 <span style="padding:7px;">全部股票</span>
             </div>
-            <div id="pricing_chart" style="margin_top:5px;padding:5px">
+            <div id="pricing_chart" style="margin_top:5px;padding:5px;align-content: center">
                 <!--   <div id="cycles">
                   </div> -->
                 <div id="plans">
                     <div id="monthly_plans" class="columns">
-                        <div class="column">
-                            <a href="https://www.baidu.com"><p class="plan_name">603999</p></a>
-                            <p class="feature">读者传媒</p>
-                            <p class="feature">2017/03/04</p>
-                            <p class="feature">开盘: 35.05</p>
-                            <p class="feature">收盘: 35.16</p>
-                            <p class="feature small">+ 1.138%</p>
-                        </div>
-                        <div class="col_line"></div>
-                        <div class="column">
-                            <p class="plan_name">603999</p>
-                            <p class="feature">Up to 30 hours</p>
-                            <p class="feature">1-2 days</p>
-                            <p class="feature">2 hours</p>
-                            <p class="feature small">603999</p>
-                        </div>
-                        <div class="col_line"></div>
-                        <div class="column">
-                            <p class="plan_name">603999</p>
-                            <p class="feature">Up to 30 hours</p>
-                            <p class="feature">1-2 days</p>
-                            <p class="feature">2 hours</p>
-                            <p class="feature small">603999</p>
-                        </div>
-                        <div class="col_line"></div>
-                        <div class="column">
-                            <p class="plan_name">603999</p>
-                            <p class="feature">Up to 40 hours</p>
-                            <p class="feature">1-2 days</p>
-                            <p class="feature">2 hours</p>
-                            <p class="feature small">603999</p>
-                        </div>
-                        <div class="col_line"></div>
-                        <div class="column">
-                            <p class="plan_name">603999</p>
-                            <p class="feature">Up to 30 hours</p>
-                            <p class="feature">1-2 days</p>
-                            <p class="feature">2 hours</p>
-                            <p class="feature small">603999</p>
-                        </div>
+                        <%--<div class="column" >--%>
+                            <%--<a href="https://www.baidu.com"><p class="plan_name">603999</p></a>--%>
+                            <%--<p class="feature">读者传媒</p>--%>
+                            <%--<p class="feature">2017/03/04</p>--%>
+                            <%--<p class="feature">开盘: 35.05</p>--%>
+                            <%--<p class="feature">收盘: 35.16</p>--%>
+                            <%--<p class="feature small">+ 1.138%</p>--%>
+                        <%--</div>--%>
+                        <%--<div class="col_line"></div>--%>
+                        <%--<div class="column">--%>
+                            <%--<p class="plan_name">603999</p>--%>
+                            <%--<p class="feature">Up to 30 hours</p>--%>
+                            <%--<p class="feature">1-2 days</p>--%>
+                            <%--<p class="feature">2 hours</p>--%>
+                            <%--<p class="feature small">603999</p>--%>
+                        <%--</div>--%>
+                        <%--<div class="col_line"></div>--%>
+                        <%--<div class="column">--%>
+                            <%--<p class="plan_name">603999</p>--%>
+                            <%--<p class="feature">Up to 30 hours</p>--%>
+                            <%--<p class="feature">1-2 days</p>--%>
+                            <%--<p class="feature">2 hours</p>--%>
+                            <%--<p class="feature small">603999</p>--%>
+                        <%--</div>--%>
+                        <%--<div class="col_line"></div>--%>
+                        <%--<div class="column">--%>
+                            <%--<p class="plan_name">603999</p>--%>
+                            <%--<p class="feature">Up to 40 hours</p>--%>
+                            <%--<p class="feature">1-2 days</p>--%>
+                            <%--<p class="feature">2 hours</p>--%>
+                            <%--<p class="feature small">603999</p>--%>
+                        <%--</div>--%>
+                        <%--<div class="col_line"></div>--%>
+                        <%--<div class="column">--%>
+                            <%--<p class="plan_name">603999</p>--%>
+                            <%--<p class="feature">Up to 30 hours</p>--%>
+                            <%--<p class="feature">1-2 days</p>--%>
+                            <%--<p class="feature">2 hours</p>--%>
+                            <%--<p class="feature small">603999</p>--%>
+                        <%--</div>--%>
                     </div>
                     <div id="showcase">
                         <!--     <div id="monthly_showcase"> -->
-                        <div class="item" style="margin_top:0px;">
-                            <span style="cursor:pointer">here</span>
-                            <span>here</span>
-
+                        <div class="item" style="margin:0px;padding:0px;width:100%;text-align: center;">
+                            <%--<span style="cursor:pointer">here</span>--%>
+                            <%--<span>here</span>--%>
+                                <div class="pageTest" style="text-align: center;">
+                                    <div class="data-pagination" style="text-align: center">
                         </div>
                     </div>
                     </div>
@@ -444,7 +446,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-1"></div>
+    <%--<div class="col-md-1"></div>--%>
 
 
     </div>
@@ -456,14 +458,14 @@
 <script type="text/javascript" src="../../js/stockdata/echarts.js"></script>
 <%--<script src="../../js/echarts.min.js"></script>--%>
 <script src="../../js/stockdata/Chart.js"></script>
-<script src="../../js/stockdata/linechart_000001.js"></script>
-<script src="../../js/stockdata/linechart_399001.js"></script>
-<script src="../../js/stockdata/linechart_000300.js"></script>
-<script type="text/javascript" src="../../js/stockdata/stock_list_table.js"></script>
+<%--<script src="../../js/stockdata/linechart_000001.js"></script>--%>
+<%--<script src="../../js/stockdata/linechart_399001.js"></script>--%>
+<%--<script src="../../js/stockdata/linechart_000300.js"></script>--%>
+<%--<script type="text/javascript" src="../../js/stockdata/stock_list_table.js"></script>--%>
 <script type="text/javascript" src="../../js/stockdata/page.js"></script>
-<script type="text/javascript" src="../../js/stockdata/table.js"></script>
-<script type="text/javascript" src="../../js/stockdata/bar.js"></script>
-<script type="text/javascript" src="../../js/stockdata/Line.js"></script>
+<%--<script type="text/javascript" src="../../js/stockdata/table.js"></script>--%>
+<%--<script type="text/javascript" src="../../js/stockdata/bar.js"></script>--%>
+<%--<script type="text/javascript" src="../../js/stockdata/Line.js"></script>--%>
 <%--<script src="../js/info.js"></script>--%>
 <script type="text/javascript" src="../../js/stockdata/szline.js"></script>
 <script type="text/javascript" src="../../js/stockdata/scline.js"></script>
@@ -484,10 +486,10 @@
         activeClass: 'activP' , //active 类样式定义
     });
 
-    $(".column").hover(function () {
-                $(this).toggleClass("highlight");
-            }
-    );
+//    $(".column").hover(function () {
+//                $(this).toggleClass("highlight");
+//            }
+//    );
 
 
 
@@ -522,9 +524,54 @@
             data:'pageNumber='+pageNumber,
             success:function(data){
 //                alert("HHHHHH")
-                table(data,tableAttrs,'stockList');
-                selectStockListener(data,'stockId',"stockList");
+//                table(data,tableAttrs,'stockList');
+//                selectStockListener(data,'stockId',"stockList");
+//                $("table#"+idName+" tr#auto").remove();
+//                document.getElementById("monthly_plans").remove();
+                $("#monthly_plans").empty();
+//                alert($("#monthly_plans").className);
+                //遍历数组
+
+                $.each(data,function(i,vo){
+
+//                    htm="<tr id='auto'>";
+//                    //遍历属性
+//                    $.each(attrs,function(i,attr){
+//                        htm+="<td>"+vo[attr]+"</td>";
+//                    });
+//                    htm+="</tr>";
+//                    var tableAttrs=['stockId', 'name','date', 'close','open', 'incrPer',
+//                        'low', 'high', 'volume', 'turnover'];
+                    htm="<div class=\"column\" >";
+                    htm+=("<a href=\"${pageContext.request.contextPath}/HCIQuant/stockInfo?id="+vo['stockId']+"\"><p class=\"plan_name\">"+vo['stockId']+"</p></a>");
+                    htm+=("<p class=\"feature\">"+vo['name']+"</p>");
+                    htm+=("<p class=\"feature\">"+vo['date']+"</p>");
+                    htm+=("<p class=\"feature\">开盘"+vo['open']+"</p>");
+                    htm+=("<p class=\"feature\">收盘"+vo['close']+"</p>");
+                    htm+=("<p class=\"feature small\">"+vo['incrPer']+"</p></div>");
+                    if(i!=4){
+                        htm+=("<div class=\"col_line\"></div>");
+                    }
+//                    alert(htm);
+                    <%--htm+=("</div>");--%>
+
+<%--//                            <div class="column" >--%>
+                                <%--<a href="https://www.baidu.com"><p class="plan_name">603999</p></a>--%>
+                                <%--<p class="feature">读者传媒</p>--%>
+                                <%--<p class="feature">2017/03/04</p>--%>
+                                <%--<p class="feature">开盘: 35.05</p>--%>
+                                <%--<p class="feature">收盘: 35.16</p>--%>
+                                <%--<p class="feature small">+ 1.138%</p>--%>
+                            <%--</div>--%>
+                            <%--<div class="col_line"></div>--%>
+                    $("#monthly_plans").append(htm);
+//                    $("table#"+idName).append(htm);
+                });
                 $(".pageTest").show();
+                $(".column").hover(function () {
+                            $(this).toggleClass("highlight");
+                        }
+                );
             }
         });
     }
