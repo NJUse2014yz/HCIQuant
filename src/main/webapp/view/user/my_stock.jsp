@@ -19,33 +19,11 @@
 <div class="container-fluid main-content">
     <div class="row content-row">
         <div class="row list-row input-row"> 
-            <div class="title">
-                <span>板块总览</span>
-            </div>
-            <div class="row block-row">
-                <div class="row block-line">
-                    <div class="col-lg-4 col-md-4 top-show" style="text-align:left; padding-left:43px;"><a>雄安新区</a></div>
-                    <div class="col-lg-4 col-md-4 top-show" style="padding-left: 15px">涨股数：<span class="increase">&nbsp;&nbsp;&nbsp;68&nbsp;&nbsp;&nbsp;</span></div>
-                    <div class="col-lg-4 col-md-4 top-show">跌股数：<span class="reduce">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-                </div>
-                <div class="row block-line block-line-last">
-                    <div class="col-lg-4 col-md-4 top-show">今日板块领涨股：<a>万通地产</a></div>
-                    <div class="col-lg-4 col-md-4 top-show">涨跌额：<span class="increase">+0.59</span></div>
-                    <div class="col-lg-4 col-md-4 top-show">涨跌幅：<span class="increase">10.09%</span></div>
-                </div>
-                <div class="row block-line block-line-last">
-                    <div class="col-lg-4 col-md-4 top-show">今日板块领跌股：<a>沧州明珠</a></div>
-                    <div class="col-lg-4 col-md-4 top-show">涨跌额：<span class="reduce">-0.42</span></div>
-                    <div class="col-lg-4 col-md-4 top-show">涨跌幅：<span class="reduce">-1.48%</span></div>
-                </div>
-            </div>
-        </div>
-        <div class="row list-row input-row"> 
             <div class="more">
                 <span>更多 >></span>
             </div>
             <div class="title">
-                <span>个股列表</span>
+                <span>关注的股票</span>
             </div>
             <div class="row block-list-row">
                 <div class="industry-table">
@@ -109,50 +87,6 @@
                                 <li class="increase">+4.63%</li>
                                 <li>6.22%</li>
                             </ul>
-                        </li>
-
-                </div>
-            </div>
-        </div>
-        <div class="row list-row input-row"> 
-            <div class="more">
-                <span>更多 >></span>
-            </div>
-            <div class="title">
-                <span>板块资讯</span>
-            </div>
-            <div class="row block-row">
-                <div class="row">
-                    <ul>
-                        <li>
-                            <ul class="new-ul"><a>
-                                <li class="new-li left">收评：沪指涨0.24%重回3100点收官 2016全年跌幅12.31%</li>
-                                <li class="new-li right">2017/04/14</li>
-                            </a></ul>
-                        </li>
-                        <li>
-                            <ul class="new-ul"><a>
-                                <li class="new-li left">开盘：沪指小幅低开失守3100 权重萎靡题材股乏力</li>
-                                <li class="new-li right">2017/04/14</li>
-                            </a></ul>
-                        </li>
-                        <li>
-                            <ul class="new-ul"><a>
-                                <li class="new-li left">收评：两市成交量萎缩明显 资金市场再现紧张局面</li>
-                                <li class="new-li right">2017/04/13</li>
-                            </a></ul>
-                        </li>
-                        <li>
-                            <ul class="new-ul"><a>
-                                <li class="new-li left">收评：沪指走弱再次靠近3100点 两市热点匮乏</li>
-                                <li class="new-li right">2017/04/13</li>
-                            </a></ul>
-                        </li>
-                        <li>
-                            <ul class="new-ul"><a>
-                                <li class="new-li left">午评：沪指缩量震荡下跌0.61% 强势股集体走弱</li>
-                                <li class="new-li right">2017/04/12</li>
-                            </a></ul>
                         </li>
                     </ul>
                 </div>

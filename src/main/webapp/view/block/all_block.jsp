@@ -104,6 +104,7 @@
                                 <li style="border-right: 1px solid #e9e9e9;"><a>元成股份</a></li>
                             </ul>
                         </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -177,6 +178,7 @@
                                 <li style="border-right: 1px solid #e9e9e9;"><a>力源信息</a></li>
                             </ul>
                         </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -250,6 +252,7 @@
                                 <li style="border-right: 1px solid #e9e9e9;"><a>开立医疗</a></li>
                             </ul>
                         </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -52,8 +52,8 @@
 				</li>
 				<li><a href="#">个人空间</a>
 					<ul class="submenu">
-						<li><a href="/AnyQuant_web/personalStock.action">我的股票</a></li>
-						<li><a href="#">我的策略</a></li>
+						<li><a href="my_stock">我的股票</a></li>
+						<li><a href="my_strategy">我的策略</a></li>
 						<li><a href="person_zone">我的信息</a></li>
 					</ul>
 				</li>

@@ -20,4 +20,14 @@ public class InfoController {
     public String learn(HttpServletRequest request, HttpServletResponse response){
         return "block/learn";
     }
+
+    @RequestMapping(value = "my_stock")
+    public String my_stock(HttpServletRequest request, HttpServletResponse response){
+        return "user/my_stock";
+    }
+
+    @RequestMapping(value = "my_strategy")
+    public String my_strategy(HttpServletRequest request, HttpServletResponse response){
+        return "user/my_strategy";
+    }
 }
