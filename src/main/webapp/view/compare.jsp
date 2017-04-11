@@ -75,7 +75,7 @@
                                 <li><a>百度</a></li>
                                 <li>7</li>
                                 <li>6.4</li>
-                                <li class="increase">-7.4%</li>
+                                <li class="reduce">-7.4%</li>
                                 
                                
                                 <li style="border-right: 1px solid #e9e9e9;">125%</li>
