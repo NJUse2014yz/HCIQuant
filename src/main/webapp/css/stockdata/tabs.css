@@ -25,6 +25,12 @@
 .tab:hover{
     background-color:#b2c5d2;
 }
+.tab:before{
+    background-color: #85aeca;
+}
+.tab:after{
+    background-color: #5b8fb2;
+}
 /*.tab {*/
     /*line-height: 1.42857143;*/
     /*border: 1px solid transparent;*/
