@@ -25,7 +25,7 @@ public class StrategyController {
 		return "strategy/strategy";
 	}
 
-	@RequestMapping("/compare")
+	@RequestMapping("/strategy_compare")
 	public String compare(){
 		return "strategy/strategy_compare";
 	}
