@@ -52,12 +52,7 @@ function paintKLine(id, stockId) {
                     obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;
                     return obj;
                 },
-                //position: function (pos, params, dom, rect, size) {
-                //    // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。
-                //    var obj = {top: 60};
-                //    obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 5;
-                //    return obj;
-                //},
+
                 extraCssText: 'width: 170px'
             },
             axisPointer: {
@@ -76,13 +71,7 @@ function paintKLine(id, stockId) {
                     }
                 }
             },
-            brush: {
-                xAxisIndex: 'all',
-                brushLink: 'all',
-                outOfBrush: {
-                    colorAlpha: 0.1
-                }
-            },
+
             grid: [
                 {
                     left: '10%',
@@ -240,38 +229,12 @@ function paintKLine(id, stockId) {
                 }
             ]
         }, true);
-
-        // myChart.on('brushSelected', renderBrushed);
-
-        // function renderBrushed(params) {
-        //     var sum = 0;
-        //     var min = Infinity;
-        //     var max = -Infinity;
-        //     var countBySeries = [];
-        //     var brushComponent = params.brushComponents[0];
-
-        //     var rawIndices = brushComponent.series[0].rawIndices;
-        //     for (var i = 0; i < rawIndices.length; i++) {
-        //         var val = data.values[rawIndices[i]][1];
-        //         sum += val;
-        //         min = Math.min(val, min);
-        //         max = Math.max(val, max);
-        //     }
-
-        //     panel.innerHTML = [
-        //         '<h3>STATISTICS:</h3>',
-        //         'SUM of open: ' + (sum / rawIndices.length).toFixed(4) + '<br>',
-        //         'MIN of open: ' + min.toFixed(4) + '<br>',
-        //         'MAX of open: ' + max.toFixed(4) + '<br>'
-        //     ].join(' ');
-        // }
-
         myChart.dispatchAction({
             type: 'brush',
             areas: [
                 {
                     brushType: 'lineX',
-                    coordRange: ['2017-02-23', '2017-03-07'],
+                    coordRange: ['2012-01-04', '2017-03-21'],
                     xAxisIndex: 0
                 }
             ]
