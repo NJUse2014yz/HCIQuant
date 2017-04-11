@@ -15,14 +15,14 @@
     <%--<link rel="stylesheet" href="../../css/stockdata/table1.css">--%>
     <%--<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css">--%>
 
-    <script src="../../js/jquery-3.1.1.min.js"></script>
-    <script src="../../js/bootstrap.js"></script>
-    <script src="../../js/echarts.min.js"></script>
-    <script src="../../js/stockdata/echarts.js"></script>
-    <%--<script src="../../js/stockdata/highstock.js"></script>--%>
-    <%--<script src="../../js/stockdata/KLine.js"></script>--%>
-    <script src="../../js/stockdata/echart_kline.js"></script>
-    <script src="../../js/stockdata/paintTab.js"></script>
+    <%--<script src="../../js/jquery-3.1.1.min.js"></script>--%>
+    <%--<script src="../../js/bootstrap.js"></script>--%>
+    <%--<script src="../../js/echarts.min.js"></script>--%>
+    <%--<script src="../../js/stockdata/echarts.js"></script>--%>
+    <%--&lt;%&ndash;<script src="../../js/stockdata/highstock.js"></script>&ndash;%&gt;--%>
+    <%--&lt;%&ndash;<script src="../../js/stockdata/KLine.js"></script>&ndash;%&gt;--%>
+    <%--<script src="../../js/stockdata/echart_kline.js"></script>--%>
+    <%--<script src="../../js/stockdata/paintTab.js"></script>--%>
 
     <style type="text/css">
 
@@ -194,7 +194,13 @@
         <%--</div>--%>
     </div>
 </body>
+
+
 <script>
+
+
+    var jq=$.noConflict();
+    alert(jq);
 
     var islike=0;
     function likeStock() {
@@ -345,7 +351,10 @@
     }
 
 
-    $(function () {
+
+
+//    $(function () {
+    jQuery(document).ready(function(){
         $("[data-toggle='popover']").popover();
         alert("SSSSSSSSSSSSSS");
 //        paintTab('tab_chart',"BIAS");
@@ -360,4 +369,17 @@
         <%--paintForecast();--%>
     });
 </script>
+
+
+<%--<script src="../../js/stockdata/jquery-3.2.0.js"></script>--%>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/stockdata/echarts.js"></script>
+<script src="../../js/bootstrap.js"></script>
+<script src="../../js/echarts.min.js"></script>
+<script src="../../js/stockdata/jquery-3.2.0.js"></script>
+<%--<script src="../../js/stockdata/highstock.js"></script>--%>
+<%--<script src="../../js/stockdata/KLine.js"></script>--%>
+<script type="text/javascript" src="../../js/stockdata/echart_kline.js"></script>
+<script type="text/javascript" src="../../js/stockdata/paintTab.js"></script>
+
 </html>
