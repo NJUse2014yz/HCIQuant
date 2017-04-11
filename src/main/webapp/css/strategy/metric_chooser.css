@@ -9,7 +9,11 @@
     color: #555;
     font-size: 18px;
 }
-.metric_button
-{
+.metric_button {
     margin:10px;
+}
+
+.button-row{
+    width:830px;
+    margin:20px auto -10px;
 }

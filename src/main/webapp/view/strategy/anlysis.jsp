@@ -14,7 +14,6 @@
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/echarts.min.js"></script>
-    <script src="../../js/info.js"></script>
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>
@@ -27,14 +26,16 @@
             </div>
         </div>
         <div class="row">
-            <button id="BIAS_button" class="btn btn-default btn-sm metric_button">BIAS</button>
-            <button id="OBV_button"class="btn btn-default btn-sm metric_button">OBV</button>
-            <button id="VR_button" class="btn btn-default btn-sm metric_button">VR</button>
-            <button id="MACD_button" class="btn btn-default btn-sm metric_button">MACD</button>
-            <button id="BOLL_button" class="btn btn-default btn-sm metric_button">BOLL</button>
-            <button id="ROC_button" class="btn btn-default btn-sm metric_button">ROC</button>
-            <button id="DMI_button" class="btn btn-default btn-sm metric_button">DMI</button>
-            <button id="RSI_button" class="btn btn-default btn-sm metric_button">RSI</button>
+            <div class="button-row">
+                <button id="BIAS_button" class="btn btn-default btn-sm metric_button">BIAS</button>
+                <button id="OBV_button"class="btn btn-default btn-sm metric_button">OBV</button>
+                <button id="VR_button" class="btn btn-default btn-sm metric_button">VR</button>
+                <button id="MACD_button" class="btn btn-default btn-sm metric_button">MACD</button>
+                <button id="BOLL_button" class="btn btn-default btn-sm metric_button">BOLL</button>
+                <button id="ROC_button" class="btn btn-default btn-sm metric_button">ROC</button>
+                <button id="DMI_button" class="btn btn-default btn-sm metric_button">DMI</button>
+                <button id="RSI_button" class="btn btn-default btn-sm metric_button">RSI</button>
+            </div>
         </div>
     </div>
     <div class="row list-row" style="margin:20px;width:1000px;">
@@ -83,7 +84,8 @@
             {
                 if(metric_ns[index].state=='inactive')
                 {
-                    metric_button[index].style.backgroundColor="#ccc";
+                    metric_button[index].style.backgroundColor="rgb(91, 148, 226)";
+                    metric_button[index].style.color="#fff";
                     metric_ns[index].state='active';
 //                    metrics.push(metric_ns[index].metric);
                     metrics_in_plot.push({name:metric_ns[index].metric,max:"100"});
@@ -91,11 +93,11 @@
                 else
                 {
                     metric_button[index].style.backgroundColor="#fff";
+                    metric_button[index].style.color="#333";
                     metric_ns[index].state='inactive';
 //                    metrics.splice(metrics.indexOf(metric_ns[index].metric),1);
                     metrics_in_plot.splice(metrics_in_plot.indexOf({name:metric_ns[index].metric,max:"100"}));
                 }
-                console.log(metrics_in_plot);
                 myChart.setOption(option);
                 if(metrics_in_plot.length>0)
                 {

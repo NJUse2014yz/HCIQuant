@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/first/first.css" />
+	<script src="../js/jquery-3.1.1.min.js"></script>
 <title>首页</title>
 </head>
 <body>
@@ -105,6 +106,5 @@
 			<p>一键实盘模拟 ，云端托管，更有机会赢取实盘资金管理收益</p>
 		</div>
 	</div>
-	
 </body>
 </html>

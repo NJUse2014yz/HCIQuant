@@ -14,11 +14,11 @@
     
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script src="/HCIQuant/js/echarts.min.js"></script>
-    <script src="/HCIQuant/js/compare/price.js"></script>
-    <script src="/HCIQuant/js/compare/exchange.js"></script>
-    <script src="/HCIQuant/js/compare/rsi.js"></script>
-    <script src="/HCIQuant/js/compare/bias.js"></script>
+    <script src="../js/echarts.min.js"></script>
+    <script src="../js/compare/price.js"></script>
+    <script src="../js/compare/exchange.js"></script>
+    <script src="../js/compare/rsi.js"></script>
+    <script src="../js/compare/bias.js"></script>
 </head>
 <body>
     <%@include file="first/navBar.jsp"%>

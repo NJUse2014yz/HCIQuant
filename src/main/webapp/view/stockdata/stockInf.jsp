@@ -33,29 +33,20 @@
 <body>
 <%@include file="../first/navBar.jsp"%>
 <div class="container-fluid main-content" >
-    <%--<div class="row-fluid" >--%>
-        <%--<div class="col-md-1"></div>--%>
-            <%--<div class="col-md-10">--%>
-                <%--<div class="row-fluid">--%>
-        <div class="row content-row" style="margin-top:0px;padding-top:0px ">
-                    <!-- stocktitle -->
-                    <div class="stockHead" style="margin-left: 10%;padding-top: 20px">
+        <div class="row content-row" style="margin-top:0;padding-top:0">
+                    <div class="stockHead" style="margin-left: 5%;padding: 20px 0 10px">
                         <h1 class="stockname" style="display:inline;">浦发银行</h1>
                         <h1 class="stockId" style="display:inline;">(${sid})</h1>
-                        <img class="likeImage" width="30px" style="cursor:pointer;" onclick='likeStock()'
-                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="关注" src="../../img/stockdata/like.svg"></img>
-                        <img class="strategyImage" width="30px" style="cursor:pointer;"
-                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="策略" src="../../img/stockdata/strategy.svg"></img>
-                        <img class="radarImage" width="30px" style="cursor:pointer;"
-                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="指标" src="../../img/stockdata/radar.svg"></img>
-                        <img class="compareImage" width="30px" style="cursor:pointer;"
-                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="对比" src="../../img/stockdata/compare.svg"></img>
-                    <%--<div class="pairStock">对冲股票:</div>--%>
-                    <%--<div class="orange button pairStockName" onclick=""></div>--%>
+                        <img class="likeImage" width="30px" style="cursor:pointer;margin-top: -10px;" onclick='likeStock()'
+                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="关注" src="../../img/stockdata/like.svg">
+                        <img class="strategyImage" width="30px" style="cursor:pointer;margin-top: -10px;"
+                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="策略" src="../../img/stockdata/strategy.svg">
+                        <img class="radarImage" width="30px" style="cursor:pointer;margin-top: -10px;"
+                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="指标" src="../../img/stockdata/radar.svg">
+                        <img class="compareImage" width="30px" style="cursor:pointer;margin-top: -10px;"
+                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="对比" src="../../img/stockdata/compare.svg">
                     </div>
                     </div>
-                    <%--kline--%>
-                    <%--<div class="chart kLineContainer" style="background-color: #eee;">--%>
                     <div class="row content-row" style="margin-top:0px;padding-top:0px ">
                         <div class="row list-row input-row" style="margin-top:0px;padding-top:0px " > 
                         <div id="chart" style="height:550px;margin-top:0px;"></div>
