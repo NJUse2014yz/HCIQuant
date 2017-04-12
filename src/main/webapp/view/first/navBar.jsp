@@ -33,8 +33,8 @@
 				<li><a href="#">股票数据</a>
 					<ul class="submenu">
 						<li><a href="allstock">全部</a></li>
-						<li><a href="allstock?id=sh000001">上证指数</a></li>
-						<li><a href="allstock?id=sz399001">深证成指</a></li>
+						<li><a href="indexInfo?id=sh000001">上证指数</a></li>
+						<li><a href="indexInfo?id=sz399001">深证成指</a></li>
 						<li><a href="compare">股票对比</a></li>
 						<li><a href="learn">股票学堂</a></li>
 					</ul>
