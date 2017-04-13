@@ -39,8 +39,6 @@
             <button id="RSI_button" class="btn btn-default btn-sm metric_button">RSI</button>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <div class="row list-row" style="margin:20px;width:1000px;">
         <!--雷达图-->
         <div class="row">

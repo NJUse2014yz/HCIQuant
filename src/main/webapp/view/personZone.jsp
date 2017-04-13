@@ -10,6 +10,9 @@
     <link href="../css/common/navbar.css" rel="stylesheet">
     <link href="../css/common/common.css" rel="stylesheet">
     <link href="../css/info.css" rel="stylesheet">
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/info.js"></script>
 </head>
 <body>
     <%@include file="first/navBar.jsp"%>
@@ -142,8 +145,6 @@
         </div>
     </div>
 
-    <script src="../js/jquery-3.1.1.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/info.js"></script>
+
 </body>
 </html>

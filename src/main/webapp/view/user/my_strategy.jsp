@@ -11,7 +11,16 @@
     <link href="../../css/common/common.css" rel="stylesheet">
     <link href="../../css/block/new.css" rel="stylesheet">
     <link href="../../css/block/all_block.css" rel="stylesheet">
-    <link href="../../css/block/block.css" rel="stylesheet">
+    <link href="../../css/block/my_thing.css" rel="stylesheet">
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script>
+        function clickA() {
+            window.location.href="scan";
+        }
+        function del(n) {
+            $('#'+n).css("display","none");
+        }
+    </script>
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>
@@ -36,56 +45,74 @@
                                 <li>开始日期</li>
                                 <li>停止日期</li>
                                 <li>状态</li>
+                                <li style="border-right: 1px solid #e9e9e9;">
+                                    操作
+                                </li>
                             </ul>
                         </li>
-                        <li>
+                        <li id="1">
                             <ul class="list-ul">
-                                <li style="border-left: 1px solid #e9e9e9;"><a>策略1</a></li>
+                                <li style="border-left: 1px solid #e9e9e9;"><a onclick="clickA()">策略1</a></li>
                                 <li>2.03%</li>
                                 <li>16.12%</li>
                                 <li>2017/04/11</li>
                                 <li>2017/04/14</li>
                                 <li>开盘中</li>
+                                <li  style="border-right: 1px solid #e9e9e9;">
+                                    <span class="border-btn operate-btn" onclick="del(1)">删除</span>
+                                </li>
                             </ul>
                         </li>
-                        <li>
+                        <li id="2">
                             <ul class="list-ul">
-                                <li style="border-left: 1px solid #e9e9e9;"><a>策略2</a></li>
+                                <li style="border-left: 1px solid #e9e9e9;"><a  onclick="clickA()">策略2</a></li>
                                 <li>0.03%</li>
                                 <li>7.12%</li>
                                 <li>2017/04/11</li>
                                 <li>2017/04/14</li>
                                 <li>开盘中</li>
+                                <li  style="border-right: 1px solid #e9e9e9;">
+                                    <span class="border-btn operate-btn" onclick="del(2)">删除</span>
+                                </li>
                             </ul>
                         </li>
-                        <li>
+                        <li id="3">
                             <ul class="list-ul">
-                                <li style="border-left: 1px solid #e9e9e9;"><a>策略3</a></li>
+                                <li style="border-left: 1px solid #e9e9e9;"><a onclick="clickA()">策略3</a></li>
                                 <li>3.13%</li>
                                 <li>19.12%</li>
                                 <li>2017/04/11</li>
                                 <li>2017/04/14</li>
                                 <li>开盘中</li>
+                                <li  style="border-right: 1px solid #e9e9e9;">
+                                    <span class="border-btn operate-btn" onclick="del(3)">删除</span>
+                                </li>
                             </ul>
                         </li>
-                        <li>
+                        <li id="4">
                             <ul class="list-ul">
-                                <li style="border-left: 1px solid #e9e9e9;"><a>策略4</a></li>
+                                <li style="border-left: 1px solid #e9e9e9;"><a onclick="clickA()">策略4</a></li>
                                 <li>1.78%</li>
                                 <li>12.12%</li>
                                 <li>2017/04/11</li>
                                 <li>2017/04/14</li>
                                 <li>开盘中</li>
+                                <li  style="border-right: 1px solid #e9e9e9;">
+                                    <span class="border-btn operate-btn" onclick="del(4)">删除</span>
+                                </li>
                             </ul>
                         </li>
-                        <li>
+                        <li id="5">
                             <ul class="list-ul">
-                                <li style="border-left: 1px solid #e9e9e9;"><a>策略5</a></li>
+                                <li style="border-left: 1px solid #e9e9e9;"><a onclick="clickA()">策略5</a></li>
                                 <li>3.03%</li>
                                 <li>9.12%</li>
                                 <li>2017/04/11</li>
                                 <li>2017/04/14</li>
                                 <li>开盘中</li>
+                                <li  style="border-right: 1px solid #e9e9e9;">
+                                    <span class="border-btn operate-btn" onclick="del(5)">删除</span>
+                                </li>
                             </ul>
                         </li>
                     </ul>

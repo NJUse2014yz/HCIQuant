@@ -11,6 +11,17 @@
     <link href="../../css/common/common.css" rel="stylesheet">
     <link href="../../css/block/new.css" rel="stylesheet">
     <link href="../../css/block/all_block.css" rel="stylesheet">
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script>
+        function clickB() {
+            window.location.href="block";
+        };
+
+        function clickA() {
+            window.location.href="stockInfo?id=sh613467";
+        }
+
+    </script>
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>
@@ -58,17 +69,17 @@
                             <ul class="list-ul">
                                 <li style="border-left: 1px solid #e9e9e9;"><a>房地产</a></li>
                                 <li class="increase">+10.07%</li>
-                                <li style="border-right: 1px solid #e9e9e9"><a>万通地产</a></li>
+                                <li style="border-right: 1px solid #e9e9e9"><a onclick="clickA()">万通地产</a></li>
                                 <li style="border-left: 1px solid #e9e9e9"><a>次新股</a></li>
                                 <li class="reduce">-10%</li>
-                                <li style="border-right: 1px solid #e9e9e9;"><a>N龙蟠</a></li>
+                                <li style="border-right: 1px solid #e9e9e9;"><a onclick="clickA()">N龙蟠</a></li>
                             </ul>
                         </li>
                         <li>
                             <ul class="list-ul second-li">
                                 <li style="border-left: 1px solid #e9e9e9;"><a>钢铁开采</a></li>
                                 <li class="increase">+9.1%</li>
-                                <li style="border-right: 1px solid #e9e9e9"><a>冀中能源</a></li>
+                                <li style="border-right: 1px solid #e9e9e9"><a onclick="clickA()">冀中能源</a></li>
                                 <li style="border-left: 1px solid #e9e9e9"><a>计算机</a></li>
                                 <li class="reduce">-9.1%</li>
                                 <li style="border-right: 1px solid #e9e9e9;"><a>数字政通</a></li>
@@ -303,11 +314,5 @@
     </div>
 </div>
 </body>
-<script src="../../js/jquery-3.1.1.min.js"></script>
-<script>
-    function clickB() {
-        window.location.href="block";
-    };
 
-</script>
 </html>

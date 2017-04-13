@@ -12,6 +12,16 @@
     <link href="../../css/block/new.css" rel="stylesheet">
     <link href="../../css/block/all_block.css" rel="stylesheet">
     <link href="../../css/block/block.css" rel="stylesheet">
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script>
+        function clickB() {
+            window.location.href="all_block";
+        };
+        function clickA() {
+            window.location.href="stockInfo?id=sh613467";
+        }
+
+    </script>
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>
@@ -24,17 +34,17 @@
             </div>
             <div class="row block-row">
                 <div class="row block-line">
-                    <div class="col-lg-4 col-md-4 top-show" style="text-align:left; padding-left:43px;"><a>雄安新区</a></div>
+                    <div class="col-lg-4 col-md-4 top-show" style="text-align:left; padding-left:43px;"><a onclick="clickB()">雄安新区</a></div>
                     <div class="col-lg-4 col-md-4 top-show" style="padding-left: 15px">涨股数：<span class="increase">&nbsp;&nbsp;&nbsp;68&nbsp;&nbsp;&nbsp;</span></div>
                     <div class="col-lg-4 col-md-4 top-show">跌股数：<span class="reduce">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
                 </div>
                 <div class="row block-line block-line-last">
-                    <div class="col-lg-4 col-md-4 top-show">今日板块领涨股：<a>万通地产</a></div>
+                    <div class="col-lg-4 col-md-4 top-show">今日板块领涨股：<a onclick="clickA()">万通地产</a></div>
                     <div class="col-lg-4 col-md-4 top-show">涨跌额：<span class="increase">+0.59</span></div>
                     <div class="col-lg-4 col-md-4 top-show">涨跌幅：<span class="increase">10.09%</span></div>
                 </div>
                 <div class="row block-line block-line-last">
-                    <div class="col-lg-4 col-md-4 top-show">今日板块领跌股：<a>沧州明珠</a></div>
+                    <div class="col-lg-4 col-md-4 top-show">今日板块领跌股：<a onclick="clickA()">沧州明珠</a></div>
                     <div class="col-lg-4 col-md-4 top-show">涨跌额：<span class="reduce">-0.42</span></div>
                     <div class="col-lg-4 col-md-4 top-show">涨跌幅：<span class="reduce">-1.48%</span></div>
                 </div>
@@ -62,7 +72,7 @@
                         </li>
                         <li>
                             <ul class="list-ul">
-                                <li style="border-left: 1px solid #e9e9e9;"><a>SH600246</a></li>
+                                <li style="border-left: 1px solid #e9e9e9;"><a onclick="clickA()">SH600246</a></li>
                                 <li><a>万通地产</a></li>
                                 <li>6.12</li>
                                 <li class="increase">+0.56</li>
@@ -72,7 +82,7 @@
                         </li>
                         <li>
                             <ul class="list-ul second-li">
-                                <li style="border-left: 1px solid #e9e9e9;"><a>SH002342</a></li>
+                                <li style="border-left: 1px solid #e9e9e9;"><a onclick="clickA()">SH002342</a></li>
                                 <li><a>巨力索具</a></li>
                                 <li>11.40</li>
                                 <li class="increase">+1.04</li>

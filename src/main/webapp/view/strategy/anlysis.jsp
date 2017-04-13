@@ -117,7 +117,7 @@
     var dataBJ = [
 //        [55,9,56,0.46,18,6,1],
 //        [25,11,21,0.65,34,9,2],
-        [86,42,92,88,93,79,18],
+        [86,42,72,88,93,59,18],
 //        [52,24,60,1.03,50,21,30],
 //        [46,5,49,0.28,10,6,31]
     ];
@@ -190,6 +190,9 @@
                 }
             }
         },
+        tooltip: {
+            trigger: 'item'
+        },
         series: [
             {
                 name: '买入',
@@ -199,12 +202,12 @@
                 symbol: 'none',
                 itemStyle: {
                     normal: {
-                        color: '#44d9d2'
+                        color: '#d9663e'
                     }
                 },
                 areaStyle: {
                     normal: {
-                        opacity: 0.1
+                        opacity: 0.2
                     }
                 }
             }
@@ -217,12 +220,12 @@
                 symbol: 'none',
                 itemStyle: {
                     normal: {
-                        color: '#ffdd22'
+                        color: '#8b5eff'
                     }
                 },
                 areaStyle: {
                     normal: {
-                        opacity: 0.05
+                        opacity: 0.2
                     }
                 }
             }

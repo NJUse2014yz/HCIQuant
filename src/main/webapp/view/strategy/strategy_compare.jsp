@@ -38,8 +38,6 @@
             </select>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <div id="backinfo" class="row list-row" style="margin:20px;width:1000px;height:200px;">
         <div class="row">
             <div class="title" style="margin-top:20px;">
@@ -81,8 +79,6 @@
             <button id="startback" class="btn btn-default btn-sm" onclick="JavaScript:backtest();">回测一下</button>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <!--回测图-->
     <div class="row list-row" style="margin:20px;width:1000px;">
         <div class="row">
@@ -96,8 +92,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid main-content">
     <!--回测结果-->
     <div class="row list-row" style="margin:20px;width:1000px;">
         <div class="row">

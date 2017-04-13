@@ -236,7 +236,7 @@
             </table>
         </div>
         <div class="row">
-            <button id="saveback" class="btn btn-default btn-sm" onclick="">保存策略</button>
+            <button id="saveback" class="btn btn-default btn-sm" onclick="add()">保存策略</button>
         </div>
     </div>
 
@@ -1198,4 +1198,10 @@
     myChart.setOption(option);
 </script>
 <!--回测结果-->
+
+<script>
+    function add() {
+        window.location.href="my_strategy";
+    }
+</script>
 </html>
