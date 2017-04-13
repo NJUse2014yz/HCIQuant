@@ -22,8 +22,8 @@
 	
 		<div class="stock-search">
 			<div id="sb-search" class="search">
-				<input  placeholder="股票代码或名称">
-				<button></button>
+				<input id="stock-search"  placeholder="股票代码或名称">
+				<button onclick="search()"></button>
 			</div>
 		</div>
 		
@@ -81,6 +81,14 @@
 			$(function(){
 				showUserInfo();
 			});
+			
+			function search(){
+				var stock=$("input#stock-search").val();
+				if(stock=="")
+					return;
+				window.location.href="/HCIQuant/stockInfo?id="+stock;
+			}
+			
 			//判断是否已经登录
 			function showUserInfo(){
 				var userName=getCookie("userName");

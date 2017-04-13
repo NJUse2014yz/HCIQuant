@@ -31,15 +31,15 @@
                 </div> 
 	           <div class="input-stock">
 	                <div class="left">
-	                  	<input class="stock" placeholder="${stock1 }"/>
+	                  	<input class="stock" id="stock1" value="${stock1 }"/>
 	                </div>
 					<div class="right">
-						<input class="stock" placeholder="${stock2 }" />
+						<input class="stock" id="stock2" value="${stock2 }" />
 
 					</div>
 					
 					
-					<div  class="compare" >对比</div>
+					<div  class="compare" onclick="compare()">对比</div>
 					
 				</div>
                 
@@ -68,7 +68,7 @@
                         <li>
                             <ul class="list-ul">
                                 <li style="border-left: 1px solid #e9e9e9;">sh600043</li>
-                                <li><a>${stock1 }</a></li>
+                                <li><a href="/HCIQuant/stockInfo?id=sh600043">${stock1 }</a></li>
                                 <li>10.3</li>
                                 <li>11.9</li>
                                 <li class="increase">+10.07%</li>
@@ -80,7 +80,7 @@
                         <li>
                             <ul class="list-ul">
                                 <li style="border-left: 1px solid #e9e9e9;">sh602378</li>
-                                <li><a>${stock2}</a></li>
+                                <li><a href="/HCIQuant/stockInfo?id=sh602378">${stock2}</a></li>
                                 <li>7</li>
                                 <li>6.4</li>
                                 <li class="reduce">-7.4%</li>
@@ -127,6 +127,12 @@
 			rsi("${stock1}","${stock2}");
 			bias("${stock1}","${stock2}");
 		})
+		
+		function compare(){
+			var stock1=$("input#stock1").val();
+			var stock2=$("input#stock2").val();
+			window.location.href="/HCIQuant/comapre?stock1="+stock1+"&stock2="+stock2;
+		}
 	
 		
 	</script>
