@@ -12,7 +12,7 @@ function paintsc(id){
     var line_color='#24936e';
     myChart.setOption(option = {
         title: {
-            text: '        深证成指（SH399001）',
+            text: '        深证成指（sh399001）',
             textStyle:{
                 fontWeight:'lighter',
                 fontSize:18,

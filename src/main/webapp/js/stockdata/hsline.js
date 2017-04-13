@@ -15,7 +15,7 @@ function painths(id){
     myChart.setOption(option = {
         //backgroundColor:'#f9f9f9',
         title: {
-            text: '        沪深300（SH000300）',
+            text: '        沪深300（sh000300）',
             textStyle:{
                 fontWeight:'lighter',
                 fontSize:18,

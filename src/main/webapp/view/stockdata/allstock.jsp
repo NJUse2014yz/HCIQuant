@@ -72,31 +72,31 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td data-label="代码"><a>SH603538</a></td>
+                            <td data-label="代码"><a>sh603538</a></td>
                             <td data-label="名称">美诺华</td>
                             <td data-label="发行日期">2017-03-24</td>
                             <td data-label="发行量">3000</td>
                         </tr>
                         <tr>
-                            <td data-label="代码"><a>SH300633</a></td>
+                            <td data-label="代码"><a>sh300633</a></td>
                             <td data-label="名称">开立医疗</td>
                             <td data-label="发行日期">2017-03-24</td>
                             <td data-label="发行量">4001</td>
                         </tr>
                         <tr>
-                            <td data-label="代码"><a>SH300632</a></td>
+                            <td data-label="代码"><a>sh300632</a></td>
                             <td data-label="名称">光莆股份</td>
                             <td data-label="发行日期">2017-03-24</td>
                             <td data-label="发行量">2895</td>
                         </tr>
                         <tr>
-                            <td data-label="代码"><a>SH603906</a></td>
+                            <td data-label="代码"><a>sh603906</a></td>
                             <td data-label="名称">龙蟠科技</td>
                             <td data-label="发行日期">2017-03-24</td>
                             <td data-label="发行量">5200</td>
                         </tr>
                         <tr>
-                            <td data-label="代码"><a>SH603586</a></td>
+                            <td data-label="代码"><a>sh603586</a></td>
                             <td data-label="名称">金麒麟</td>
                             <td data-label="发行日期">2017-03-23</td>
                             <td data-label="发行量">5250</td>
@@ -121,31 +121,31 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td data-label="代码"><a>SH600710</a></td>
+                                <td data-label="代码"><a>sh600710</a></td>
                                 <td data-label="名称">*ST常林</td>
                                 <td data-label="上市日期">1996-07-01</td>
                                 <td data-label="暂停上市日期">-</td>
                             </tr>
                             <tr>
-                                <td data-label="代码"><a>SH600732</a></td>
+                                <td data-label="代码"><a>sh600732</a></td>
                                 <td data-label="名称">*ST新梅</td>
                                 <td data-label="上市日期">1996-08-16</td>
                                 <td data-label="暂停上市日期">-</td>
                             </tr>
                             <tr>
-                                <td data-label="代码"><a>SH601268</a></td>
+                                <td data-label="代码"><a>sh601268</a></td>
                                 <td data-label="名称">*ST二重</td>
                                 <td data-label="上市日期">2010-02-02</td>
                                 <td data-label="暂停上市日期">-</td>
                             </tr>
                             <tr>
-                                <td data-label="代码"><a>SH000155</a></td>
+                                <td data-label="代码"><a>sh000155</a></td>
                                 <td data-label="名称">*ST川化</td>
                                 <td data-label="上市日期">2000-09-26</td>
                                 <td data-label="暂停上市日期">-</td>
                             </tr>
                             <tr>
-                                <td data-label="代码"><a>SH601018</a></td>
+                                <td data-label="代码"><a>sh601018</a></td>
                                 <td data-label="名称">宁波港</td>
                                 <td data-label="上市日期">2010-09-28</td>
                                 <td data-label="暂停上市日期">-</td>
@@ -198,7 +198,7 @@
 
     //翻页
     $('.pageTest').page({
-        leng: 290,//分页总数
+        leng: 15,//分页总数
         activeClass: 'activP' , //active 类样式定义
     });
 
@@ -219,7 +219,7 @@
     }
 
     function lastPage(){
-        currentPage=290;
+        currentPage=15;
         stockListTable(currentPage);
     }
 

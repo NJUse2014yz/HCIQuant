@@ -10,7 +10,7 @@ function paintsz(id){
     //color:'#91c7ae',
     myChart.setOption(option = {
         title: {
-            text: '        上证指数（SH000001）',
+            text: '        上证指数（sh000001）',
             textStyle:{
                 fontWeight:'lighter',
                 fontSize:18,
