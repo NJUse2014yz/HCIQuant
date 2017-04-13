@@ -41,17 +41,28 @@
                 <%--<div class="row-fluid">--%>
         <div class="row content-row" style="margin-top:0px;padding-top:0px ">
                     <!-- stocktitle -->
-                    <div class="stockHead" style="margin-left: 10%;padding-top: 20px">
+                    <div class="stockHead" style="margin-left: 5%;padding-top: 20px;padding-bottom: 10px;">
                         <h1 class="stockname" style="display:inline;">浦发银行</h1>
                         <h1 class="stockId" style="display:inline;">(sh${sid})</h1>
+
                         <img class="likeImage" width="30px" style="cursor:pointer;" onclick='likeStock()'
                          data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="关注" src="../../img/stockdata/like.svg"></img>
+
+                        <a href="make">
                         <img class="strategyImage" width="30px" style="cursor:pointer;"
                          data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="策略" src="../../img/stockdata/strategy.svg"></img>
+                        </a>
+
+                        <a href="anlysis">
                         <img class="radarImage" width="30px" style="cursor:pointer;"
                          data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="指标" src="../../img/stockdata/radar.svg"></img>
+                        </a>
+
+                        <a href="compare">
                         <img class="compareImage" width="30px" style="cursor:pointer;"
-                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="对比" src="../../img/stockdata/compare.svg"></img>
+                         data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="对比" src="../../img/stockdata/compare.svg">
+                        </img>
+                        </a>
                     <%--<div class="pairStock">对冲股票:</div>--%>
                     <%--<div class="orange button pairStockName" onclick=""></div>--%>
                     </div>

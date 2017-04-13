@@ -41,7 +41,7 @@
     <%--<div class="row-fluid">--%>
     <div class="row content-row" style="margin-top:0px;padding-top:0px ">
         <!-- stocktitle -->
-        <div class="stockHead" style="margin-left: 10%;padding-top: 20px">
+        <div class="stockHead" style="margin-left: 5%;padding-top: 20px;padding-bottom: 10px;">
             <h1 class="stockname" style="display:inline;">上证指数</h1>
             <h1 class="stockId" style="display:inline;">(000001)</h1>
             <%--<img class="likeImage" width="30px" style="cursor:pointer;" onclick='likeStock()'--%>
