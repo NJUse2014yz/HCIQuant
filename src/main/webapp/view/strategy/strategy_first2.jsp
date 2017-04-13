@@ -32,17 +32,22 @@
 <div class="container-fluid main-content">
     <div id="chooser" class="row list-row" style="margin:20px;width:1000px;height:600px;">
         <div class="row">
+            <div id="clear_flag" style="position:absolute;top:30px;left:80px;width:55px;height:10px;"></div>
             <div class="title" style="margin-top:20px;">
                 <span>选择-</span>
-                <span id="clear"><a onclick="JavaScript:clean();">清空</a></span>
+                <span><a onclick="JavaScript:clean();">清空</a></span>
             </div>
+            <div id="plot_flag" style="position:absolute;top:55px;left:45px;width:870px;height:600px;"></div>
             <!--选择股票-->
             <div id="stock_choice_div" class="col-xs-10" >
-                <ul class="stock_choice_ul" id="stock_choice_ul"></ul>
+                <ul class="stock_choice_ul" id="stock_choice_ul">
+                    <div id="stock_add_flag" style="position:absolute;top:17px;left:17px;width:32px;height:32px;"></div>
+                </ul>
             </div>
         </div>
         <div class="row">
             <div id="metric_div" class="col-xs-2">
+                <div id="metric_choose_flag" style="position:absolute;top:10px;left:0px;width:170px;height:530px;"></div>
                 <!--已选指标-->
                 <div id="metric_choice_div">
                     <ul class="metric_choice_ul" id="metric_choice_ul"></ul>
@@ -51,7 +56,9 @@
                 <div id="metric_choose_div">
                     <!--添加-->
                     <div id="metric_choose_tip" style="font-family: 'Microsoft YaHei';color:#555555;font-size:15px;">可选指标：</div>
-                    <ul class="metric_choose_ul" id="metric_choose_ul"></ul>
+                    <ul class="metric_choose_ul" id="metric_choose_ul">
+
+                    </ul>
                 </div>
             </div>
             <div class="col-xs-10">
@@ -112,6 +119,7 @@
             </div>
         </div>
     </div>
+
     <div id="flags" class="row list-row" style="margin:20px;width:1000px;">
         <div class="row">
             <div class="title" style="margin-top:20px;">
@@ -120,8 +128,14 @@
         </div>
         <div class="row">
             <table id="flagtable" class="table table-striped"><%--table-hover table-bordered--%>
+                <div id="trade_flag" style="position:absolute;top:700px;left:80px;width:900px;height:80px;"></div>
                 <thead></thead>
-                <tbody id="flagtable_body"></tbody>
+                <tbody id="flagtable_body">
+                <tr>
+                    <th>1</th>
+                    <td>sh600000|sh600001;BIAS|BOLL1</td>
+                </tr>
+                </tbody>
             </table>
         </div>
         <div class="row">
@@ -130,28 +144,33 @@
             </div>
         </div>
         <div class="row">
+            <div id="tradetable_flag" style="position:absolute;top:820px;left:80px;width:900px;height:120px;"></div>
             <table id="tradeflag" class="table table-striped"><%--table-hover table-bordered--%>
                 <thead></thead>
                 <tbody id="tradeflag_body">
                 <tr id="group_1">
                     <th>1</th>
                     <td>
-                        <select id="select_1" class="selectpicker show-tick form-control" multiple data-live-search="false"></select>
+                        <select id="select_1" class="selectpicker show-tick form-control" multiple data-live-search="false">
+                            <option value="sh600000|sh600001;BIAS|BOLL1">sh600000|sh600001;BIAS|BOLL1</option>
+                        </select>
                     </td>
                 </tr>
                 </tbody>
             </table>
+            <div id="addtrade_flag" style="position:absolute;top:891px;left:81px;width:32px;height:32px;"></div>
             <image id="add_flag" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:block;" onclick="JavaScript:addGroup();"></image>
         </div>
     </div>
     <!--回测信息-->
-    <div id="backinfo" class="row list-row" style=" position:relative;margin:20px;width:1000px;height:200px;">
+    <div id="backinfo" class="row list-row" style=" position:relative;margin:20px;width:1080px;height:200px;">
         <div class="row">
             <div class="title" style="margin-top:20px;">
                 <span>回测信息</span>
             </div>
         </div>
         <div class="row" style="position:relative">
+            <div id="backinfo_flag" style="position:absolute;top:10px;left:30px;width:1010px;height:140px;"></div>
             <div id="start_date" class="input-group">
                 <span id="start_text" class="input-group-addon">回测开始日期</span>
                 <input id="datetimepicker1" type="text">
@@ -194,6 +213,7 @@
             </div>
         </div>
         <div class="row">
+            <div id="backplot_flag" style="position:absolute;top:1240px;left:80px;width:900px;height:700px;"></div>
             <div id="backplot">
 
             </div>
@@ -207,6 +227,7 @@
             </div>
         </div>
         <div class="row">
+            <div id="backtable_flag" style="position:absolute;top:2010px;left:80px;width:900px;height:170px;"></div>
             <table id="backtable" class="table table-bordered">
                 <caption></caption>
                 <thead>
@@ -238,7 +259,8 @@
             </table>
         </div>
         <div class="row">
-            <button id="saveback" class="btn btn-default btn-sm" onclick="">保存策略</button>
+            <div id="saveback_flag" style="position:absolute;top:2140px;left:870px;width:90px;height:30px;"></div>
+            <button id="saveback" class="btn btn-default btn-sm" onclick="add()">保存策略</button>
         </div>
     </div>
 </div>
@@ -265,9 +287,10 @@
     var stock_add_button=new Image();
     stock_add_button.setAttribute("id","stock_add_icon");
     stock_add_button.setAttribute("class","add_icon");
-    stock_add_button.src="${pageContext.request.contextPath}/img/add_inactive.png";
-    stock_add_button.setAttribute("data-toggle","modal");
+    stock_add_button.setAttribute("src","../../img/add_inactive.png");
+    stock_add_button.setAttribute('data-toggle',"modal");
     stock_add_button.setAttribute("data-target","#stockModal");
+
     stock_add_button.onclick=function()
     {
         //新增股票
@@ -285,7 +308,7 @@
 
     function final_add()
     {
-        stocklist=select_stock_list;
+        stocklist=stocklist.concat(select_stock_list);
         stock_choice_init();
     }
 
@@ -435,6 +458,7 @@
     //股票初始化
     function stock_choice_init()
     {
+        stock_choice_ul.innerHTML="";
         for(var i=0;i<stocklist.length;i++)
         {
             var stock_choice_li=document.createElement("li");
@@ -926,7 +950,7 @@
                 {
                     console.log("have to be connected,you can delete");//提示
                 }
-                message1.innerHTML=JSON.stringify(log);
+//                message1.innerHTML=JSON.stringify(log);
                 return;
             }
         }
@@ -991,6 +1015,7 @@
         log=[];
         multiple_plot.style.visibility="hidden";
         stocklist=[];
+        select_stock_list=[];
         metriclist=[];
         {
             stock_choice_ul.innerHTML = "";
@@ -1061,18 +1086,18 @@
         clean();
     }
     $('#datetimepicker1').datetimepicker(
-        {
-            language: 'zh-CN',
-            minView: "month",
-            format: 'yyyy-mm-dd'
-        }
+            {
+                language: 'zh-CN',
+                minView: "month",
+                format: 'yyyy-mm-dd'
+            }
     );
     $('#datetimepicker2').datetimepicker(
-        {
-            language: 'zh-CN',
-            minView: "month",
-            format: 'yyyy-mm-dd'
-        }
+            {
+                language: 'zh-CN',
+                minView: "month",
+                format: 'yyyy-mm-dd'
+            }
     );
     var frequency_unit="day";
     function frequency_day()
@@ -1191,6 +1216,82 @@
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 </script>
+<!--回测结果-->
+<script type="text/javascript">
+    stock_selected="sh600002";
+    metric_selected="VR";
+    stocklist=["sh600002","sh600006"];
+    stock_choice_init();
+    document.getElementById("sh600002").style.color="#5389d2";
+
+    var metric1=document.getElementById("VR");
+    metric1.lastChild.style.visibility = "visible";//删除图标可见
+    metric1.setAttribute("class", "metric_choice_li");//设为已选类
+    metriclist.push(metric1.id);
+    metric_choose_ul.removeChild(metric1);//待选列表中移除
+    if (metric_choose_ul.childElementCount == 0) {
+        //待选列表中全部选择，提示不可见
+        document.getElementById("metric_choose_tip").style.visibility = "hidden";
+    }
+    metric_choice_ul.appendChild(metric1);//已选列表中添加
+    //将选择的标蓝
+    metric1.firstChild.style.color = "#5389d2";
+    //记录选择的指标名称
+    metric_selected = metric1.getAttribute("id");
+    console.log("you select "+metric_selected);
+
+
+    var metric2=document.getElementById("BOLL2");
+    metric2.lastChild.style.visibility = "visible";//删除图标可见
+    metric2.setAttribute("class", "metric_choice_li");//设为已选类
+    metriclist.push(metric2.id);
+    metric_choose_ul.removeChild(metric2);//待选列表中移除
+    if (metric_choose_ul.childElementCount == 0) {
+        //待选列表中全部选择，提示不可见
+        document.getElementById("metric_choose_tip").style.visibility = "hidden";
+    }
+    metric_choice_ul.appendChild(metric2);//已选列表中添加
+
+    var metric3=document.getElementById("BOLL3");
+    metric3.lastChild.style.visibility = "visible";//删除图标可见
+    metric3.setAttribute("class", "metric_choice_li");//设为已选类
+    metriclist.push(metric3.id);
+    metric_choose_ul.removeChild(metric3);//待选列表中移除
+    if (metric_choose_ul.childElementCount == 0) {
+        //待选列表中全部选择，提示不可见
+        document.getElementById("metric_choose_tip").style.visibility = "hidden";
+    }
+    metric_choice_ul.appendChild(metric3);//已选列表中添加
+
+    //给出画板
+    if (stock_selected != "" && (stock_choice_ul.childElementCount > 2 || metric_choice_ul.childElementCount > 1)) {
+        //多模式
+        var color = getRandomColor();
+        log.push(new log_stock(stock_selected, color));
+        state = "multiple";
+        single_plot.style.visibility = "hidden";
+        document.getElementById("from").style.visibility="hidden";
+        document.getElementById("to").style.visibility="hidden";
+        multiple_plot.style.visibility = "visible";
+    }
+    else if (stock_selected != "" && stock_choice_ul.childElementCount == 2 && metric_choice_ul.childElementCount == 1) {
+        //单模式
+        state = "single";
+        single_plot.style.visibility = "visible";
+        document.getElementById("from").style.visibility="visible";
+        document.getElementById("to").style.visibility="visible";
+        multiple_plot.style.visibility = "hidden";
+    }
+    else {
+        state = "neither";
+    }
+</script>
+<script>
+    function add() {
+        window.location.href="my_strategy";
+    }
+</script>
+
 <div id="walkthrough-content" style="display: none;">
     <div id="walkthrough-1">
         <h3>这是策略制定页面</h3>
@@ -1212,8 +1313,11 @@
     </div>
 
     <div id="walkthrough-5">
-        每次从股票列表和指标列表中选择一个股票和一个指标
-        只选择一个股票一个指标则使用绘制”指标-得分“折线，如果你的备选指标多于一个或股票多于一个就采用形态标志
+        每次从股票列表和指标列表中选择一个股票和一个指标；
+        若待选列表中指标多于一个或股票多于一个就采用形态标志；
+        每个股票对应一种颜色，每个指标对应一个英文简写；
+        在给出的按钮板上点击模拟形态标志；
+        按钮板的宽高均可增加
     </div>
 
     <div id="walkthrough-6">
@@ -1255,49 +1359,49 @@
                     type: 'modal'
                 }
             },{
-                wrapper: '#stock_add_icon',
+                wrapper: '#stock_add_flag',
                 popup: {
                     content: '#walkthrough-2',
                     type: 'tooltip',
                     position: 'bottom'
                 }
             }, {
-                wrapper: '#metric_choose_li',
+                wrapper: '#metric_choose_flag',
                 popup: {
                     content: '#walkthrough-3',
                     type: 'tooltip',
-                    position: 'right'
+                    position: 'top'
                 }
             }, {
-                wrapper: '#clear',
+                wrapper: '#clear_flag',
                 popup: {
                     content: '#walkthrough-4',
                     type: 'tooltip',
-                    position: 'left'
+                    position: 'bottom'
                 }
             },{
-                wrapper: '.col-xs-10',
+                wrapper: '#plot_flag',
                 popup: {
                     content: '#walkthrough-5',
                     type: 'tooltip',
                     position: 'bottom'
                 }
             },{
-                wrapper: '#flagtable',
+                wrapper: '#trade_flag',
                 popup: {
                     content: '#walkthrough-6',
                     type: 'tooltip',
                     position: 'bottom'
                 }
             }, {
-                wrapper: '#tradetable',
+                wrapper: '#tradetable_flag',
                 popup: {
                     content: '#walkthrough-7',
                     type: 'tooltip',
                     position: 'bottom'
                 }
             }, {
-                wrapper: '#add_flag',
+                wrapper: '#addtrade_flag',
                 popup: {
                     content: '#walkthrough-8',
                     type: 'tooltip',
@@ -1305,28 +1409,28 @@
 
                 }
             }, {
-                wrapper: '#backinfo',
+                wrapper: '#backinfo_flag',
                 popup: {
                     content: '#walkthrough-9',
                     type: 'tooltip',
                     position: 'bottom'
                 }
             }, {
-                wrapper: '#backplot',
+                wrapper: '#backplot_flag',
                 popup: {
                     content: '#walkthrough-10',
                     type: 'tooltip',
                     position: 'bottom'
                 }
             }, {
-                wrapper: '#backtable',
+                wrapper: '#backtable_flag',
                 popup: {
                     content: '#walkthrough-11',
                     type: 'tooltip',
                     position: 'bottom'
                 }
             }, {
-                wrapper: '#saveback',
+                wrapper: '#saveback_flag',
                 popup: {
                     content: '#walkthrough-12',
                     type: 'tooltip',

@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="../../css/strategy/backinfo.css">
     <link rel="stylesheet" href="../../css/strategy/backplot.css">
     <link rel="stylesheet" href="../../css/jquery.pagewalkthrough.css">
+    <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css">
     <link href="../../css/common/common.css" rel="stylesheet">
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/echarts.min.js"></script>
     <script src="../../js/html5.js"></script>
     <script src="../../js/jquery.pagewalkthrough.min.js"></script>
+    <script src="../../js/bootstrap-datetimepicker.js"></script>
+    <script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>
@@ -27,7 +30,7 @@
             </div>
             <!--选择股票-->
             <div id="stock_choice_div" class="col-xs-10" >
-                <ul class="stock_choice_ul" id="stock_choice_ul">
+                <ul class="stock_choice_ul" id="flag_ul">
                     <li class="stock_choice_li">
                         <label>sh600000</label>
                     </li>
@@ -114,6 +117,7 @@
             </div>
         </div>
         <div class="row">
+            <div id="backtable_flag" style="position:absolute;width:830px;height:130px;top:1700px;left:130px;"></div>
             <table id="backtable" class="table table-bordered">
                 <caption></caption>
                 <tr>
@@ -533,21 +537,21 @@
                 popup: {
                     content: '#walkthrough-3',
                     type: 'tooltip',
-                    position: 'right'
+                    position: 'top'
                 }
             }, {
                 wrapper: '#backplot',
                 popup: {
                     content: '#walkthrough-4',
                     type: 'tooltip',
-                    position: 'left'
+                    position: 'top'
                 }
             }, {
-                wrapper: '#backtable',
+                wrapper: '#backtable_flag',
                 popup: {
                     content: '#walkthrough-5',
                     type: 'tooltip',
-                    position: 'left'
+                    position: 'top'
                 }
             }]
         });

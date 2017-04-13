@@ -167,9 +167,9 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="JavaSctipt:final_quit();">
                     关闭
                 </button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="JavaSctipt:final_add();">
-                    添加
-                </button>
+                <%--<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="JavaSctipt:final_add();">--%>
+                    <%--添加--%>
+                <%--</button>--%>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
@@ -178,9 +178,10 @@
 <script type ="text/javascript">
     function search()
     {
+        document.getElementById('search_table').innerHTML="";
         var input=$('#searcher_input').val();
         var tr=document.createElement("tr");
-        tr.onclick=select_stock(input);
+//        tr.onclick=select_stock(input);
         var td_code=document.createElement("td");
         td_code.innerHTML=input;
         var td_name=document.createElement("td");
@@ -193,6 +194,19 @@
         tr.appendChild(td_name);
         tr.appendChild(td_rate);
         tr.appendChild(td_volumn);
+        tr.onclick=function()
+        {
+            for(i=0;i<select_stock_list.length;i++)
+            {
+                if(input==select_stock_list[i])
+                {
+                    return;
+                }
+            }
+            select_stock(input);
+            final_add();
+        }
+
         document.getElementById('search_table').appendChild(tr);
     }
     $( '#example1' ).bootstrapPaginator({

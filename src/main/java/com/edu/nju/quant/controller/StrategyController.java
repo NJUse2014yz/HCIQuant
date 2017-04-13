@@ -40,14 +40,14 @@ public class StrategyController {
 		return "strategy/anlysis_first";
 	}
 
-	@RequestMapping("/make_first")
-	public String make_first(){
-		return "strategy/strategy_first";
+	@RequestMapping("/make_first1")
+	public String make_first1(){
+		return "strategy/strategy_first1";
 	}
 
-	@RequestMapping("/compare_first")
-	public String compare_first(){
-		return "strategy/strategy_compare_first";
+	@RequestMapping("/make_first2")
+	public String make_first2(){
+		return "strategy/strategy_first2";
 	}
 
 	@RequestMapping("/choose")

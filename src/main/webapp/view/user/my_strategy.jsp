@@ -29,7 +29,7 @@
     <div class="row content-row">
         <div class="row list-row input-row"> 
             <div class="more">
-                <span>更多 >></span>
+                <span onclick="javascript:window.location.href='strategy_compare'">对比 >></span>
             </div>
             <div class="title">
                 <span>我的策略</span>

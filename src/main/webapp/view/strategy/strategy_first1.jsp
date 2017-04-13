@@ -7,7 +7,6 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../css/bootstrap.css">
     <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css">
-    <link rel="stylesheet" href="../../css/datetimepicker.css">
     <link rel="stylesheet" href="../../css/strategy/chooser.css">
     <link rel="stylesheet" href="../../css/strategy/backinfo.css">
     <link rel="stylesheet" href="../../css/strategy/backplot.css">
@@ -15,6 +14,7 @@
     <link rel="stylesheet" href="../../css/strategy/multiple.css">
     <link rel="stylesheet" href="../../css/bootstrap-select.min.css">
     <link rel="stylesheet" href="../../css/stockchooser.css">
+    <link rel="stylesheet" href="../../css/jquery.pagewalkthrough.css">
     <link href="../../css/common/common.css" rel="stylesheet">
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
@@ -23,6 +23,8 @@
     <script src="../../js/echarts.min.js"></script>
     <script src="../../js/bootstrap-select.min.js"></script>
     <script src="../../js/bootstrap-paginator.min.js"></script>
+    <script src="../../js/html5.js"></script>
+    <script src="../../js/jquery.pagewalkthrough.min.js"></script>
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>
@@ -30,17 +32,23 @@
 <div class="container-fluid main-content">
     <div id="chooser" class="row list-row" style="margin:20px;width:1000px;height:600px;">
         <div class="row">
+            <div id="clear_flag" style="position:absolute;top:30px;left:80px;width:55px;height:10px;"></div>
             <div class="title" style="margin-top:20px;">
                 <span>选择-</span>
                 <span><a onclick="JavaScript:clean();">清空</a></span>
             </div>
+            <div id="plot_flag" style="position:absolute;top:55px;left:45px;width:870px;height:600px;"></div>
             <!--选择股票-->
             <div id="stock_choice_div" class="col-xs-10" >
-                <ul class="stock_choice_ul" id="stock_choice_ul"></ul>
+                <ul class="stock_choice_ul" id="stock_choice_ul">
+                    <div id="stock_add_flag" style="position:absolute;top:17px;left:17px;width:32px;height:32px;"></div>
+
+                </ul>
             </div>
         </div>
         <div class="row">
             <div id="metric_div" class="col-xs-2">
+                <div id="metric_choose_flag" style="position:absolute;top:10px;left:0px;width:170px;height:530px;"></div>
                 <!--已选指标-->
                 <div id="metric_choice_div">
                     <ul class="metric_choice_ul" id="metric_choice_ul"></ul>
@@ -49,7 +57,9 @@
                 <div id="metric_choose_div">
                     <!--添加-->
                     <div id="metric_choose_tip" style="font-family: 'Microsoft YaHei';color:#555555;font-size:15px;">可选指标：</div>
-                    <ul class="metric_choose_ul" id="metric_choose_ul"></ul>
+                    <ul class="metric_choose_ul" id="metric_choose_ul">
+
+                    </ul>
                 </div>
             </div>
             <div class="col-xs-10">
@@ -119,8 +129,14 @@
         </div>
         <div class="row">
             <table id="flagtable" class="table table-striped"><%--table-hover table-bordered--%>
+                <div id="trade_flag" style="position:absolute;top:700px;left:80px;width:900px;height:80px;"></div>
                 <thead></thead>
-                <tbody id="flagtable_body"></tbody>
+                <tbody id="flagtable_body">
+                    <tr>
+                        <th>1</th>
+                        <td>sh600000|sh600001;BIAS|BOLL1</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
         <div class="row">
@@ -129,28 +145,33 @@
             </div>
         </div>
         <div class="row">
+            <div id="tradetable_flag" style="position:absolute;top:820px;left:80px;width:900px;height:120px;"></div>
             <table id="tradeflag" class="table table-striped"><%--table-hover table-bordered--%>
                 <thead></thead>
                 <tbody id="tradeflag_body">
                 <tr id="group_1">
                     <th>1</th>
                     <td>
-                        <select id="select_1" class="selectpicker show-tick form-control" multiple data-live-search="false"></select>
+                        <select id="select_1" class="selectpicker show-tick form-control" multiple data-live-search="false">
+                            <option value="sh600000|sh600001;BIAS|BOLL1">sh600000|sh600001;BIAS|BOLL1</option>
+                        </select>
                     </td>
                 </tr>
                 </tbody>
             </table>
+            <div id="addtrade_flag" style="position:absolute;top:891px;left:81px;width:32px;height:32px;"></div>
             <image id="add_flag" class="add_icon" src="${pageContext.request.contextPath}/img/add_active.png" style="display:block;" onclick="JavaScript:addGroup();"></image>
         </div>
     </div>
     <!--回测信息-->
-    <div id="backinfo" class="row list-row" style=" position:relative;margin:20px;width:1000px;height:200px;">
+    <div id="backinfo" class="row list-row" style=" position:relative;margin:20px;width:1080px;height:200px;">
         <div class="row">
             <div class="title" style="margin-top:20px;">
                 <span>回测信息</span>
             </div>
         </div>
         <div class="row" style="position:relative">
+            <div id="backinfo_flag" style="position:absolute;top:10px;left:30px;width:1010px;height:140px;"></div>
             <div id="start_date" class="input-group">
                 <span id="start_text" class="input-group-addon">回测开始日期</span>
                 <input id="datetimepicker1" type="text">
@@ -193,6 +214,7 @@
             </div>
         </div>
         <div class="row">
+            <div id="backplot_flag" style="position:absolute;top:1240px;left:80px;width:900px;height:700px;"></div>
             <div id="backplot">
 
             </div>
@@ -206,6 +228,7 @@
             </div>
         </div>
         <div class="row">
+            <div id="backtable_flag" style="position:absolute;top:2010px;left:80px;width:900px;height:170px;"></div>
             <table id="backtable" class="table table-bordered">
                 <caption></caption>
                 <thead>
@@ -237,12 +260,11 @@
             </table>
         </div>
         <div class="row">
+            <div id="saveback_flag" style="position:absolute;top:2140px;left:870px;width:90px;height:30px;"></div>
             <button id="saveback" class="btn btn-default btn-sm" onclick="add()">保存策略</button>
         </div>
     </div>
-
 </div>
-
 </body>
 <!--指标和股票选择-->
 <script type="text/javascript">
@@ -269,6 +291,7 @@
     stock_add_button.setAttribute("src","../../img/add_inactive.png");
     stock_add_button.setAttribute('data-toggle',"modal");
     stock_add_button.setAttribute("data-target","#stockModal");
+
     stock_add_button.onclick=function()
     {
         //新增股票
@@ -1064,18 +1087,18 @@
         clean();
     }
     $('#datetimepicker1').datetimepicker(
-        {
-            language: 'zh-CN',
-            minView: "month",
-            format: 'yyyy-mm-dd'
-        }
+            {
+                language: 'zh-CN',
+                minView: "month",
+                format: 'yyyy-mm-dd'
+            }
     );
     $('#datetimepicker2').datetimepicker(
-        {
-            language: 'zh-CN',
-            minView: "month",
-            format: 'yyyy-mm-dd'
-        }
+            {
+                language: 'zh-CN',
+                minView: "month",
+                format: 'yyyy-mm-dd'
+            }
     );
     var frequency_unit="day";
     function frequency_day()
@@ -1195,10 +1218,218 @@
     myChart.setOption(option);
 </script>
 <!--回测结果-->
+<script type="text/javascript">
+    stock_selected="sh600002";
+    metric_selected="BOLL1";
+    stocklist=["sh600002"];
+    stock_choice_init();
 
+    document.getElementById("sh600002").style.color="#5389d2";
+
+    var metric1=document.getElementById("BOLL1");
+    metric1.lastChild.style.visibility = "visible";//删除图标可见
+    metric1.setAttribute("class", "metric_choice_li");//设为已选类
+    metriclist.push(metric1.id);
+    metric_choose_ul.removeChild(metric1);//待选列表中移除
+    if (metric_choose_ul.childElementCount == 0) {
+        //待选列表中全部选择，提示不可见
+        document.getElementById("metric_choose_tip").style.visibility = "hidden";
+    }
+    metric_choice_ul.appendChild(metric1);//已选列表中添加
+
+    var metric1=document.getElementById("BOLL1");
+    metric1.lastChild.style.visibility = "visible";//删除图标可见
+    metric1.setAttribute("class", "metric_choice_li");//设为已选类
+    metriclist.push(metric1.id);
+    metric_choose_ul.removeChild(metric1);//待选列表中移除
+    if (metric_choose_ul.childElementCount == 0) {
+        //待选列表中全部选择，提示不可见
+        document.getElementById("metric_choose_tip").style.visibility = "hidden";
+    }
+    metric_choice_ul.appendChild(metric1);//已选列表中添加
+    //将选择的标蓝
+    metric1.firstChild.style.color = "#5389d2";
+    //记录选择的指标名称
+    metric_selected = metric1.getAttribute("id");
+    console.log("you select "+metric_selected);
+
+    //给出画板
+    if (stock_selected != "" && (stock_choice_ul.childElementCount > 2 || metric_choice_ul.childElementCount > 1)) {
+        //多模式
+        var color = getRandomColor();
+        log.push(new log_stock(stock_selected, color));
+        state = "multiple";
+        single_plot.style.visibility = "hidden";
+        document.getElementById("from").style.visibility="hidden";
+        document.getElementById("to").style.visibility="hidden";
+        multiple_plot.style.visibility = "visible";
+    }
+    else if (stock_selected != "" && stock_choice_ul.childElementCount == 2 && metric_choice_ul.childElementCount == 1) {
+        //单模式
+        state = "single";
+        single_plot.style.visibility = "visible";
+        document.getElementById("from").style.visibility="visible";
+        document.getElementById("to").style.visibility="visible";
+        multiple_plot.style.visibility = "hidden";
+    }
+    else {
+        state = "neither";
+    }
+</script>
 <script>
     function add() {
         window.location.href="my_strategy";
     }
+</script>
+
+<div id="walkthrough-content" style="display: none;">
+    <div id="walkthrough-1">
+        <h3>这是策略制定页面</h3>
+
+        <p>在这里你可以自定义交易标志，并自己指定回测数据查看策略效果</p>
+        <p>点击下一步了解更多...</p>
+    </div>
+
+    <div id="walkthrough-2">
+        点击选择股票
+    </div>
+
+    <div id="walkthrough-3">
+        在这里选择指标进入备选列表
+    </div>
+
+    <div id="walkthrough-4">
+        这里可以清除所有内容
+    </div>
+
+    <div id="walkthrough-5">
+        每次从股票列表和指标列表中选择一个股票和一个指标；
+        若待选列表中只有一个股票一个指标则使用绘制”指标-得分“折线；
+        首先填写指标的范围，再根据“指标-评分”做点，点击“开始”则自动绘图；
+        填写买卖阈值后保存标志即可
+    </div>
+
+    <div id="walkthrough-6">
+        保存的交易标志在这里
+    </div>
+
+    <div id="walkthrough-7">
+        这里可以选择多个标志作为一组，一个组内表示同时发生才能触发交易，不同的组只要有一个发生即可触发
+    </div>
+
+    <div id="walkthrough-8">
+        这里可以添加组
+    </div>
+
+    <div id="walkthrough-9">
+        这里填写回测数据
+    </div>
+
+    <div id="walkthrough-10">
+        这里是回测图像
+    </div>
+
+    <div id="walkthrough-11">
+        这里可以看到回测数据结果
+    </div>
+
+    <div id="walkthrough-12">
+        点击按钮保存策略
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $('body').pagewalkthrough({
+            name: 'introduction',
+            steps: [{
+                popup: {
+                    content: '#walkthrough-1',
+                    type: 'modal'
+                }
+            },{
+                wrapper: '#stock_add_flag',
+                popup: {
+                    content: '#walkthrough-2',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#metric_choose_flag',
+                popup: {
+                    content: '#walkthrough-3',
+                    type: 'tooltip',
+                    position: 'top'
+                }
+            }, {
+                wrapper: '#clear_flag',
+                popup: {
+                    content: '#walkthrough-4',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            },{
+                wrapper: '#plot_flag',
+                popup: {
+                    content: '#walkthrough-5',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            },{
+                wrapper: '#trade_flag',
+                popup: {
+                    content: '#walkthrough-6',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#tradetable_flag',
+                popup: {
+                    content: '#walkthrough-7',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#addtrade_flag',
+                popup: {
+                    content: '#walkthrough-8',
+                    type: 'tooltip',
+                    position: 'bottom',
+
+                }
+            }, {
+                wrapper: '#backinfo_flag',
+                popup: {
+                    content: '#walkthrough-9',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#backplot_flag',
+                popup: {
+                    content: '#walkthrough-10',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#backtable_flag',
+                popup: {
+                    content: '#walkthrough-11',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }, {
+                wrapper: '#saveback_flag',
+                popup: {
+                    content: '#walkthrough-12',
+                    type: 'tooltip',
+                    position: 'bottom'
+                }
+            }]
+        });
+
+// Show the tour
+        $('body').pagewalkthrough('show');
+    });
 </script>
 </html>

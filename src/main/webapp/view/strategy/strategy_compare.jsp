@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/strategy/chooser.css">
     <link rel="stylesheet" href="../../css/strategy/backinfo.css">
     <link rel="stylesheet" href="../../css/strategy/backplot.css">
+    <link rel="stylesheet" href="../../css/datetimepicker.css">
     <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css">
     <link rel="stylesheet" href="../../css/bootstrap-select.min.css">
     <link href="../../css/common/common.css" rel="stylesheet">
@@ -31,10 +32,11 @@
         <br>
         <div class="row">
             <select id="select_strategy" class="selectpicker show-tick form-control" multiple data-live-search="false" >
-                <option value="strategy1">strategy 1</option>
-                <option value="strategy2">strategy 2</option>
-                <option value="strategy3">strategy 3</option>
-                <option value="strategy4">strategy 4</option>
+                <option value="策略1">策略1</option>
+                <option value="策略2">策略2</option>
+                <option value="策略3">策略3</option>
+                <option value="策略4">策略4</option>
+                <option value="策略5">策略5</option>
             </select>
         </div>
     </div>

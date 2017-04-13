@@ -46,6 +46,9 @@
                             <span class="n">地址：</span>
                             <input type="text" class="reg-input info-input" id="info-address" name="address" value="${info.address}江苏省南京市" disabled="disabled">
                         </div>
+                        <div class="item">
+                            <span class="n" style="margin-left:58px;">等级：&nbsp&nbsp&nbsplevel1</span>
+                        </div>
                     </div>
                     <div class="row operate-info">
                         <div class="errorMsg nicknameError" id="error-dynamic-info">
