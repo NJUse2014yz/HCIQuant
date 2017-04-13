@@ -16,13 +16,9 @@ public class CompareController {
 	@RequestMapping(name="compare",produces="text/html;charset=UTF-8;")
 	public  ModelAndView compare(String stock1,String stock2) throws UnsupportedEncodingException{
 		ModelAndView model=new ModelAndView("compare");
-		if(stock1!=null)
-			stock1=new String(stock1.getBytes("iso8859-1"),"UTF-8");
-		else
+		if(stock1==null)
 			stock1="腾讯控股";
-		if(stock2!=null)
-			stock2=new String(stock2.getBytes("iso8859-1"),"UTF-8");
-		else
+		if(stock2==null)
 			stock2="百度";
 		model.addObject("stock1", stock1);
 		model.addObject("stock2", stock2);
