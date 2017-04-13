@@ -15,6 +15,7 @@ public class IndexInfController {
     public ModelAndView indexInfo(String id, HttpServletRequest request) throws Exception {
         System.out.println("indexid=" + id);
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("sid",id);
         modelAndView.setViewName("stockdata/indexInf");
         return modelAndView;
     }

@@ -2,6 +2,7 @@
  * Created by dell on 2017/4/8.
  */
 function paintKLine(id, stockId) {
+    //alert(stockId+"!!!!!!!!!!!!!!!!!!!");
 
     $.getJSON('/HCIQuant/getKLineData?id=' + stockId, function (rawData) {
 

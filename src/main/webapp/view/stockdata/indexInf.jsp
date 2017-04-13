@@ -17,7 +17,7 @@
 
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
-    <script src="../../js/echarts.min.js"></script>
+    <%--<script src="../../js/echarts.min.js"></script>--%>
     <script src="../../js/stockdata/echarts.js"></script>
     <%--<script src="../../js/stockdata/highstock.js"></script>--%>
     <%--<script src="../../js/stockdata/KLine.js"></script>--%>
@@ -197,7 +197,8 @@
         $("#tab_BIAS").addClass('Tabchange');
 
         paintTab('tab_chart',"BIAS");
-        paintKLine('chart',${sid});
+
+        paintKLine('chart',"000001");
     });
 </script>
 

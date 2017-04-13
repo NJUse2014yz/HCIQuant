@@ -43,7 +43,7 @@
                     <!-- stocktitle -->
                     <div class="stockHead" style="margin-left: 10%;padding-top: 20px">
                         <h1 class="stockname" style="display:inline;">浦发银行</h1>
-                        <h1 class="stockId" style="display:inline;">(${sid})</h1>
+                        <h1 class="stockId" style="display:inline;">(sh${sid})</h1>
                         <img class="likeImage" width="30px" style="cursor:pointer;" onclick='likeStock()'
                          data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="关注" src="../../img/stockdata/like.svg"></img>
                         <img class="strategyImage" width="30px" style="cursor:pointer;"
@@ -198,7 +198,7 @@
         $("#tab_BIAS").addClass('Tabchange');
 
         paintTab('tab_chart',"BIAS");
-        paintKLine('chart',${sid});
+        paintKLine('chart',"sh600000");
     });
 </script>
 
