@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../css/datetimepicker.css">
     <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css">
     <link rel="stylesheet" href="../../css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../css/datetimepicker.css">
     <link href="../../css/common/common.css" rel="stylesheet">
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
@@ -120,10 +121,22 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>strategy1</td>
+                    <td>策略1</td>
                     <td>12.3%</td>
                     <td>5%</td>
-                    <td>2.4</td>
+                    <td>3.4</td>
+                    <td>27%</td>
+                    <td>63%</td>
+                    <td>8%</td>
+                    <td>35894</td>
+                    <td>47%</td>
+                    <td>31.3%</td>
+                </tr>
+                <tr>
+                    <td>策略2</td>
+                    <td>48.3%</td>
+                    <td>7%</td>
+                    <td>2.9</td>
                     <td>62%</td>
                     <td>53%</td>
                     <td>21%</td>
@@ -132,28 +145,16 @@
                     <td>10.3%</td>
                 </tr>
                 <tr>
-                    <td>strategy2</td>
-                    <td>12.3%</td>
-                    <td>5%</td>
-                    <td>2.4</td>
-                    <td>62%</td>
-                    <td>53%</td>
-                    <td>21%</td>
-                    <td>24673</td>
-                    <td>43%</td>
-                    <td>10.3%</td>
-                </tr>
-                <tr>
-                    <td>strategy3</td>
-                    <td>12.3%</td>
-                    <td>5%</td>
-                    <td>2.4</td>
-                    <td>62%</td>
-                    <td>53%</td>
-                    <td>21%</td>
-                    <td>24673</td>
-                    <td>43%</td>
-                    <td>10.3%</td>
+                    <td>策略3</td>
+                    <td>31.9%</td>
+                    <td>3%</td>
+                    <td>9.3</td>
+                    <td>72%</td>
+                    <td>42%</td>
+                    <td>16%</td>
+                    <td>73435</td>
+                    <td>16%</td>
+                    <td>17.3%</td>
                 </tr>
                 </tbody>
             </table>
@@ -334,7 +335,7 @@
             trigger: 'axis'
         },
         legend: {
-            data:['strategy1','strategy2','strategy3']
+            data:['策略1','策略2','策略3']
         },
         grid: {
             left: '3%',

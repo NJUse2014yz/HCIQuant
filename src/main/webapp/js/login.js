@@ -34,7 +34,19 @@ function login(){
         setTimeout("$('#error-login').text('');",1000);
         return false;
     }
-    window.location.href="first";
+    if(username=="yf")//新level3用户
+    {
+        document.cookie="level=3";
+        window.location.href="anlysis_first";
+    }
+    else if(username=="newer")
+    {
+        document.cookie="level=1";
+        window.location.href="level-first-1";
+    }
+    else
+        document.cookie="level=2";
+        window.location.href="first";
 
     return true;
 

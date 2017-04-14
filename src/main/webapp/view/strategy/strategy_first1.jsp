@@ -7,6 +7,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../css/bootstrap.css">
     <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="../../css/datetimepicker.css">
     <link rel="stylesheet" href="../../css/strategy/chooser.css">
     <link rel="stylesheet" href="../../css/strategy/backinfo.css">
     <link rel="stylesheet" href="../../css/strategy/backplot.css">
@@ -27,7 +28,122 @@
     <script src="../../js/jquery.pagewalkthrough.min.js"></script>
 </head>
 <body>
-<%@include file="../first/navBar.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>导航栏</title>
+    <link href="${pageContext.request.contextPath}/css/first/navBar.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/first/search.css" />
+
+    <%--<script src="../js/jquery-3.1.1.min.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/js/cookie.js"></script>
+</head>
+
+<body>
+
+<div class="top">
+
+    <div class="logo">
+        <img alt="" src="../../img/common/logo.png">
+    </div>
+
+    <div class="stock-search">
+        <div id="sb-search" class="search">
+            <input id="stock-search"  placeholder="股票代码或名称">
+            <button onclick="search()"></button>
+        </div>
+    </div>
+
+    <div class="container">
+        <ul class="menu">
+            <li><a href="first">首页</a></li>
+            <li><a href="#">股票数据</a>
+                <ul class="submenu">
+                    <li><a href="allstock">全部</a></li>
+                    <li><a href="indexInfo?id=sh000001">上证指数</a></li>
+                    <li><a href="indexInfo?id=sz399001">深证成指</a></li>
+                    <li><a href="compare">股票对比</a></li>
+                    <li><a href="learn">股票学堂</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="#s2">指标策略</a>
+                <ul class="submenu">
+                    <li><a href="anlysis_first">指标分析</a></li>
+                    <li><a href="make_first2">策略分析</a></li>
+                </ul>
+            </li>
+            <li><a href="#">板块统计</a>
+                <ul class="submenu">
+                    <li><a href="all_block">板块统计</a></li>
+                </ul>
+            </li>
+            <li><a href="#">个人空间</a>
+                <ul class="submenu">
+                    <li><a href="my_stock">我的股票</a></li>
+                    <li><a href="my_strategy">我的策略</a></li>
+                    <li><a href="person_zone">我的信息</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="login-area">
+        <!--未登陆的界面 -->
+
+
+        <!-- 已登录的界面 -->
+        <!-- <ul class="logined">
+            <li class="header-signup">
+                <a class="logout">注销</a>
+            </li>
+            <li id="signined" class="header-signin">
+                <a>已登录</a>
+            </li>
+
+        </ul> -->
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        showUserInfo();
+    });
+
+    function search(){
+        var stock=$("input#stock-search").val();
+        if(stock=="")
+            return;
+        window.location.href="/HCIQuant/stockInfo?id="+stock;
+    }
+
+    //判断是否已经登录
+    function showUserInfo(){
+        var userName=getCookie("userName");
+
+        if(userName!='""'){
+            //显示头像
+
+            $("#login-area").append("<img class='user' src='../img/first/user.jpg' />");
+        }
+        else{
+            //显示登录注册
+            $("#login-area").append("<div class='unlogin'><div class='header-signup'><a href='${pageContext.request.contextPath}/askForRegister.action'>注册</a></div>	<div class='header-signin'><a class='login' href='${pageContext.request.contextPath}${pageContext.request.contextPath}/login'>登录</a></div>			</div>");
+        }
+
+    }
+    //注销
+    $(".logout").click(function(){
+        $.ajax({
+            type:'post',
+            url:'${pageContext.request.contextPath}/logout.action',
+            data:'',
+            success:function(data){
+                showUserInfo();
+            }
+        });
+    });
+</script>
 <%@include file="../first/stock_chooser.jsp"%>
 <div class="container-fluid main-content">
     <div id="chooser" class="row list-row" style="margin:20px;width:1000px;height:600px;">
@@ -1220,13 +1336,13 @@
 <!--回测结果-->
 <script type="text/javascript">
     stock_selected="sh600002";
-    metric_selected="BOLL1";
+    metric_selected="VR";
     stocklist=["sh600002"];
     stock_choice_init();
 
     document.getElementById("sh600002").style.color="#5389d2";
 
-    var metric1=document.getElementById("BOLL1");
+    var metric1=document.getElementById("VR");
     metric1.lastChild.style.visibility = "visible";//删除图标可见
     metric1.setAttribute("class", "metric_choice_li");//设为已选类
     metriclist.push(metric1.id);
@@ -1235,17 +1351,7 @@
         //待选列表中全部选择，提示不可见
         document.getElementById("metric_choose_tip").style.visibility = "hidden";
     }
-    metric_choice_ul.appendChild(metric1);//已选列表中添加
 
-    var metric1=document.getElementById("BOLL1");
-    metric1.lastChild.style.visibility = "visible";//删除图标可见
-    metric1.setAttribute("class", "metric_choice_li");//设为已选类
-    metriclist.push(metric1.id);
-    metric_choose_ul.removeChild(metric1);//待选列表中移除
-    if (metric_choose_ul.childElementCount == 0) {
-        //待选列表中全部选择，提示不可见
-        document.getElementById("metric_choose_tip").style.visibility = "hidden";
-    }
     metric_choice_ul.appendChild(metric1);//已选列表中添加
     //将选择的标蓝
     metric1.firstChild.style.color = "#5389d2";
@@ -1275,6 +1381,9 @@
     else {
         state = "neither";
     }
+
+    alreadyflag={stock:["sh600000","sh600001"],metric:["BIAS","BOLL1"]};
+    flaglist.push(alreadyflag);
 </script>
 <script>
     function add() {
@@ -1295,7 +1404,23 @@
     </div>
 
     <div id="walkthrough-3">
-        在这里选择指标进入备选列表
+        在这里选择指标进入备选列表：<br>
+        BIAS:乖离率<br>
+        BOLL1:布林线上轨线<br>
+        BOLL2:布林线中轨线<br>
+        BOLL3:布林线下轨线<br>
+        K:随机指标K<br>
+        D:随机指标D<br>
+        J:随机指标J<br>
+        MACD:指数平滑异动移动平均线<br>
+        OBV:能量潮<br>
+        ROC:变动率指标<br>
+        RSI:强弱指标<br>
+        VR:成交量变异率<br>
+        PDI:多空指标多方<br>
+        MDI:多空指标空方<br>
+        ADX:趋向指标动向平均数<br>
+        ADXR:趋向指标评估数值<br>
     </div>
 
     <div id="walkthrough-4">
@@ -1359,7 +1484,7 @@
                 popup: {
                     content: '#walkthrough-3',
                     type: 'tooltip',
-                    position: 'top'
+                    position: 'right'
                 }
             }, {
                 wrapper: '#clear_flag',

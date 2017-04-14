@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="../../css/strategy/chooser.css">
     <link rel="stylesheet" href="../../css/strategy/backinfo.css">
     <link rel="stylesheet" href="../../css/strategy/backplot.css">
+    <link rel="stylesheet" href="../../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="../../css/datetimepicker.css">
     <link href="../../css/common/common.css" rel="stylesheet">
     <script src="../../js/jquery-3.1.1.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/echarts.min.js"></script>
+    <script src="../../js/bootstrap-datetimepicker.js"></script>
+    <script src="../../js/bootstrap-datetimepicker.zh-CN.js"></script>
 </head>
 <body>
 <%@include file="../first/navBar.jsp"%>

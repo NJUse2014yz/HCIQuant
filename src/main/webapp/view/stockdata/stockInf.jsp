@@ -43,7 +43,7 @@
                     <!-- stocktitle -->
                     <div class="stockHead" style="margin-left: 5%;padding-top: 20px;padding-bottom: 10px;">
                         <h1 class="stockname" style="display:inline;">浦发银行</h1>
-                        <h1 class="stockId" style="display:inline;">(sh${sid})</h1>
+                        <h1 class="stockId" style="display:inline;">(${sid})</h1>
 
                         <img class="likeImage" width="30px" style="cursor:pointer;" onclick='likeStock()'
                          data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="关注" src="../../img/stockdata/like.svg"></img>

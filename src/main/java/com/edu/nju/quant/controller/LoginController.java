@@ -15,4 +15,9 @@ public class LoginController {
     public String login(HttpServletRequest request, HttpServletResponse response){
         return "login";
     }
+
+    @RequestMapping(value = "property")
+    public String property(HttpServletRequest request, HttpServletResponse response){
+        return "property";
+    }
 }
