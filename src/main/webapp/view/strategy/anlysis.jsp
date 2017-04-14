@@ -20,7 +20,6 @@
 <script type="text/javascript">
     var start=document.cookie.indexOf("level=")+6;
     var M=unescape(document.cookie.substring(start,start+1));
-    alert(M);
     if( M != 3)
         window.location.href="property";
 </script>
