@@ -45,9 +45,10 @@ function login(){
         window.location.href="level-first-1";
     }
     else
+    {
         document.cookie="level=2";
         window.location.href="first";
-
+    }
     return true;
 
 }
